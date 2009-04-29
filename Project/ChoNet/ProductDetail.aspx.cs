@@ -647,6 +647,7 @@ public partial class ProductDetail : Page
                 }
                 imgSanPham.Src = drSanPham["AnhSanPham"].ToString();
                 lblTenSanPham.Text = drSanPham["TenSanPham"] + " " + drSanPham["TenSanPhamPhu"];
+                Title = lblTenSanPham.Text;
                 ViewState["TenGocSanPham"] = drSanPham["TenSanPham"].ToString();
                 lblProdName.Text = lblTenSanPham.Text;
                 divThongTinSanPham.InnerHtml += drSanPham["MoTaSanPham"].ToString().Replace("\r\n", "<br/>");
