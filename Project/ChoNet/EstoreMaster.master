@@ -1,0 +1,471 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="EstoreMaster.master.cs"
+    Inherits="EstoreMaster" %>
+<%@ Register Assembly="Infragistics2.WebUI.WebDataInput.v7.1, Version=7.1.20071.1048, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
+    Namespace="Infragistics.WebUI.WebDataInput" TagPrefix="igtxt" %>
+<%@ Register Assembly="Infragistics2.WebUI.UltraWebNavigator.v7.1, Version=7.1.20071.1048, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
+    Namespace="Infragistics.WebUI.UltraWebNavigator" TagPrefix="ignav" %>
+<%@ Register Assembly="Infragistics2.WebUI.UltraWebGrid.v7.1, Version=7.1.20071.1048, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
+    Namespace="Infragistics.WebUI.UltraWebGrid" TagPrefix="igtbl" %>
+<%@ Register Assembly="Infragistics2.WebUI.Misc.v7.1, Version=7.1.20071.1048, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
+    Namespace="Infragistics.WebUI.Misc" TagPrefix="igmisc" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Gian hàng</title>
+    <!--[if lt IE 7]>
+    <script defer type="text/javascript" src="~/Scripts/pngfix.js"></script>
+    <![endif]-->
+    <link runat="server" id="stsGianHang" href="" rel="stylesheet" type="text/css" />
+    <link href="GianHang/Menu.css" rel="stylesheet" type="text/css" />
+    <link href="css/rating.css" rel="stylesheet" type="text/css" />
+
+    <script src="Scripts/Common.js" type="text/javascript"></script>
+
+    <script src="Scripts/dialog.js" type="text/javascript"></script>
+
+    <script src="Scripts/WebUIValidation.js" type="text/javascript"></script>
+
+    <script src="Scripts/WebForm.js" type="text/javascript"></script>
+
+    <script id="igClientScript" type="text/javascript">
+    function LostPassword()
+    {        
+        //OpenDialogWindow('Quên mật khẩu', 320, 150, 'page', 'LostPassword.aspx');        
+        ShowModalDialog('LostPassword.aspx','Quên mật khẩu', 320, 150);        
+    }
+    function rate()
+    {
+        ShowModalDialog('RateStore.aspx?sid=<%=CuaHangID%>','Đánh giá cửa hàng',525,585);
+    }
+    function RefreshCuaHang()
+    {
+        var warp = ig$('<%=pnlCuaHang.ClientID%>');         
+        if(!warp) return;
+	        warp.refresh();
+    }
+   function LoadAdv()
+   {
+       divAdLeft.style.left = (screen.width-780-2*divAdLeft.style.width)/2 + 5;       
+       divAdRight.style.left = screen.width/2 + 780/2 + 15;
+   }
+    </script>
+
+</head>
+<body onload="LoadAdv();">
+    <form id="frm" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td>
+                    <!–Phần cho bên trái–>
+                    <div id="divAdLeft" style="width: 110; position: absolute; top: 71px">
+                        <asp:UpdatePanel ID="pnlLeft" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <span runat="server" id="spnQuangCao55"></span>
+                                <asp:Timer ID="tmleft" runat="server" Interval="15000" OnTick="tmleft_Tick">
+                                </asp:Timer>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="tmleft" EventName="Tick" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+                    &nbsp;<script src="GianHang/BannerTruotLeft.js" type="text/javascript"></script>
+
+                </td>
+                <td align="center" width="780" valign="top">
+                    <table width="780" bgcolor="#FFFFFF" style="border: #CCCCCC 1px solid" border="0"
+                        cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                <table class="form" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" style="height: 35px">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="156">
+                                                        <img alt="" src="GianHang/images/logoE.jpg" width="179" height="121" /></td>
+                                                    <td width="628">
+                                                        <span id="spnQuangCao51" runat="server"></span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="200" align="left" valign="top">
+                                                        <table width="100%" border="0" cellspacing="4" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="box1" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td class="box1_name" style="height: 18px">
+                                                                                Danh mục chính</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="box1_bor">
+                                                                                <table class="listcat" border="0" cellspacing="0" cellpadding="0" style="width: 100%;
+                                                                                    height: 122px">
+                                                                                    <tr>
+                                                                                        <td style="height: 24px">
+                                                                                            <a href="estorehome.aspx">Trang chủ E-Store </a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td style="height: 28px">
+                                                                                            <a href="http://">Sản phẩm khuyến mãi</a></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td style="height: 27px">
+                                                                                            <a href="estoreinfo.aspx?sid=<%=CuaHangID.ToString()%>">Thông tin doanh nghiệp </a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td style="height: 24px">
+                                                                                            <a href="estorenews.aspx?sid=<%=CuaHangID.ToString()%>">Tin Tức</a></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td style="height: 24px">
+                                                                                            <a href="contact.aspx?sid=<%=CuaHangID %>">Liên hệ</a></td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="box1">
+                                                                        <tr>
+                                                                            <td class="box1_name">
+                                                                                Danh mục sản phẩm</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="box1_bor" style="height: 38px">
+                                                                                <asp:Table ID="tblDanhMuc" class="listcat" runat="server" Width="100%" CellPadding="0"
+                                                                                    CellSpacing="0">
+                                                                                </asp:Table>
+                                                                                <asp:Menu ID="mnuNhomSanPham" runat="server" CssSelectorClass="PrettyMenu" MaximumDynamicDisplayLevels="4"
+                                                                                    StaticEnableDefaultPopOutImage="False" StaticSubMenuIndent="" Width="100%">
+                                                                                </asp:Menu>
+                                                                                &nbsp;<ignav:UltraWebMenu ID="uwmMenu" runat="server" EnableAppStyling="True" JavaScriptFilename=""
+                                                                                    JavaScriptFileNameCommon="" LeafItemImageUrl="" ParentItemImageUrl="" StyleSetName="Appletini"
+                                                                                    WebMenuTarget="VerticalMenu" Width="180px">
+                                                                                    <ExpandEffects ShadowColor="LightGray"></ExpandEffects>
+                                                                                    <MenuClientSideEvents ItemChecked="" ItemClick="" SubMenuDisplay="" ItemHover=""
+                                                                                        InitializeMenu=""></MenuClientSideEvents>
+                                                                                </ignav:UltraWebMenu>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="box1" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td class="box1_name">
+                                                                                Liên kết E-Store</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="box1_bor" style="text-align: center">
+                                                                                <asp:Table ID="tblGianHang" runat="server" CellPadding="0" CellSpacing="0" BorderWidth="0">
+                                                                                </asp:Table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="box1" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td class="box1_name" style="height: 19px">
+                                                                                Sản phẩm đã xem</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="box1_bor" style="text-align: center">
+                                                                                <asp:Table ID="tblSanPhamDaXem" runat="server" CellPadding="0" CellSpacing="0" BorderWidth="0">
+                                                                                </asp:Table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="box1" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td class="box1_name">
+                                                                                Thống kê</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="box1_bor" style="text-align: center">
+                                                                                <strong>Số người truy cập:</strong>
+                                                                                <asp:Label ID="lblTruyCap" runat="server"></asp:Label><br />
+                                                                                <strong>Số người online:</strong>
+                                                                                <asp:Label ID="lblOnline" runat="server" Text="Label"></asp:Label></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td align="left" valign="top">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td align="left" valign="top" style="border-bottom: solid 1px; border-top: solid 1pt">
+                                                                    <span id="spnQuangCao54" runat="server"></span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" class="box1_bor">
+                                                                    <asp:ContentPlaceHolder ID="cphEstore" runat="server">
+                                                                    </asp:ContentPlaceHolder>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td width="143" align="left" valign="top">
+                                                        <table width="100%" border="0" cellspacing="4" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="box2" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td class="box2_name">
+                                                                                Danh hiệu</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="box2_bor">
+                                                                                <igmisc:WebAsyncRefreshPanel ID="pnlCuaHang" runat="server" Height="" Width="100%"
+                                                                                    OnContentRefresh="pnlCuaHang_ContentRefresh">
+                                                                                    <table>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <img alt="" src="GianHang/images/haxn.jpg" /></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <asp:Panel ID="pnlDamBao" runat="server" Width="100%">
+                                                                                                    <img alt="" height="15" src="GianHang/images/kc.jpg" width="17" />
+                                                                                                    <img alt="" height="15" src="GianHang/images/kc.jpg" width="17" />
+                                                                                                    <img alt="" height="15" src="GianHang/images/kc.jpg" width="17" />
+                                                                                                    <img alt="" height="15" src="GianHang/images/kc.jpg" width="17" />
+                                                                                                    <img alt="" height="15" src="GianHang/images/kc.jpg" width="17" />
+                                                                                                    <img alt="" height="15" src="GianHang/images/kc.jpg" width="17" /></asp:Panel>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td align="left" style="padding-right: 5px; padding-left: 5px; padding-bottom: 5px;
+                                                                                                padding-top: 5px">
+                                                                                                Đánh giá :
+                                                                                                <asp:Label ID="lblDiemDanhGia" runat="server" Font-Bold="True"></asp:Label></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td align="center" style="padding-right: 5px; padding-left: 5px; padding-bottom: 5px;
+                                                                                                padding-top: 5px">
+                                                                                                <img alt="" onclick="rate();" src="GianHang/images/dgnb.jpg" style="cursor: hand" /></td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </igmisc:WebAsyncRefreshPanel>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <asp:UpdatePanel ID="pnlDangNhap" runat="server" UpdateMode="Conditional">
+                                                                        <ContentTemplate>
+                                                                            <table class="box2" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                                <tr>
+                                                                                    <td class="box2_name">
+                                                                                        Đăng nhập</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="box2_bor" align="center">
+                                                                                        <table runat="server" id="tbldangnhap" border="0" cellpadding="2" cellspacing="0"
+                                                                                            width="100%">
+                                                                                            <tr>
+                                                                                                <td align="left">
+                                                                                                    Tài khoản:
+                                                                                                </td>
+                                                                                                <td align="left">
+                                                                                                    <asp:TextBox ID="txtTaiKhoan" runat="server" Width="50px"></asp:TextBox>
+                                                                                                    <asp:RequiredFieldValidator ID="rfvTaiKhoan" runat="server" ControlToValidate="txtTaiKhoan"
+                                                                                                        ErrorMessage="*" SetFocusOnError="True" ValidationGroup="Login"></asp:RequiredFieldValidator></td>
+                                                                                            </tr>
+                                                                                            <tr style="color: #000000">
+                                                                                                <td align="left">
+                                                                                                    Mật khẩu:
+                                                                                                </td>
+                                                                                                <td align="left">
+                                                                                                    <asp:TextBox ID="txtMatKhau" runat="server" TextMode="Password" Width="50px"></asp:TextBox><span
+                                                                                                        style="color: #0000ff"> </span>
+                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtMatKhau"
+                                                                                                        ErrorMessage="*" SetFocusOnError="True" ValidationGroup="Login"></asp:RequiredFieldValidator></td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td align="center" colspan="2">
+                                                                                                    <asp:Button ID="btnDangNhap" runat="server" CssClass="button" OnClick="btnDangNhap_Click"
+                                                                                                        Text="Đăng nhập" /></td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td align="center" colspan="2">
+                                                                                                    <a href="register.aspx"><span style="color: #000000">Đăng ký</span></a><br />
+                                                                                                    <a href="javascript:LostPassword()"><span style="color: #000000">Quên mật khẩu</span></a><span
+                                                                                                        style="color: #0000ff">
+                                                                                                        <asp:Label ID="lblErr" runat="server" ForeColor="Red" Visible="False"></asp:Label></span></td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <table runat="server" id="tblchaomung" visible="false" border="0" cellpadding="2"
+                                                                                            cellspacing="0" width="100%">
+                                                                                            <tr>
+                                                                                                <td style="width: 70%; text-align: center" class="linkdacbiet">
+                                                                                                    <span style="color: #0000ff; text-decoration: underline; text-align: center;">Chào mừng
+                                                                                                        <%=Session["UserFullName"].ToString() %>
+                                                                                                        <br />
+                                                                                                    </span>
+                                                                                                    <asp:LinkButton ID="lnkSignOut" runat="server" OnClick="lnkSignOut_Click">Thoát</asp:LinkButton>&nbsp;
+                                                                                                    <a href="profile.aspx">Thông tin cá nhân</a>&nbsp; <a id="lnkAdm" runat="server"
+                                                                                                        visible="false" href="./adm/default.aspx">Bảng điều khiển</a>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <td class="box2_bor" style="color: #000000">
+                                                                                        </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </ContentTemplate>
+                                                                        <Triggers>
+                                                                            <asp:AsyncPostBackTrigger ControlID="btnDangNhap" EventName="Click" />
+                                                                            <asp:AsyncPostBackTrigger ControlID="lnkSignOut" EventName="Click" />
+                                                                        </Triggers>
+                                                                    </asp:UpdatePanel>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="box2" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td class="box2_name">
+                                                                                Hỗ trợ trực tuyến</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="box2_bor">
+                                                                                <span runat="server" id="spnHoTroTrucTuyen"></span>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="box2" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td class="box2_name">
+                                                                                Sản phẩm HOT
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="box2_bor">
+                                                                                <asp:Timer ID="tmSanPhamHot" runat="server" OnTick="tmSanPhamHot_Tick">
+                                                                                </asp:Timer>
+                                                                                <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                                                                                    <ContentTemplate>
+                                                                                        <asp:Table ID="tblSanPhamHot" runat="server" CellPadding="0" CellSpacing="0" BorderWidth="0">
+                                                                                        </asp:Table>
+                                                                                    </ContentTemplate>
+                                                                                    <Triggers>
+                                                                                        <asp:AsyncPostBackTrigger ControlID="tmSanPhamHot" EventName="Tick" />
+                                                                                    </Triggers>
+                                                                                </asp:UpdatePanel>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="box2" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td class="box2_name">
+                                                                                xem nhiều nhất
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="box2_bor">
+                                                                                <asp:Table ID="tblTopTen" runat="server" CellPadding="0" CellSpacing="0" BorderWidth="0">
+                                                                                </asp:Table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellspacing="4" cellpadding="0">
+                                                <tr>
+                                                    <td height="25" align="center" class="footer">
+                                                        <a href="default.aspx"><strong>Về chợ nét</strong></a> | <a href="register.aspx"><strong>
+                                                            Đăng ký thành viên</strong></a> | <a href="contact.aspx?sid=<%=CuaHangID %>"><strong>
+                                                                Liên hệ</strong></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="25" align="center">
+                                                        <span id="ctl00_ContentPlaceHolder1_UctrProfile1_lblNameStore"><strong>
+                                                            <asp:Label ID="lblTenCuaHang" runat="server"></asp:Label></strong></span>
+                                                        <br />
+                                                        Địa chỉ:
+                                                        <asp:Label ID="lblDiaChi" runat="server"></asp:Label><br />
+                                                        Điện thoại:
+                                                        <asp:Label ID="lblDTCD" runat="server"></asp:Label>-<asp:Label ID="lblDTDD" runat="server"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <!–Phần cho bên phải–>
+                    <div id="divAdRight" style="width: 110; position: absolute; top: 71px">
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <span runat="server" id="spnQuangCao56"></span>
+                                <asp:Timer ID="tmright" runat="server" Interval="15000" OnTick="tmright_Tick">
+                                </asp:Timer>
+
+                                <script src="GianHang/BannerTruotLeft.js" type="text/javascript"></script>
+
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="tmright" EventName="Tick" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+                    &nbsp;
+
+                    <script src="GianHang/BannerTruotRight.js" type="text/javascript"></script>
+
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
