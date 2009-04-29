@@ -1,0 +1,323 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Default.master.cs" Inherits="Master_Default" %>
+<%@ Register Src="wucRegion.ascx" TagName="wucRegion" TagPrefix="uc1"  %>
+<%@ Register Assembly="Infragistics2.WebUI.Misc.v7.1, Version=7.1.20071.1048, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
+    Namespace="Infragistics.WebUI.Misc" TagPrefix="igmisc" %>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Cong ty Quang cao truc tuyen CN, chonet.vn Mua ban Thai Nguyen, Mua ban Hai Phong, Mua ban Quang Ninh, Mua Ban Da Nang, Muaban, Mua ban, Raovat, Rao vat, Quangcao, Quang cao, Gioi thieu san pham, mobile, laptop, computer, internet ADSL ::.. - Muaban, Mua ban, Raovat, Rao vat, Quangcao, Quang cao, Gioi thieu san pham, mobile, laptop, computer, internet ADSL, website, jobseekers, employers, electronic, finance, game, investment, travel, insurance, camera, motor, car, seller, buyer, advertising, rent, for rent, real estate,... </title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="Css/admin.css" rel="stylesheet" type="text/css" />
+    <link href="Css/rating.css" rel="stylesheet" type="text/css" />
+    <link runat="server" rel="stylesheet" href="~/CSS/Import.css" type="text/css" id="AdaptersInvariantImportCSS" />
+    <meta name="description" content="Thong tin tai cac thanh pho thai nguyen, hai phong, quang ninh, lang son, mong cai, lang son, ve muaban, mua ban, raovat, rao vat, thue, cho thue, quangcao, quang cao, gioi thieu san pham, tim doi tac, hop tac kinh doanh. La noi ban co the tim kiem thong tin de kinh doanh tren nhieu linh vuc: dien thoai, mobile, dien dien tu, electronic, may tinh linh kien, laptop, computer, nha dat, real estate, quang cao, advertising, lao dong viec lam, job, Sản phẩm , Rao vặt , Hỏi đáp, tư vấn tiêu dùng , Đánh giá (Review) , Lưu trữ rao vặt , Mobile, điện thoại di động , PDA Phone , Máy tính laptop , Máy tính Desktop , Máy ảnh số , Máy quay phim , Máy nghe nhạc MP3 , Máy nghe nhạc MP4 , Tivi LCD , HDD , CPU , Mainboard , RAM , Màn hình LCD , Điều hòa , BlackBerry , Máy chấm công , Projector - Máy chiếu , Máy photocopy , Sách , Linh kiện máy in , Phụ kiện bộ đàm , Bánh kem , Biển quảng cáo , Vé máy bay Trong nước , Thiết bị cảm ứng phòng tắm , Bộ bàn phím & Chuột , Các sản phẩm khác , Phụ gia , Cân , Túi đi làm , ..." />
+    <!--[if lt IE 7]>
+    <script defer type="text/javascript" src="~/Scripts/pngfix.js"></script>
+    <![endif]-->
+       
+    <script src="Scripts/dialog.js" type="text/javascript"></script>
+
+    <script src="Scripts/WebUIValidation.js" type="text/javascript"></script>
+
+    <script src="Scripts/WebForm.js" type="text/javascript"></script>
+
+    <script src="Scripts/Infragistics/ig_edit.js" type="text/javascript"></script>
+
+    <script type="text/javascript" language="javascript"> 
+        var blRefreshShoppingCart = false;
+        var contentHeight=400;
+        function resizeContentArea()
+        {        
+            var tr=document.getElementById('trContent');
+            var obj=new Object();
+            GetWindowSize(obj);
+            contentHeight = obj.h-240;
+            if(tr!=null) tr.style.height = contentHeight.toString() + 'px' ;
+        }  
+        
+    function RefreshShoppingCart()
+    {
+        var pnl = ig$('<%=pnlShoppingCart.ClientID %>');         
+        if (!pnl) {
+            pnl = ig_getWebControlById('<%=pnlShoppingCart.ClientID %>');                        
+            if (!pnl) return;                
+        }
+        pnl.refresh();
+        //CloseDialogWindow();
+    }    
+        
+    function ViewShoppingCart()
+    {        
+        ShowModalDialog('ShoppingCart.aspx?action=view','Giỏ hàng của bạn', 610, 320);        
+    }
+    
+    function CloseWindow()
+    {        
+        if (blRefreshShoppingCart == true)
+        {           
+            RefreshShoppingCart();
+            blRefreshShoppingCart = false;
+        }             
+    }
+    </script>
+
+</head>
+<body onload="resizeContentArea();">
+    <form id="formChoNet" runat="server">
+        <table class="form" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="center" class="bgtopbanner" valign="bottom">
+                    <table width="987" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="6%">
+                                            <a href="default.aspx">
+                                                <img src="images/logo.png" width="228" height="86" border="0" /></a></td>
+                                        <td width="94%">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td height="28" align="center" valign="top">
+                                                        <table border="0" cellspacing="0" cellpadding="0" style="left: 400px; position: absolute;
+                                                            top: 0px">
+                                                            <tr>
+                                                                <td style="border-right: #666666 1px solid;">
+                                                                    <img src="images/lefttopmenu3.jpg" width="11" height="24" /></td>
+                                                                <td style="background: url(images/centertopmenu3.jpg) repeat-x top">
+                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td nowrap="nowrap" class="topmenu3">
+                                                                                <a href="EstoreHome.aspx">Gian hàng </a>
+                                                                            </td>
+                                                                            <td nowrap="nowrap" class="topmenu3">
+                                                                                <a href="News.aspx">Tin tức </a>
+                                                                            </td>
+                                                                            <td nowrap="nowrap" class="topmenu3">
+                                                                                <a href="#">Giúp đỡ </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                                <td>
+                                                                    <img src="images/righttopmenu3.jpg" width="11" height="24" /></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="vertical-align: bottom;">
+                                                        <table id="tbl1" runat="server" width="100%" border="0" class="cart menu" cellspacing="2"
+                                                            cellpadding="2" visible="true">
+                                                            <tr>
+                                                                <td style="width: 60%; text-align: right; padding-left: 18px" class="linkdacbiet">
+                                                                    Bạn hãy <a href="Login.aspx?ReturnUrl=<%=ViewState["URL"].ToString() %>">Đăng nhập</a> hoặc <a href="Register.aspx">Đăng ký</a>
+                                                                    thành viên, gian hàng
+                                                                </td>
+                                                                <td style="width: 8%; text-align: left;">
+                                                                    <img alt="Gio hang" src="images/cart.png" width="36" height="36" /></td>
+                                                                <td style="width: 28%; text-align: left;">
+                                                                    <b><a href="ShoppingCart.aspx">Giỏ hàng của bạn</a></b><br />
+                                                                    (có
+                                                                    <%=intItems %>
+                                                                    sản phẩm)
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table id="tbl2" runat="server" width="100%" border="0" class="cart menu" cellspacing="2"
+                                                            cellpadding="2" visible="false">
+                                                            <tr>
+                                                                <td style="width: 70%; text-align: right" class="linkdacbiet">
+                                                                    Chào mừng&nbsp;<%=Session["UserFullName"].ToString() %><br />
+                                                                    <asp:LinkButton ID="lnkSignOut" runat="server" OnClick="lnkSignOut_Click">Thoát</asp:LinkButton>&nbsp;
+                                                                    <a href="profile.aspx">Thông tin cá nhân</a>&nbsp; <a id="lnkAdm" runat="server"
+                                                                        visible="false" href="./adm/default.aspx">Bảng điều khiển</a>
+                                                                </td>
+                                                                <td style="width: 6%; text-align: left;">
+                                                                    <img alt="Gio hang" src="images/cart.png" width="36" height="36" /></td>
+                                                                <td style="width: 24%; text-align: left;">
+                                                                    <igmisc:WebAsyncRefreshPanel ID="pnlShoppingCart" runat="server" Width="100%" Height="100%">
+                                                                        <b><a href="ShoppingCart.aspx">Giỏ hàng của bạn</a></b><br />
+                                                                        (có
+                                                                        <%=intItems %>
+                                                                        sản phẩm)
+                                                                    </igmisc:WebAsyncRefreshPanel>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr id="trSearch">
+                            <td>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="32">
+                                            <img src="images/lefttopmenu.jpg" width="32" height="44" /></td>
+                                        <td align="left" style="background: url(images/centermenu.jpg) repeat-x bottom;"
+                                            valign="bottom">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                <tr>
+                                                    <td class="<%=clsHome %>" style="width: 120px">
+                                                        <a href="default.aspx"><span style="color: #000099">Trang chủ</span></a>
+                                                    </td>                                                    
+                                                        <asp:Panel runat="server" ID="pnlHomeMenu" HorizontalAlign="Left">
+                                                        </asp:Panel>
+                                                        <td runat="server" id="tdRegionMenu"></td>                                                                                                                                                                                                               
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="32">
+                                            <img src="images/righttopmenu.jpg" width="32" height="44" /></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" class="bgbanner2">
+                    <asp:Panel ID="Panel1" runat="server" DefaultButton="bntSearch" Width="100%">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td style="background: url(images/leftbanner2.jpg) right no-repeat top">
+                                    &nbsp;</td>
+                                <td width="977" class="topbanner2">
+                                    <table width="100%" border="0" cellspacing="4" cellpadding="0">
+                                        <tr>
+                                            <td width="45%">
+                                                <table border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td>
+                                                            <table class="search" border="0" cellspacing="2" cellpadding="0">
+                                                                <tr>
+                                                                    <td width="64" nowrap="nowrap" class="text_sear">
+                                                                        <span style="font-size: 9pt">Tìm kiếm</span>
+                                                                    </td>
+                                                                    <td width="144">
+                                                                        <input class="field" type="text" name="textfield" id="txtSearch" runat="server" /></td>
+                                                                    <td width="131">
+                                                                        <label>
+                                                                            <select name="select" class="field" id="ddlNhomSanPham" runat="server">
+                                                                            </select>
+                                                                        </label>
+                                                                    </td>
+                                                                    <td width="73">
+                                                                        <asp:Button CssClass="button" Text="Tìm kiếm" ID="bntSearch" runat="server" OnClick="Submit1_ServerClick" /></td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center">
+                                                            <table border="0" cellspacing="0" cellpadding="0">
+                                                                <tr>
+                                                                    <td>
+                                                                    </td>
+                                                                    <td nowrap="nowrap">
+                                                                        <strong></strong>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding-left: 20px; padding-right: 20px;" align="left">
+                                                            <strong>Từ khóa:</strong> máy tính, máy ảnh số, mp3, sách, laptop, ipod, mobile,
+                                                            điều hòa, quạt điện, iphone, BlackBerry, điện thoại di động, tivi, điện thoại
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="55%">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td width="18%">
+                                                        </td>
+                                                        <td width="82%" class="quangcao">
+                                                            <span id="spnSanPham00" runat="server" style="text-align: left"></span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="background: url(images/rightbanner2.jpg) left no-repeat top">
+                                    &nbsp;</td>
+                            </tr>
+                        </table>
+                    </asp:Panel>
+                </td>
+            </tr>
+            <tr id="trContent">
+                <td style="vertical-align: top;" align="center">
+                    <asp:ContentPlaceHolder ID="cphMain" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td  height="120" align="center" style="padding-left:7px;background: url(images/footer1.jpg) top no-repeat center">
+                                <table width="977" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="211">
+                                        </td>
+                                        <td width="766" align="left" style="line-height: 18px;">
+                                            <strong>
+                                                <p class="MsoNormal" style="margin: 0in 0in 0pt">
+                                                    <strong><span style="font-size: 8pt; color: #000000; font-family: Times New Roman">
+                                                        © 2007-2009 </span><a href="http://www.chonet.vn/"><span style="font-weight: normal;
+                                                            font-size: 8pt; color: #0000ff; font-family: Times New Roman; text-decoration: underline">
+                                                            www.chonet.vn</span></a><?xml namespace="" ns="urn:schemas-microsoft-com:office:office"
+                                                                prefix="o" ?><o:p></o:p></strong></p>
+                                                <p class="MsoNormal" style="margin: 0in 0in 0pt">
+                                                    <strong><span style="color: #000000"><span style="font-family: Times New Roman"><span>
+                                                        <span><span style="font-size: 8pt">Cơ quan chủ quản: Công ty TNHH TM Quảng Cáo trực tuyến CN
+                                                        <o:p></o:p>
+                                                        </span>
+                                                        </span>
+                                                    </span></span></span></strong>
+                                                </p>
+                                                <span><span><span style="font-size: 8pt"><strong><span style="color: #000000; font-family: Times New Roman;
+                                                    mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US;
+                                                    mso-bidi-language: AR-SA">12/889 Dương Tự Minh, Thái Nguyên Tel: 0280.3858168</span></strong>
+                                                </span>
+                                                </span>
+                                                </span>
+                                            </strong>
+                                            <br />
+                                            <p class="MsoNormal" style="margin: 0in 0in 0pt">
+                                                <span style="font-size: 8pt; color: #000000; font-family: Times New Roman">Người đại
+                                                    diện theo pháp luật: Bà Nguyễn Thị Hợi</span></p>
+                                            <p class="MsoNormal" style="margin: 0in 0in 0pt">
+                                                <span style="font-size: 8pt; color: #000000; font-family: Times New Roman">Liên hệ
+                                                    quảng cáo Email: </span><a href="mailto:info@chonet.vn"><span style="font-size: 8pt;
+                                                        color: #0000ff; font-family: Times New Roman; text-decoration: underline">info@chonet.vn</span></a>
+                                                -
+                                            
+                                                <span style="font-size: 8pt; color: #000000; font-family: Times New Roman">Designed
+                                                    by </span><a href="http://www.chonet.vn/"><span style="font-size: 8pt; color: #0000ff;
+                                                        font-family: Times New Roman; text-decoration: underline">CN Co,.ltd</span></a><span
+                                                            style="font-size: 8pt"> </span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

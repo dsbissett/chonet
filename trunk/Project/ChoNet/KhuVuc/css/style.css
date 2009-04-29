@@ -1,0 +1,470 @@
+/* CSS Document */
+/* Body */
+BODY {
+	margin: 0px 0px 0px 0px;
+	background:url(../images/bg01.jpg) center top repeat-x;
+	}
+
+td,tr{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+	
+	}
+
+table.form td.bg02{
+ background:url(../images/bg02.jpg) center bottom repeat-x;
+}
+table.form td.bg03{
+	background:url(../images/bg03.jpg) repeat-x;
+	height:12px;
+}
+
+
+/* Links */
+a:link, a:visited {
+	font-size: 11px; color:#333333; text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	}
+
+a:hover {
+    font-size: 11px; 
+	color: #000000;	text-decoration: none;
+	}
+	
+table.form td.bgbanner{
+	background:url(../images/bgbanner1.jpg) no-repeat left top;
+	height:99px;
+}
+table.form td.bgtopmenu{
+	background:url(../images/bgtopmenu.jpg);
+	height:35px;
+}
+
+table.cart td {
+	color:#378d32;
+	text-align:left;
+	line-height:18px;
+}
+table.cart td a{
+	color:#378d32;	
+}
+table.cart td a:visited{
+	color:#378d32;	
+}
+table.cart td a:hover{
+	color:#990000;
+	text-decoration:underline;
+}
+table.menu td.but{
+	background:url(../images/but.jpg) repeat-x;
+	height:35px;
+	text-align:center;
+}
+table.button_nor td.butnor{
+	height:28px;
+	background:url(../images/sperator.jpg) right no-repeat top;
+	text-align:center;
+}
+table.button_nor td.butnor1{
+	height:28px;
+	background:url(../images/sperator.jpg) left no-repeat top;
+	text-align:center;
+}
+table.button_nor td.butnor a{
+	font-weight:bold;
+	color:#3a8d33;
+}
+
+table.button_nor td.butnor a:hover{
+	font-weight:bold;
+	color:#FF6600;
+}
+table.button_nor td.butnor1 a{
+	font-weight:bold;
+	color:#3a8d33;
+}
+
+table.button_nor td.butnor1 a:hover{
+	font-weight:bold;
+	color:#FF6600;
+}
+table.butactive td.but_act_left{
+	background:url(../images/but_active_lef.jpg) no-repeat top;
+	width:15px;
+	height:35px;
+}
+table.butactive td.but_act_right{
+	background:url(../images/but_active_right.jpg) right;
+	text-align:left;
+	padding-right:13px;
+	font-weight:bold;
+	color:#333333;
+}
+table.butactive td.but_act_right a{
+	font-weight:bold;
+	color:#333333;
+}
+table.form td.bgser{
+	background:url(../images/bgsearch.jpg) repeat-x top;
+	height:75px;
+}
+table.search td.text_sear{
+	font-weight:bold;
+	color:#FFFFFF;
+}
+.field {
+	font-size:11px;
+	width:150px;
+}
+.button{
+	background-color:#EAEAEA;
+	font-weight:bold;
+	color:#000000;
+	font-size:11px;
+	height:18px;
+	border:#CCCCCC 0px solid;
+}
+
+table.menu td.linkdacbiet{
+	color:#000000;
+}
+table.menu td.linkdacbiet a{
+	text-decoration:underline;
+	color:#000000;
+	font-weight:bold;
+}
+table.menu td.linkdacbiet a:hover{
+	text-decoration:none;
+	color:#000000;
+}
+
+table.box1 td.box1_name{
+	border-top:#4576bf 1px solid;
+	border-left:#4576bf 1px solid;
+	border-right:#4576bf 1px solid;
+	background:url(../images/bg_box1.jpg) repeat-x ;
+	height:26px;
+	text-align:center;
+}
+table.box1 td.box1_bor{
+	border:#4576bf 1px solid;
+	text-align:left;
+	padding:5px;
+}
+table.box1 td.box1_bor a:hover{
+	text-decoration:underline;
+}
+
+table.box2 td.box2_name{
+	background:url(../images/bgmenucart.jpg) no-repeat;
+	height:26px;
+	color:#FFFFFF;
+	font-family:Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:12px;
+	text-align:center;
+}
+table.box2 td.box2_bor{
+	border:#ff6600 1px solid;
+	text-align:left;
+	padding-bottom:5px;
+}
+table.box3 td.box3_name{
+	background:url(../images/bgbox1.jpg) no-repeat;
+	height:28px;
+	color:#FFFFFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size:12px;
+	text-align:center;
+}
+.textxanh{
+	color:#3a8f31;
+	font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+.textcam{
+	color:#ff6600;
+	font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+table.login td.text_login{
+	font-weight:bold;
+	color:#FFFFFF;
+}
+.field1 {
+	font-size:11px;
+	width:100px;
+}
+.button1{
+	background-color:#EAEAEA;
+	font-weight:bold;
+	color:#000000;
+	font-size:11px;
+	height:22px;
+	border:#CCCCCC 0px solid;
+}
+
+table.listcat td{
+	height:26px;
+	background:url(../images/bgmenu.jpg) no-repeat;
+	text-align:left;
+	padding-left:20px;
+	line-height:18px;
+}
+table.listcat td a{
+	font-weight:bold;
+	text-align:left;
+	font-size:10px;
+	color:#000000;
+}
+table.listcat td a:visited{
+	font-weight:bold;
+	text-align:left;
+	color:#FFFFFF;
+}
+
+table.listcat td a:hover{
+	font-weight:bold;
+	text-align:left;
+	color:#FFFFFF;
+}
+.price {
+	color:#FF0000;
+}
+a.pathway{
+	color:#FF6600;
+}
+
+table.product td a:hover{
+	text-decoration:underline;	
+}
+
+table.box3 td.box3_name1{
+	border-top:#4576bf 1px solid;
+	border-left:#4576bf 1px solid;
+	border-right:#4576bf 1px solid;
+	background:url(../images/box3_name1.jpg) repeat-x center;
+	height:25px;
+	text-align:center;
+}
+table.box3 td.box3_name2{
+	border-bottom:#4576bf 1px solid;
+	border-left:#4576bf 1px solid;
+	border-right:#4576bf 1px solid;
+	background:url(../images/box3_name2.jpg) repeat-x center;
+	height:25px;
+	text-align:center;
+}
+table.box3 td.box3_bor{
+	border:#4576bf 1px solid;
+	text-align:left;
+	padding:5px;
+}
+table.box3 td.box3_bor a:hover{
+	text-decoration:underline;
+}
+
+table.box4 td.box4_name{
+	background:url(../images/bgspgg.jpg) right no-repeat;
+	height:25px;
+	text-align:left;
+	padding-left:20px;
+	color:#FFFFFF;
+}
+table.box4 td.ten{
+	color:#FFFFFF;
+	font-weight:bold;
+}
+table.box4 td.ten a{
+	color:#FFFFFF;
+	font-weight:bold;
+}
+table.box4 td.box4_bor{
+	border:#4576bf 1px solid;
+	text-align:left;
+	padding:5px;
+}
+table.box4 td.box4_bor a:hover{
+	text-decoration:underline;
+}
+
+table.box5 td.box5_name{
+	border-top:#4576bf 1px solid;
+	border-left:#4576bf 1px solid;
+	border-right:#4576bf 1px solid;
+	background:url(../images/bg_box1.jpg) repeat-x ;
+	height:26px;
+	text-align:center;
+}
+table.box5 td.box5_bor{
+	border:#4576bf 1px solid;
+	text-align:left;
+	padding-bottom:10px;
+}
+table.box5 td.box5_bor a:hover{
+	text-decoration:underline;
+}
+
+table.box6 td.box6_name{
+	border-top:#4576bf 1px solid;
+	border-left:#4576bf 1px solid;
+	border-right:#4576bf 1px solid;
+	height:27px;
+	text-align:center;
+	color:#4576bf;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+table.box6 td.box6_name a{
+	color:#4576bf;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+table.box6 td.box6_bor{
+	border-left:#4576bf 1px solid;
+	border-right:#4576bf 1px solid;
+	border-bottom:#4576bf 1px solid;
+	text-align:left;
+	padding:5px;
+}
+table.box6 td.box6_bor1{
+	border-bottom:#4576bf 1px solid;
+	padding:2px;
+	width:125px;
+	background:url(../images/bg3.jpg) no-repeat center;
+	text-align:center;
+}
+table.box6 td.box6_bor1 a{
+	color:#FFFFFF;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+table.box6 td.box6_bor a:hover{
+	text-decoration:underline;
+}
+/*-------------------------*/
+table.box6 td.box6_name1{
+	border-top:#4576bf 1px solid;
+	border-left:#4576bf 1px solid;
+	border-right:#4576bf 1px solid;
+	height:27px;
+	text-align:center;
+	color:#333333;
+	font-weight:bold;
+}
+table.box6 td.box6_name1 a{
+	color:#333333;
+	font-weight:bold;
+}
+table.box6 td.box6_bor2{
+	border-left:#4576bf 1px solid;
+	border-right:#4576bf 1px solid;
+	border-bottom:#4576bf 1px solid;
+	text-align:center;
+	padding:5px;
+}
+table.box6 td.box6_bor11{
+	border-bottom:#4576bf 1px solid;
+	padding:2px;
+	background:url(../images/bg3.jpg) repeat-x center;
+	text-align:left;
+	color:#FFFFFF;
+}
+table.box6 td.box6_bor11 a{
+	color:#FFFFFF;
+	font-weight:bold;
+}
+table.box6 td.box6_bor1 a:hover{
+	text-decoration:underline;
+}
+
+table.tab td{
+	text-align:center;
+	height:27px;
+}
+table.tab td.tab_active_right{
+	background:url(../images/right_tab.jpg) no-repeat right top;
+	font-weight:bold;
+	border-bottom:none;
+}
+table.tab td.tab_noactive {
+	border-bottom:#4576bf 1px solid;	
+}
+
+table.tab td.tab_noactive a{
+	font-weight:bold;
+}
+
+table.tab td.tab_noactive a:hover{
+	font-weight:bold;
+	color:#990000;
+}
+
+table.khuyenmai td.tit_khuyenmai{
+	color:#FF0000;
+	font-weight:bold;
+	height:25px;
+	text-align:left;
+}
+table.khuyenmai td.news_khuyenmai{
+	color:#FF0000;
+	text-align:left;
+	line-height:18px;
+	height:22px;
+	border-bottom:#FF0000 1px dotted;
+}
+table.khuyenmai td.news_khuyenmai a{
+	color:#FF0000;
+}
+table.khuyenmai td.news_khuyenmai a:hover{
+	color:#333333;
+}
+
+.footer{
+	color:#FFFFFF;
+}
+.footer a{
+	color:#FFFFFF;
+	font-weight:bold;
+}
+
+
+table.topmenu td{
+	background:url(../images/sperator1.jpg) no-repeat right;
+	height:22px;
+	text-align:center;
+	color:#333333;
+	font-weight:bold;
+}
+table.topmenu td a{
+	text-align:center;
+	color:#333333;
+	font-weight:bold;
+}
+
+table.topmenu td a:hover{
+	color:#990000;
+}
+
+.chuto{
+font-size:18px;
+color:#0066CC;
+font-weight:bold;
+text-transform:uppercase;
+}
+
+table.form td.bghotsp {
+	background:#FF0000;
+}
+table.sphot td{
+ text-align:center;
+ background:url(../images/bgsphot.jpg) center no-repeat;
+ height:115px;
+}
