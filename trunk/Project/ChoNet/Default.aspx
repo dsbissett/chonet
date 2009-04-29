@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="Default.aspx.cs"
-    Inherits="_Default" Title="Trang chủ" EnableEventValidation="false" ValidateRequest="false" %>
+    Inherits="_Default" Title="Ch&#7907; nét Cong thong tin truc tuyen, Mua ban rao vat Thai Nguyen, Mua ban rao vat Hai Phong Mua ban Quang Ninh, thiet ke web" EnableEventValidation="false" ValidateRequest="false" %>
 
 <%@ Register Assembly="Infragistics2.WebUI.UltraWebNavigator.v7.1, Version=7.1.20071.1048, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
     Namespace="Infragistics.WebUI.UltraWebNavigator" TagPrefix="ignav" %>
