@@ -335,7 +335,7 @@ public partial class eStore : Page
                                + ds.Tables[0].Rows[index]["SanPhamID"]
                                + "\">" + tensanpham
                                + "</a><br />Giá: <span class=\"price\">" +
-                               String.Format("{0:0,0}", ds.Tables[0].Rows[i]["GiaSanPham"]).Replace(",", ".")
+                               String.Format("{0:0,0}", ds.Tables[0].Rows[index]["GiaSanPham"]).Replace(",", ".")
                                + "</span> " + ds.Tables[0].Rows[index]["DonViTienTe"] + " </td></tr></table>";
                 }
                 td.Text = content;
