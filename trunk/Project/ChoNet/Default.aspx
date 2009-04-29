@@ -11,7 +11,58 @@
 
     <script src="Scripts/Common.js" type="text/javascript"></script>
 
-    <script id="igClientScript" type="text/javascript">    
+    <script id="igClientScript" type="text/javascript">  
+var lastFocusedControlId = "";
+
+function focusHandler(e) {
+    document.activeElement = e.originalTarget;
+}
+
+function appInit() {
+    if (typeof(window.addEventListener) !== "undefined") {
+        window.addEventListener("focus", focusHandler, true);
+    }
+    Sys.WebForms.PageRequestManager.getInstance().add_pageLoading(pageLoadingHandler);
+    Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(pageLoadedHandler);
+}
+
+function pageLoadingHandler(sender, args) {
+    lastFocusedControlId = typeof(document.activeElement) === "undefined" 
+        ? "" : document.activeElement.id;
+}
+
+function focusControl(targetControl) {
+    if (Sys.Browser.agent === Sys.Browser.InternetExplorer) {
+        var focusTarget = targetControl;
+        if (focusTarget && (typeof(focusTarget.contentEditable) !== "undefined")) {
+            oldContentEditableSetting = focusTarget.contentEditable;
+            focusTarget.contentEditable = false;
+        }
+        else {
+            focusTarget = null;
+        }
+        targetControl.focus();
+        if (focusTarget) {
+            focusTarget.contentEditable = oldContentEditableSetting;
+        }
+    }
+    else {
+        targetControl.focus();
+    }
+}
+
+function pageLoadedHandler(sender, args) {
+    if (typeof(lastFocusedControlId) !== "undefined" && lastFocusedControlId != "") {
+        var newFocused = $get(lastFocusedControlId);
+        if (newFocused) {
+            focusControl(newFocused);
+        }
+    }
+}
+
+Sys.Application.add_init(appInit);
+
+  
     function NewsUpDown(direction)
     {
         var warp = ig$('<%=pnlTinTuc.ClientID%>'); 
@@ -23,7 +74,17 @@
 	        warp.refresh();
 	    }		
     }
-       
+    function RefreshProduct04(tid)
+    {
+        var warp = ig$('<%=pnlSanPham04.ClientID%>'); 
+        var hid = document.getElementById('<%=hidCatId.ClientID%>');   	
+        if(hid != null)
+        {
+            hid.value=tid;
+	        if(!warp) return;
+	        warp.refresh();
+	    }		
+    }   
     function Refresh()
     {        
         CloseDialogWindow();
@@ -41,7 +102,10 @@
     }
     </script>
     
-    <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="36000" >    
+    <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="36000">   
+        <Scripts>
+            <asp:ScriptReference Path="Scripts/FixFocus.js" />
+        </Scripts> 
     </asp:ScriptManager>
     <table width="990px" cellspacing="0" cellpadding="0" style="padding-left: 5px">
         <tr>
