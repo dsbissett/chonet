@@ -637,6 +637,7 @@ public partial class _Default : Page
         }
     }
 
+/*
     private void LoadSanPham01()
     {
         //Scrolling
@@ -665,6 +666,7 @@ public partial class _Default : Page
         //    tblSanPham01.Rows.Add(tr);
         //}
     }
+*/
 
     private void LoadSanPham02()
     {
