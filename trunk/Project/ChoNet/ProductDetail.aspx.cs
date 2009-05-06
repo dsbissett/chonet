@@ -23,21 +23,14 @@ public partial class ProductDetail : Page
 
         if (Request.QueryString["id"] != null)
         {
-            if (Common.LoaiNguoiDungID() == 1)
-            {
-                tblTraGia.Visible = true;
-            }
-            else
-            {
-                tblTraGia.Visible = false;
-            }
+            tblTraGia.Visible = Common.LoaiNguoiDungID() == 1;
             ViewState["SanPhamID"] = Request.QueryString["id"];
             tblCacCuaHang.Visible = false;
             LoadKhuVuc();
             LoadData();
             LoadTab();
-            LoadQuangCao41();
-            LoadQuangCao42();
+            //LoadQuangCao41();
+            //LoadQuangCao42();
             switch (hidTabId.Value)
             {
                 case "1":
@@ -138,8 +131,8 @@ public partial class ProductDetail : Page
         }
     }
 
-    private void LoadQuangCao41()
-    {
+    //private void LoadQuangCao41()
+    //{
         //QuangCao qcao = new QuangCao();
         //DataSet ds = qcao.SelectQuangCaoAtViTriQuangCaoByNguoiDungID(int.Parse(ViewState["NguoiDungID"].ToString()), 41);
         //HtmlGenericControl spnQuangCao41 = (HtmlGenericControl)this.Master.FindControl("spnQuangCao01");
@@ -168,10 +161,10 @@ public partial class ProductDetail : Page
         //{
         //    spnQuangCao41.InnerHtml = "<img alt=\"Moi quang cao\" src=\"./images/advblank.jpg\" height=\"75px\" width=\"210px\" style=\"border:none\"/>";
         //}
-    }
+    //}
 
-    private void LoadQuangCao42()
-    {
+    //private void LoadQuangCao42()
+    //{
         //QuangCao qcao = new QuangCao();
         //DataSet ds = qcao.SelectQuangCaoAtViTriQuangCaoByNguoiDungID(int.Parse(ViewState["NguoiDungID"].ToString()), 42);
         //int n = ds.Tables[0].Rows.Count;
@@ -242,7 +235,7 @@ public partial class ProductDetail : Page
         //{
         //    tblQuangCao42.Visible = false;
         //}
-    }
+    //}
 
     private void ShowLink(int NhomSanPhamId)
     {
@@ -387,13 +380,11 @@ public partial class ProductDetail : Page
                 tblcontencuahang.Rows.Remove(tblcontencuahang.Rows[1]);
             }
 
-            string GiaThapNhat = "";
-            string GiaHienTai = "";
             for (int index = 0; index < ds.Tables[0].Rows.Count; index++)
             {
-                GiaThapNhat = ds.Tables[0].Rows[0]["GiaSanPham"].ToString();
+                string GiaThapNhat = ds.Tables[0].Rows[0]["GiaSanPham"].ToString();
                 DataRow dr = ds.Tables[0].Rows[index];
-                GiaHienTai = dr["GiaSanPham"].ToString();
+                string GiaHienTai = dr["GiaSanPham"].ToString();
                 HtmlTableRow str = new HtmlTableRow();
                 HtmlTableCell std1 = new HtmlTableCell();
                 HtmlTableCell std2 = new HtmlTableCell();
@@ -482,10 +473,7 @@ public partial class ProductDetail : Page
 
     private void LoadTabContent03()
     {
-        if (Common.NguoiDungID() != 0)
-            tblHoiDap.Visible = true;
-        else
-            tblHoiDap.Visible = false;
+        tblHoiDap.Visible = Common.NguoiDungID() != 0;
         tblTraGiaContent.Visible = false;
         tblHoiDapContent.Visible = true;
         tblCacCuaHang.Visible = false;
@@ -527,7 +515,6 @@ public partial class ProductDetail : Page
                 std2.InnerHtml = dr["HovaTen"] + "<br>" +
                                  "<a href=\"ymsgr:sendIM?" + dr["YM"] + "\"><img src=\"http://opi.yahoo.com/online?u=" +
                                  dr["YM"] + "&t=1\" border=\"0\"></a>";
-                ;
                 std3.InnerHtml = "<b>" + dr["CauHoi"] + "</b><br>" + dr["ChiTietCauHoi"];
                 std4.InnerHtml = "(" + DateTime.Parse(dr["NgayHoi"].ToString()).ToString("dd/MM/yyyy") + ")";
 
@@ -594,10 +581,8 @@ public partial class ProductDetail : Page
             std2.InnerHtml = dr["HovaTen"] + "<br>" +
                              "<a href=\"ymsgr:sendIM?" + dr["YM"] + "\"><img src=\"http://opi.yahoo.com/online?u=" +
                              dr["YM"] + "&t=1\" border=\"0\"></a>";
-            ;
             std3.InnerHtml = "<b>" + String.Format("{0:0,0}", decimal.Parse("0" + dr["GiaMuonMua"])).Replace(",", ".") +
                              " VNĐ";
-            ;
             std4.InnerHtml = "&nbsp;" + dr["SoLuong"];
             std5.InnerHtml = "&nbsp;" + dr["ChiTiet"];
 
@@ -647,7 +632,6 @@ public partial class ProductDetail : Page
                 }
                 imgSanPham.Src = drSanPham["AnhSanPham"].ToString();
                 lblTenSanPham.Text = drSanPham["TenSanPham"] + " " + drSanPham["TenSanPhamPhu"];
-                Title = lblTenSanPham.Text;
                 ViewState["TenGocSanPham"] = drSanPham["TenSanPham"].ToString();
                 lblProdName.Text = lblTenSanPham.Text;
                 divThongTinSanPham.InnerHtml += drSanPham["MoTaSanPham"].ToString().Replace("\r\n", "<br/>");
@@ -717,14 +701,7 @@ public partial class ProductDetail : Page
                     ")))";
                 DataSet dssch = da.SelectByQuery(strSql);
 
-                if (dssch.Tables[0].Rows[0]["soluong"].ToString() != "0")
-                {
-                    lblSoCuaHang.Text = dssch.Tables[0].Rows[0]["soluong"].ToString();
-                }
-                else
-                {
-                    lblSoCuaHang.Text = "1";
-                }
+                lblSoCuaHang.Text = dssch.Tables[0].Rows[0]["soluong"].ToString() != "0" ? dssch.Tables[0].Rows[0]["soluong"].ToString() : "1";
             }
         }
         catch (Exception ex)
@@ -817,6 +794,7 @@ public partial class ProductDetail : Page
         }
     }
 
+/*
     private void SelectSanPhamData()
     {
         int intSanPhamID = int.Parse(ViewState["SanPhamID"].ToString());
@@ -916,6 +894,7 @@ public partial class ProductDetail : Page
 
         tblTab.Rows.Add(tr);
     }
+*/
 
     private void ShowNhaCungCap(int id)
     {
@@ -969,8 +948,7 @@ public partial class ProductDetail : Page
             DataSet ds = anh.SelectBySanPhamID(int.Parse(ViewState["SanPhamID"].ToString()));
 
             pnlAnhSanPham.Controls.Clear();
-            HtmlImage img;
-            img = new HtmlImage();
+            HtmlImage img = new HtmlImage();
             img.Height = 40;
             img.Width = 40;
             img.Src = imgSanPham.Src;

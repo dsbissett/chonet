@@ -8,206 +8,6 @@
    
 <asp:Content ID="Content1" ContentPlaceHolderID="cphMain" runat="Server">
 
-    <script src="Scripts/Common.js" type="text/javascript"></script>
-
-    <script type="text/javascript" id="igClientScript">
-    
-    function autorefreshsanpham()
-    {                    
-        var warp = ig$('<%=pnlAllSanPham.ClientID%>');
-        var pi = warp.getProgressIndicator(); 
-               
-        if(warp==null)
-        {                
-            return;            
-        }
-        else
-        {      
-            pi.setTemplate(' ');         
-            warp.setTimer(15000);          
-            warp.refresh();        
-        }
-    }
-    
-    function rate()
-    {
-        ShowModalDialog('RateStore.aspx?sid=<%=ViewState["CuaHangID"].ToString() %>','Đánh giá cửa hàng',525,585);
-    }
-    
-    function addThisProduct()
-    {
-        ShowModalDialog('AddThisProduct.aspx?pid=<%=ViewState["SanPhamID"].ToString() %>','Thêm sản phẩm',615,445);
-    }        
-    function SendToFriend()
-    {
-        //OpenDialogWindow('Gửi thông tin',515,225,'page','SendToFriend.aspx?URL=' + document.URL);
-        ShowModalDialog('SendToFriend.aspx?URL=' + document.URL,'Gửi thông tin',515,225);
-    }
-    function NhanXetSanPham()
-    {        
-        if ('<%=Session["UserFullName"]%>' != '')
-        {
-            //OpenDialogWindow('Nhận xét sản phẩm',430,225,'page','Comment.aspx?id=<%=ViewState["SanPhamID"].ToString() %>');    
-            ShowModalDialog('Comment.aspx?id=<%=ViewState["SanPhamID"].ToString() %>','Nhận xét sản phẩm',430,225);
-        }
-    }
-    function HoiDapSanPham( )
-    {       
-        if ('<%=Session["UserFullName"]%>' != '')
-        { 
-            //OpenDialogWindow('Hỏi đáp',430,225,'page','AskAndAnswer.aspx?id=<%=ViewState["SanPhamID"].ToString() %>');
-            ShowModalDialog('AskAndAnswer.aspx?id=<%=ViewState["SanPhamID"].ToString() %>','Hỏi đáp',430,225);        
-        }
-    }
-      function AddToShoppingCart()
-    {
-        blRefreshShoppingCart = true;
-        //OpenDialogWindow('Giỏ hàng của bạn', 410, 320, 'page', 'ShoppingCart.aspx?spid=<%=ViewState["SanPhamID"].ToString() %>');        
-        ShowModalDialog('ShoppingCart.aspx?spid=<%=ViewState["SanPhamID"].ToString() %>','Giỏ hàng của bạn', 610, 320);
-    }
-    function suagia()
-    {
-       var hidsuagia = document.getElementById('<%=hidsuagia.ClientID %>');
-       var warp = ig$('<%=warpSuaGia.ClientID%>');            
-       hidsuagia.value = "false";
-       if(!warp) return;
-            warp.refresh();
-       
-    }
-    function luugia()
-    {
-       var hidsuagia = document.getElementById('<%=hidsuagia.ClientID %>');
-       var warp = ig$('<%=warpSuaGia.ClientID%>');            
-       hidsuagia.value = "true";
-       
-       if(!warp) return;
-	        warp.refresh();
-	        
-    }
-    
-    function huysuagia(obj)
-    {
-        var btnSuaGia = document.getElementById('<%=btnSuaGia.ClientID%>');
-        var wce = igedit_getById('<%=wceSuaGia.ClientID%>');
-        //alert(btnSuaGia);
-        //alert(wce);
-        btnSuaGia.Visibility = "hidden";
-        wce.setVisible(false);
-        obj.Visibility = "hidden";
-        
-    }
-    
-    function LuuTraLoi(id, ctrl)
-    {
-        var hid = document.getElementById('<%=hidTabId.ClientID%>');  
-        var hidCH = document.getElementById('<%=hidLuuCauHoi.ClientID%>'); 
-        //var hidCHID = document.getElementById('<%=hidTraGia.ClientID%>'); 
-        var hidTL = document.getElementById('<%=hidTraLoi.ClientID%>');
-        var warp = ig$('<%=pnlProductDetail.ClientID%>');
-        if(hid != null)
-        {
-            hid.value='2';
-            hidCH.value = 'true';
-            //hidCHID.value = id;
-            hidTL.value = ctrl.value;
-	        if(!warp) return;
-	        warp.refresh();
-	    }	   
-    }
-    
-       
-    function changekhuvuc(obj)
-    {
-       var hid = document.getElementById('<%=hidKhuVuc.ClientID%>');  
-       var hidkhuvuc = document.getElementById('<%=hidKhuVucID.ClientID%>');  
-       var warp = ig$('<%=pnlProductDetail.ClientID%>');
-        if(hid != null)
-        {
-            hidkhuvuc.value = obj.selectedIndex;                        
-            hid.value='true';            
-	        if(!warp) return;
-	        warp.refresh();
-	    }	    
-    }
-    
-    function Refresh()
-    {
-        var warp = ig$('<%=pnlProductDetail.ClientID%>'); 
-        if(!warp) return;
-	        warp.refresh();
-    }
-    
-    function RefreshCuaHang()
-    {
-        var warp = ig$('<%=pnlCuaHang.ClientID%>');         
-        if(!warp) return;
-	        warp.refresh();
-    }
-    
-    function TabSelected(tid, bl)
-    {
-        var warp = ig$('<%=pnlProductDetail.ClientID%>'); 
-        var hid = document.getElementById('<%=hidTabId.ClientID%>');   	
-        var hidCH = document.getElementById('<%=hidLuuCauHoi.ClientID%>'); 
-        var hidtragia = document.getElementById('<%=hidTraGia.ClientID%>'); 
-        hidCH.Value = "false"; 
-        hidtragia.Value = "false"; 
-        if (bl==true)	
-        {
-	        Refresh();	        
-	    }
-        if(hid != null)
-        {
-            hid.value=tid;              
-	        if(!warp) return;
-	        warp.refresh();
-	    }		    	    
-    }      
-    
-    function Enlarge(src)
-    {
-        var img = document.getElementById('<%=imgSanPham.ClientID %>');
-        img.src= src;
-    }
-      
-    function guicauhoi()
-    {
-        var hidCH = document.getElementById('<%=hidLuuCauHoi.ClientID%>'); 
-        var warp = ig$('<%=pnlProductDetail.ClientID%>');
-        if (hidCH != null)
-        {
-            hidCH.value = 'true';
-            if (!warp) return;
-            warp.refresh();
-        }
-    }
-    
-    function resetcauhoi()
-    {
-        txtcauhoi = document.getElementById('<%=txtCauHoi.ClientID %>');
-        txtchitiet = document.getElementById('<%=txtChiTietCauHoi.ClientID %>');
-        
-        txtcauhoi.value = "";
-        txtchitiet.value="";
-    }
-    
-    function tragia()
-    {         
-        var hidtab = document.getElementById('<%=hidTabId.ClientID%>');         
-        var hidtragia = document.getElementById('<%=hidTraGia.ClientID%>'); 
-        var warp = ig$('<%=pnlProductDetail.ClientID%>');  
-        var wneGia = igedit_getById('<%=wneTraGia.ClientID%>');
-        var wneSoLuong = igedit_getById('<%=wneSoLuongTraGia.ClientID%>'); 
-        
-        if ((wneGia.getValue() != null) && (wneSoLuong.getValue() != null))
-        {            
-            hidtragia.value = 'true';
-            hidtab.value = '4';
-            if (!warp) return;
-            warp.refresh();        
-        }       
-    }
-    </script>
     <table width="985px" border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td align="center" valign="top">
@@ -824,4 +624,205 @@
             </td>
         </tr>
     </table>
+    
+    <script src="Scripts/Common.js" type="text/javascript"></script>
+
+    <script type="text/javascript" id="igClientScript">
+    
+    function autorefreshsanpham()
+    {                    
+        var warp = ig$('<%=pnlAllSanPham.ClientID%>');
+        var pi = warp.getProgressIndicator(); 
+               
+        if(warp==null)
+        {                
+            return;            
+        }
+        else
+        {      
+            pi.setTemplate(' ');         
+            warp.setTimer(15000);          
+            warp.refresh();        
+        }
+    }
+    
+    function rate()
+    {
+        ShowModalDialog('RateStore.aspx?sid=<%=ViewState["CuaHangID"].ToString() %>','Đánh giá cửa hàng',525,585);
+    }
+    
+    function addThisProduct()
+    {
+        ShowModalDialog('AddThisProduct.aspx?pid=<%=ViewState["SanPhamID"].ToString() %>','Thêm sản phẩm',615,445);
+    }        
+    function SendToFriend()
+    {
+        //OpenDialogWindow('Gửi thông tin',515,225,'page','SendToFriend.aspx?URL=' + document.URL);
+        ShowModalDialog('SendToFriend.aspx?URL=' + document.URL,'Gửi thông tin',515,225);
+    }
+    function NhanXetSanPham()
+    {        
+        if ('<%=Session["UserFullName"]%>' != '')
+        {
+            //OpenDialogWindow('Nhận xét sản phẩm',430,225,'page','Comment.aspx?id=<%=ViewState["SanPhamID"].ToString() %>');    
+            ShowModalDialog('Comment.aspx?id=<%=ViewState["SanPhamID"].ToString() %>','Nhận xét sản phẩm',430,225);
+        }
+    }
+    function HoiDapSanPham( )
+    {       
+        if ('<%=Session["UserFullName"]%>' != '')
+        { 
+            //OpenDialogWindow('Hỏi đáp',430,225,'page','AskAndAnswer.aspx?id=<%=ViewState["SanPhamID"].ToString() %>');
+            ShowModalDialog('AskAndAnswer.aspx?id=<%=ViewState["SanPhamID"].ToString() %>','Hỏi đáp',430,225);        
+        }
+    }
+      function AddToShoppingCart()
+    {
+        blRefreshShoppingCart = true;
+        //OpenDialogWindow('Giỏ hàng của bạn', 410, 320, 'page', 'ShoppingCart.aspx?spid=<%=ViewState["SanPhamID"].ToString() %>');        
+        ShowModalDialog('ShoppingCart.aspx?spid=<%=ViewState["SanPhamID"].ToString() %>','Giỏ hàng của bạn', 610, 320);
+    }
+    function suagia()
+    {
+       var hidsuagia = document.getElementById('<%=hidsuagia.ClientID %>');
+       var warp = ig$('<%=warpSuaGia.ClientID%>');            
+       hidsuagia.value = "false";
+       if(!warp) return;
+            warp.refresh();
+       
+    }
+    function luugia()
+    {
+       var hidsuagia = document.getElementById('<%=hidsuagia.ClientID %>');
+       var warp = ig$('<%=warpSuaGia.ClientID%>');            
+       hidsuagia.value = "true";
+       
+       if(!warp) return;
+	        warp.refresh();
+	        
+    }
+    
+    function huysuagia(obj)
+    {
+        var btnSuaGia = document.getElementById('<%=btnSuaGia.ClientID%>');
+        var wce = igedit_getById('<%=wceSuaGia.ClientID%>');
+        //alert(btnSuaGia);
+        //alert(wce);
+        btnSuaGia.Visibility = "hidden";
+        wce.setVisible(false);
+        obj.Visibility = "hidden";
+        
+    }
+    
+    function LuuTraLoi(id, ctrl)
+    {
+        var hid = document.getElementById('<%=hidTabId.ClientID%>');  
+        var hidCH = document.getElementById('<%=hidLuuCauHoi.ClientID%>'); 
+        //var hidCHID = document.getElementById('<%=hidTraGia.ClientID%>'); 
+        var hidTL = document.getElementById('<%=hidTraLoi.ClientID%>');
+        var warp = ig$('<%=pnlProductDetail.ClientID%>');
+        if(hid != null)
+        {
+            hid.value='2';
+            hidCH.value = 'true';
+            //hidCHID.value = id;
+            hidTL.value = ctrl.value;
+	        if(!warp) return;
+	        warp.refresh();
+	    }	   
+    }
+    
+       
+    function changekhuvuc(obj)
+    {
+       var hid = document.getElementById('<%=hidKhuVuc.ClientID%>');  
+       var hidkhuvuc = document.getElementById('<%=hidKhuVucID.ClientID%>');  
+       var warp = ig$('<%=pnlProductDetail.ClientID%>');
+        if(hid != null)
+        {
+            hidkhuvuc.value = obj.selectedIndex;                        
+            hid.value='true';            
+	        if(!warp) return;
+	        warp.refresh();
+	    }	    
+    }
+    
+    function Refresh()
+    {
+        var warp = ig$('<%=pnlProductDetail.ClientID%>'); 
+        if(!warp) return;
+	        warp.refresh();
+    }
+    
+    function RefreshCuaHang()
+    {
+        var warp = ig$('<%=pnlCuaHang.ClientID%>');         
+        if(!warp) return;
+	        warp.refresh();
+    }
+    
+    function TabSelected(tid, bl)
+    {
+        var warp = ig$('<%=pnlProductDetail.ClientID%>'); 
+        var hid = document.getElementById('<%=hidTabId.ClientID%>');   	
+        var hidCH = document.getElementById('<%=hidLuuCauHoi.ClientID%>'); 
+        var hidtragia = document.getElementById('<%=hidTraGia.ClientID%>'); 
+        hidCH.Value = "false"; 
+        hidtragia.Value = "false"; 
+        if (bl==true)	
+        {
+	        Refresh();	        
+	    }
+        if(hid != null)
+        {
+            hid.value=tid;              
+	        if(!warp) return;
+	        warp.refresh();
+	    }		    	    
+    }      
+    
+    function Enlarge(src)
+    {
+        var img = document.getElementById('<%=imgSanPham.ClientID %>');
+        img.src= src;
+    }
+      
+    function guicauhoi()
+    {
+        var hidCH = document.getElementById('<%=hidLuuCauHoi.ClientID%>'); 
+        var warp = ig$('<%=pnlProductDetail.ClientID%>');
+        if (hidCH != null)
+        {
+            hidCH.value = 'true';
+            if (!warp) return;
+            warp.refresh();
+        }
+    }
+    
+    function resetcauhoi()
+    {
+        txtcauhoi = document.getElementById('<%=txtCauHoi.ClientID %>');
+        txtchitiet = document.getElementById('<%=txtChiTietCauHoi.ClientID %>');
+        
+        txtcauhoi.value = "";
+        txtchitiet.value="";
+    }
+    
+    function tragia()
+    {         
+        var hidtab = document.getElementById('<%=hidTabId.ClientID%>');         
+        var hidtragia = document.getElementById('<%=hidTraGia.ClientID%>'); 
+        var warp = ig$('<%=pnlProductDetail.ClientID%>');  
+        var wneGia = igedit_getById('<%=wneTraGia.ClientID%>');
+        var wneSoLuong = igedit_getById('<%=wneSoLuongTraGia.ClientID%>'); 
+        
+        if ((wneGia.getValue() != null) && (wneSoLuong.getValue() != null))
+        {            
+            hidtragia.value = 'true';
+            hidtab.value = '4';
+            if (!warp) return;
+            warp.refresh();        
+        }       
+    }
+    </script>
 </asp:Content>
