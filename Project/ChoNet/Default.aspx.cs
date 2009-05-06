@@ -637,7 +637,6 @@ public partial class _Default : Page
         }
     }
 
-/*
     private void LoadSanPham01()
     {
         //Scrolling
@@ -666,7 +665,6 @@ public partial class _Default : Page
         //    tblSanPham01.Rows.Add(tr);
         //}
     }
-*/
 
     private void LoadSanPham02()
     {
@@ -1594,7 +1592,7 @@ public partial class _Default : Page
                                         :
                                             dtkm.Rows[j*sosp + i]["MoTaKhuyenMai"].ToString();
                         content +=
-                            "<table class=\"product\" width=\"100%\" border=\"0\" cellspacing=\"5\" cellpadding=\"0\">";
+                            "<table class=\"product\" width=\"100%\" border=\"0\" cellspacing=\"4\" cellpadding=\"0\">";
                         content += "<tr><td align=center><a href=\"productdetail.aspx?id=" +
                                    dtkm.Rows[j*sosp + i]["SanPhamID"]
                                    + "\">" + tensanpham + "<br><img src=\"" + dtkm.Rows[j*sosp + i]["AnhSanPham"]
