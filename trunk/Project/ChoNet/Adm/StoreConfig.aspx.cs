@@ -147,7 +147,7 @@ public partial class Adm_StoreConfig : Page
             DataRow dr = ds.Tables[0].Rows[0];
             //lblTenCuaHang.Text = dr["TenCuaHang"].ToString();
             CuaHangID = int.Parse(dr["CuaHangID"].ToString());
-            imgLogo.Src = dr["Anh"].ToString();
+            imgLogo.Src = "." + dr["Anh"].ToString();
         }
     }
 
@@ -465,7 +465,10 @@ public partial class Adm_StoreConfig : Page
     {
         LoadSanPham(23);
     }
-
+    protected void pnlLogo_Load(object sender, EventArgs e)
+    {
+        LoadCuaHang();
+    }
     private void LoadSanPham(int ViTriID)
     {
         SanPham sp = new SanPham();
