@@ -10,7 +10,7 @@ public partial class eStore : Page
     public int CuaHangID;
     public int NhomSanPhamID;
 
-    private int PageSize = 18;
+    private const int PageSize = 18;
 
     protected void Page_Load(object sender, EventArgs e)
     {
