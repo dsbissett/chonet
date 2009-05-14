@@ -21,7 +21,7 @@ public partial class SubCategory : Page
                 LoadQuangCao23();
                 LoadSanPham(scid, "icon", 1);
                 loadSearchDropdown();
-                LoadProperty(scid);
+                //LoadProperty(scid);
             }
             catch (Exception ex)
             {
@@ -60,6 +60,7 @@ public partial class SubCategory : Page
         if (ds2.Tables[0].Rows.Count == 1)
         {
             lblDanhMucCon.Text = ds2.Tables[0].Rows[0]["TenNhomSanPham"].ToString();
+            this.Title = lblDanhMucCon.Text;
         }
         else
         {
