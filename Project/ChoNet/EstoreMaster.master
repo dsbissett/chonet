@@ -112,7 +112,7 @@
                                                                                     height: 122px">
                                                                                     <tr>
                                                                                         <td style="height: 24px">
-                                                                                            <a href="estorehome.aspx">Trang chủ E-Store </a>
+                                                                                            <a href="estore.aspx?sid=<%=CuaHangID.ToString()%>">Trang chủ </a>
                                                                                         </td>
                                                                                     </tr>
                                                                                     <tr>
