@@ -66,10 +66,11 @@ public partial class EstoreMaster : MasterPage
             LoadQuangCao(54);
             LoadQuangCao(55);
             LoadQuangCao(56);
+            LoadQuangCao(57);
             //LoadDanhMuc();
             LoadUltraMenu(0);
             LoadThongTinCuaHang(ChuCuaHangID);
-            LoadGianHang();
+            //LoadGianHang();
             LoadSanPhamTop();
             //LoadSanPhamAll(NhomSanPhamID,1);
             //LoadBinhChon();            
@@ -426,6 +427,36 @@ public partial class EstoreMaster : MasterPage
                     }
                 }
                 break;
+
+            case 57:
+                if (ds.Tables[0].Rows.Count >= 1)
+                {
+                    if (ds.Tables[0].Rows[0]["LoaiAnh"].ToString() == "FLASH")
+                    {
+                        spnQuangCao57.InnerHtml = "<object style=\"border:solid 1px #C9C3C3\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\""
+                                                  +
+                                                  "codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\""
+                                                  + "width=\"150\" height=\"150\" title=\"Quang Cao\">"
+                                                  + "<param name=\"movie\" value=\"" +
+                                                  ds.Tables[0].Rows[0]["DuongDanAnh"] + "\" />"
+                                                  + "<param name=\"quality\" value=\"high\" />"
+                                                  + "<embed src=\"." + ds.Tables[0].Rows[0]["DuongDanAnh"] +
+                                                  "\" quality=\"high\""
+                                                  +
+                                                  "pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\""
+                                                  + "width=\"150\" height=\"150\"></embed></object>";
+                    }
+                    else
+                    {
+                        spnQuangCao57.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[0]["DuongDan"]
+                                                   + "\" target=\"_blank\"><img alt=\"" +
+                                                   ds.Tables[0].Rows[0]["NoiDungQuangCao"]
+                                                   + "\" src=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"] +
+                                                   "\" height=\"150\" width=\"150\" style=\"border:solid 1px #C9C3C3\"/></a>";
+                    }
+                }
+
+                break;
         }
     }
 
@@ -493,27 +524,27 @@ public partial class EstoreMaster : MasterPage
     //        lnkYahoo.HRef = "ymsgr:sendIM?" + dr["YM"].ToString(); ;
     //    }
     //}
-    private void LoadGianHang()
-    {
-        CuaHang ch = new CuaHang();
-        DataSet ds = ch.SelectCuaHangAtViTriCuaHangByCuaHangID(CuaHangID, 51);
-        int n = ds.Tables[0].Rows.Count;
-        for (int i = 0; i < n; i++)
-        {
-            TableRow tr = new TableRow();
-            TableCell td = new TableCell();
-            string content = "";
-            content += "<a href=\"estore.aspx?sid=" + ds.Tables[0].Rows[i]["CuaHangID"]
-                       + "\"><img src=\"" + ds.Tables[0].Rows[i]["Anh"]
-                       +
-                       "\" width=\"110\" height=\"73\" hspace=\"4\" vspace=\"4\" style=\"border:#ece2a4 1px solid\" alt=\""
-                       + ds.Tables[0].Rows[i]["TenCuaHang"] + "\" /></a>";
-            td.Text = content;
-            td.HorizontalAlign = HorizontalAlign.Center;
-            tr.Cells.Add(td);
-            tblGianHang.Rows.Add(tr);
-        }
-    }
+    //private void LoadGianHang()
+    //{
+    //    CuaHang ch = new CuaHang();
+    //    DataSet ds = ch.SelectCuaHangAtViTriCuaHangByCuaHangID(CuaHangID, 51);
+    //    int n = ds.Tables[0].Rows.Count;
+    //    for (int i = 0; i < n; i++)
+    //    {
+    //        TableRow tr = new TableRow();
+    //        TableCell td = new TableCell();
+    //        string content = "";
+    //        content += "<a href=\"estore.aspx?sid=" + ds.Tables[0].Rows[i]["CuaHangID"]
+    //                   + "\"><img src=\"" + ds.Tables[0].Rows[i]["Anh"]
+    //                   +
+    //                   "\" width=\"110\" height=\"73\" hspace=\"4\" vspace=\"4\" style=\"border:#ece2a4 1px solid\" alt=\""
+    //                   + ds.Tables[0].Rows[i]["TenCuaHang"] + "\" /></a>";
+    //        td.Text = content;
+    //        td.HorizontalAlign = HorizontalAlign.Center;
+    //        tr.Cells.Add(td);
+    //        tblGianHang.Rows.Add(tr);
+    //    }
+    //}
 
     private void LoadSanPhamTop()
     {

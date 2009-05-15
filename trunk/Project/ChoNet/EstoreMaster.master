@@ -115,13 +115,10 @@
                                                                                             <a href="estore.aspx?sid=<%=CuaHangID.ToString()%>">Trang chủ </a>
                                                                                         </td>
                                                                                     </tr>
-                                                                                    <tr>
-                                                                                        <td style="height: 28px">
-                                                                                            <a href="http://">Sản phẩm khuyến mãi</a></td>
-                                                                                    </tr>
+                                                                                   
                                                                                     <tr>
                                                                                         <td style="height: 27px">
-                                                                                            <a href="estoreinfo.aspx?sid=<%=CuaHangID.ToString()%>">Thông tin doanh nghiệp </a>
+                                                                                            <a href="estoreinfo.aspx?sid=<%=CuaHangID.ToString()%>">Giới thiệu </a>
                                                                                         </td>
                                                                                     </tr>
                                                                                     <tr>
@@ -170,12 +167,12 @@
                                                                     <table class="box1" width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                         <tr>
                                                                             <td class="box1_name">
-                                                                                Liên kết E-Store</td>
+                                                                                Quảng cáo </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="box1_bor" style="text-align: center">
-                                                                                <asp:Table ID="tblGianHang" runat="server" CellPadding="0" CellSpacing="0" BorderWidth="0">
-                                                                                </asp:Table>
+                                                                                <span ID="spnQuangCao57" runat="server">
+                                                                                </span>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
@@ -238,7 +235,7 @@
                                                                     <table class="box2" width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                         <tr>
                                                                             <td class="box2_name">
-                                                                                Danh hiệu</td>
+                                                                                Đánh giá </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="box2_bor">
