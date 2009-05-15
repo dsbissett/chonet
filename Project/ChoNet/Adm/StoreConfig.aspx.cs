@@ -25,7 +25,8 @@ public partial class Adm_StoreConfig : Page
                 LoadQuangCao(54);
                 LoadQuangCao(55);
                 LoadQuangCao(56);
-                LoadGianHang();
+                LoadQuangCao(57);
+                //LoadGianHang();
                 LoadDanhMuc(0);
                 LoadHoTroTrucTuyen();
             }
@@ -353,28 +354,58 @@ public partial class Adm_StoreConfig : Page
                 }
 
                 break;
+
+            case 57:
+                if (ds.Tables[0].Rows.Count >= 1)
+                {
+                    if (ds.Tables[0].Rows[0]["LoaiAnh"].ToString() == "FLASH")
+                    {
+                        tblQuangCao57.InnerHtml = "<object style=\"border:solid 1px #C9C3C3\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\""
+                                                  +
+                                                  "codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\""
+                                                  + "width=\"110\" height=\"249\" title=\"Quang Cao\">"
+                                                  + "<param name=\"movie\" value=\"." +
+                                                  ds.Tables[0].Rows[0]["DuongDanAnh"] + "\" />"
+                                                  + "<param name=\"quality\" value=\"high\" />"
+                                                  + "<embed src=\"." + ds.Tables[0].Rows[0]["DuongDanAnh"] +
+                                                  "\" quality=\"high\""
+                                                  +
+                                                  "pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\""
+                                                  + "width=\"110\" height=\"249\"></embed></object>";
+                    }
+                    else
+                    {
+                       tblQuangCao57.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[0]["DuongDan"]
+                                                  + "\" target=\"_blank\"><img alt=\"" +
+                                                  ds.Tables[0].Rows[0]["NoiDungQuangCao"]
+                                                  + "\" src=\"." + ds.Tables[0].Rows[0]["DuongDanAnh"] +
+                                                  "\" height=\"249px\" width=\"110\" style=\"border:solid 1px #C9C3C3\"/></a>";
+                    }
+                }
+
+                break;
         }
     }
 
-    private void LoadGianHang()
-    {
-        CuaHang ch = new CuaHang();
-        DataSet ds = ch.SelectCuaHangAtViTriCuaHangByNguoiDungID(Common.NguoiDungID(), 51);
-        int n = ds.Tables[0].Rows.Count;
-        for (int i = 0; i < n; i++)
-        {
-            TableRow tr = new TableRow();
-            TableCell td = new TableCell();
-            string content = "";
-            content += " <img src=\"." + ds.Tables[0].Rows[i]["Anh"]
-                       +
-                       "\" width=\"110\" height=\"73\" hspace=\"4\" vspace=\"4\" style=\"border:#ece2a4 1px solid\" />";
-            td.Text = content;
-            td.HorizontalAlign = HorizontalAlign.Center;
-            tr.Cells.Add(td);
-            tblGianHang.Rows.Add(tr);
-        }
-    }
+    //private void LoadGianHang()
+    //{
+    //    CuaHang ch = new CuaHang();
+    //    DataSet ds = ch.SelectCuaHangAtViTriCuaHangByNguoiDungID(Common.NguoiDungID(), 51);
+    //    int n = ds.Tables[0].Rows.Count;
+    //    for (int i = 0; i < n; i++)
+    //    {
+    //        TableRow tr = new TableRow();
+    //        TableCell td = new TableCell();
+    //        string content = "";
+    //        content += " <img src=\"." + ds.Tables[0].Rows[i]["Anh"]
+    //                   +
+    //                   "\" width=\"110\" height=\"73\" hspace=\"4\" vspace=\"4\" style=\"border:#ece2a4 1px solid\" />";
+    //        td.Text = content;
+    //        td.HorizontalAlign = HorizontalAlign.Center;
+    //        tr.Cells.Add(td);
+    //        tblGianHang.Rows.Add(tr);
+    //    }
+    //}
 
     private void LoadHoTroTrucTuyen()
     {
@@ -443,7 +474,8 @@ public partial class Adm_StoreConfig : Page
 
     protected void pnlGianHang_ContentRefresh(object sender, EventArgs e)
     {
-        LoadGianHang();
+        //LoadGianHang();
+        LoadQuangCao(57);
     }
 
     protected void pnlDanhMuc_ContentRefresh(object sender, EventArgs e)
