@@ -6,132 +6,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphAdmin" runat="Server">
     <!--[if lt IE 7]>
 <script defer type="text/javascript" src="../Scripts/pngfix.js"></script>
-<![endif]-->
-
-    <script id="igClientScript" type="text/javascript">
-<!--
-function loadjscssfile(filename, filetype){
- if (filetype=="js"){ //if filename is a external JavaScript file
-  var fileref=document.createElement('script')
-  fileref.setAttribute("type","text/javascript")
-  fileref.setAttribute("src", filename)
- }
- else if (filetype=="css"){ //if filename is an external CSS file
-  var fileref=document.createElement("link")
-  fileref.setAttribute("rel", "stylesheet")
-  fileref.setAttribute("type", "text/css")
-  fileref.setAttribute("href", filename)
- }
- if (typeof fileref!="undefined")
-  document.getElementsByTagName("head")[0].appendChild(fileref)
-}
-
-loadjscssfile("../css/style.css", "css") ////dynamically load and add this .css file
-
-function RefreshAdv(aid)
-{
-    var warp;
-    switch(aid)
-    {
-        case 51: warp = ig$('<%=pnlQuangCao51.ClientID %>'); 
-        if(!warp) return;
-	    warp.refresh();	
-        break;
-        
-        case 54: warp = ig$('<%=pnlQuangCao54.ClientID %>'); 
-        if(!warp) return;
-	    warp.refresh();	
-        break;
-        
-        case 55: //warp = document.getElementById(); 
-        __doPostBack('<%=pnlleftbanner.ClientID %>','');        
-        CloseDialogWindow();
-        break;
-        
-        case 56: 
-        __doPostBack('<%=pnlrightbanner.ClientID %>',''); 
-        CloseDialogWindow();
-        break;
-    }
-    		
-}
-function RefreshStoreInfo()
-{   
-	var warp2 = ig$('<%=pnlHoTro.ClientID%>'); 
-    if(!warp2) return;
-	warp2.refresh();		
-}
-
-function RefreshComplete(oPanel){
-	CloseDialogWindow();
-}
-function ChangeAdv(aid)
-{
-    OpenDialogWindow('Thay đổi quảng cáo',680,420,'page','SelectAdv.aspx?aid=' + aid);
-}
-function ChangeProduct(pid)
-{   
-     OpenDialogWindow('Thay đổi sản phẩm',1006,700,'page','SelectProd.aspx?pid=' + pid);    
-}
-function EditShopInfo()
-{
-    OpenDialogWindow('Thay đổi thông tin cửa hàng',560,620,'page','UpdateStore.aspx?sid=<%=CuaHangID.ToString()%>');
-}
-function ChangeStore(sid)
-{
-    OpenDialogWindow('Thay đổi gian hàng',780,620,'page','SelectStore.aspx?sid=' + sid);
-}
-function RefreshStore()
-{  	var warp = ig$('<%=pnlGianHang.ClientID %>');	
-	if(!warp)
-		return;
-	warp.refresh();		
-}
-function AddHTTT(){                              
-        OpenDialogWindow('Thêm hỗ trợ',340,280,'page','AddSupporter.aspx?sid=<%=CuaHangID.ToString()%>');    
-}
-function EditHTTT(id){                              
-        OpenDialogWindow('Sửa thông tin hỗ trợ',340,280,'page','AddSupporter.aspx?sid=<%=CuaHangID.ToString()%>&hid=' + id);    
-}
-function DeleteHTTT(id){                      
-        OpenDialogWindow('Xóa hỗ trợ',350,170,'page','Delete.aspx?id=' + id + '&type=hotrotructuyen');    
-}
-function Add(){                              
-        OpenDialogWindow('Thêm danh mục cha',680,420,'page','SelectStoreCat.aspx?sid=<%=CuaHangID.ToString()%>&did=0');    
-}
-function AddSub(id){                              
-        OpenDialogWindow('Thêm danh mục con',680,420,'page','SelectStoreCat.aspx?sid=<%=CuaHangID.ToString()%>&did=' + id);    
-}
-
-function Delete(id){                      
-        OpenDialogWindow('Xóa danh mục',350,170,'page','Delete.aspx?id=' + id + '&sid=<%=CuaHangID.ToString() %>&type=cuahangnhomsanpham');    
-}
-function Refresh()
-{  	var warp = ig$('<%=pnlDanhMuc.ClientID%>');
-	if(warp)	
-	warp.refresh();	
-	var warp2 = ig$('<%=pnlHoTro.ClientID%>'); 
-    if(!warp2) return;
-	warp2.refresh();	
-}
-
-function RefreshProduct(pid)
-{
-    var warp;
-    switch(pid)
-    {
-        case 23: warp = document.getElementById('<%=pnlSanPhamHot.ClientID%>');
-        __doPostBack('<%=pnlSanPhamHot.ClientID %>','');        
-        CloseDialogWindow();
-        break;  
-        default:
-        break;      
-    }    	
-
-	
-}
-// -->
-    </script>
+<![endif]-->   
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
@@ -271,17 +146,27 @@ function RefreshProduct(pid)
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <table class="box1" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                <table class="box1" width="100%" border="0" cellspacing="0" cellpadding="0">                                                                
                                                                     <tr>
                                                                         <td class="box1_name">
-                                                                            <span class="textxanh">Liên kết E-Store</span></td>
+                                                                        <div onclick="ChangeAdv(57);" style="cursor: hand;">
+                                                                    <table cellpadding="0" cellspacing="0" border="0">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <img src="../Images/edit.gif" alt="Thay đổi" /></td>
+                                                                            <td class="red-button">
+                                                                                Thay đổi quảng cáo 57</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                            <span class="textxanh">Quảng cáo</span></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="box1_bor" style="text-align: center;">
-                                                                            <igmisc:WebAsyncRefreshPanel ID="pnlGianHang" runat="server" Height="" OnContentRefresh="pnlGianHang_ContentRefresh"
+                                                                            <igmisc:WebAsyncRefreshPanel ID="pnlQuangCao57" runat="server" Height="" OnContentRefresh="pnlGianHang_ContentRefresh"
                                                                                 Width="" RefreshComplete="RefreshComplete">
-                                                                                <asp:Table ID="tblGianHang" runat="server" CellPadding="0" CellSpacing="0" BorderWidth="0">
-                                                                                </asp:Table>
+                                                                                <span id="tblQuangCao57" runat="server" >
+                                                                                </span>
                                                                             </igmisc:WebAsyncRefreshPanel>
                                                                         </td>
                                                                     </tr>
@@ -770,4 +655,129 @@ function RefreshProduct(pid)
             </td>
         </tr>
     </table>
+    
+     <script id="igClientScript" type="text/javascript">
+<!--
+function loadjscssfile(filename, filetype){
+ if (filetype=="js"){ //if filename is a external JavaScript file
+  var fileref=document.createElement('script')
+  fileref.setAttribute("type","text/javascript")
+  fileref.setAttribute("src", filename)
+ }
+ else if (filetype=="css"){ //if filename is an external CSS file
+  var fileref=document.createElement("link")
+  fileref.setAttribute("rel", "stylesheet")
+  fileref.setAttribute("type", "text/css")
+  fileref.setAttribute("href", filename)
+ }
+ if (typeof fileref!="undefined")
+  document.getElementsByTagName("head")[0].appendChild(fileref)
+}
+
+loadjscssfile("../css/style.css", "css") ////dynamically load and add this .css file
+
+function RefreshAdv(aid)
+{
+    var warp;
+    switch(aid)
+    {
+        case 51: warp = ig$('<%=pnlQuangCao51.ClientID %>'); 
+        if(!warp) return;
+	    warp.refresh();	
+        break;
+        
+        case 54: warp = ig$('<%=pnlQuangCao54.ClientID %>'); 
+        if(!warp) return;
+	    warp.refresh();	
+        break;
+        
+        case 55: //warp = document.getElementById(); 
+        __doPostBack('<%=pnlleftbanner.ClientID %>','');        
+        CloseDialogWindow();
+        break;
+        
+        case 56: 
+        __doPostBack('<%=pnlrightbanner.ClientID %>',''); 
+        CloseDialogWindow();
+        break;
+    }
+    		
+}
+function RefreshStoreInfo()
+{   
+	var warp2 = ig$('<%=pnlHoTro.ClientID%>'); 
+    if(!warp2) return;
+	warp2.refresh();		
+}
+
+function RefreshComplete(oPanel){
+	CloseDialogWindow();
+}
+function ChangeAdv(aid)
+{
+    OpenDialogWindow('Thay đổi quảng cáo',680,420,'page','SelectAdv.aspx?aid=' + aid);
+}
+function ChangeProduct(pid)
+{   
+     OpenDialogWindow('Thay đổi sản phẩm',1006,700,'page','SelectProd.aspx?pid=' + pid);    
+}
+function EditShopInfo()
+{
+    OpenDialogWindow('Thay đổi thông tin cửa hàng',560,620,'page','UpdateStore.aspx?sid=<%=CuaHangID.ToString()%>');
+}
+function ChangeStore(sid)
+{
+    OpenDialogWindow('Thay đổi gian hàng',780,620,'page','SelectStore.aspx?sid=' + sid);
+}
+function RefreshStore()
+{  	var warp = ig$('<%=pnlQuangCao57.ClientID %>');	
+	if(!warp)
+		return;
+	warp.refresh();		
+}
+function AddHTTT(){                              
+        OpenDialogWindow('Thêm hỗ trợ',340,280,'page','AddSupporter.aspx?sid=<%=CuaHangID.ToString()%>');    
+}
+function EditHTTT(id){                              
+        OpenDialogWindow('Sửa thông tin hỗ trợ',340,280,'page','AddSupporter.aspx?sid=<%=CuaHangID.ToString()%>&hid=' + id);    
+}
+function DeleteHTTT(id){                      
+        OpenDialogWindow('Xóa hỗ trợ',350,170,'page','Delete.aspx?id=' + id + '&type=hotrotructuyen');    
+}
+function Add(){                              
+        OpenDialogWindow('Thêm danh mục cha',680,420,'page','SelectStoreCat.aspx?sid=<%=CuaHangID.ToString()%>&did=0');    
+}
+function AddSub(id){                              
+        OpenDialogWindow('Thêm danh mục con',680,420,'page','SelectStoreCat.aspx?sid=<%=CuaHangID.ToString()%>&did=' + id);    
+}
+
+function Delete(id){                      
+        OpenDialogWindow('Xóa danh mục',350,170,'page','Delete.aspx?id=' + id + '&sid=<%=CuaHangID.ToString() %>&type=cuahangnhomsanpham');    
+}
+function Refresh()
+{  	var warp = ig$('<%=pnlDanhMuc.ClientID%>');
+	if(warp)	
+	warp.refresh();	
+	var warp2 = ig$('<%=pnlHoTro.ClientID%>'); 
+    if(!warp2) return;
+	warp2.refresh();	
+}
+
+function RefreshProduct(pid)
+{
+    var warp;
+    switch(pid)
+    {
+        case 23: warp = document.getElementById('<%=pnlSanPhamHot.ClientID%>');
+        __doPostBack('<%=pnlSanPhamHot.ClientID %>','');        
+        CloseDialogWindow();
+        break;  
+        default:
+        break;      
+    }    	
+
+	
+}
+// -->
+    </script>
 </asp:Content>
