@@ -116,7 +116,7 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td align="right" height="20">
-                                                                            <a href='javascript:addThisProduct();' style="visibility: <%=GetInvisible("store")%>">
+                                                                            <a href='javascript:addThisProduct();' style="visibility: <%=GetInvisible("store1")%>">
                                                                                 <img border="0" hspace="2" src="images/toimuonban.jpg" vspace="2" /></a>
                                                                         </td>
                                                                     </tr>

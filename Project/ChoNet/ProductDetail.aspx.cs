@@ -112,8 +112,8 @@ public partial class ProductDetail : Page
         SanPham sp = new SanPham();
         DataSet ds = sp.SelectByNguoiDungID(Common.NguoiDungID());
         ds.Tables[0].DefaultView.RowFilter = " (SanPhamMauID <> 0 or TenSanPham='" + ViewState["TenGocSanPham"] +
-                                             "') AND SanPhamMauID = " + ViewState["SanPhamMauID"] +
-                                             " AND SanPhamID <> " + ViewState["SanPhamID"];
+                                             "') AND SanPhamMauID = " + ViewState["SanPhamMauID"];
+                                             //+ " AND SanphamID <> " + ViewState["SanPhamID"];
 
         if (ds.Tables[0].DefaultView.Count > 0)
         {
@@ -121,6 +121,7 @@ public partial class ProductDetail : Page
             lblGia.Text = String.Format("{0:0,0}", ds.Tables[0].DefaultView[0]["GiaSanPham"]).Replace(",", ".") + " VNĐ";
             ViewState["SanPhamCungLoaiID"] = ds.Tables[0].DefaultView[0]["SanPhamID"];
             linkgianhang.HRef = "ProductDetail.aspx?id=" + ds.Tables[0].DefaultView[0]["SanPhamID"];
+            lblThongBaoGia.Visible = true;
         }
         else
         {
@@ -1063,7 +1064,11 @@ public partial class ProductDetail : Page
                     strReturn = "visibility";
                 break;
             case "store":
-                if ((Common.LoaiNguoiDungID() == 2) && (lblThongBaoGia.Visible == false))
+                if ((Common.LoaiNguoiDungID() == 2))
+                    strReturn = "visibility";
+                break;
+            case "store1":
+                if ((Common.LoaiNguoiDungID() == 2) && (Common.NguoiDungID() != int.Parse("0" + ViewState["NguoiDungID"])))
                     strReturn = "visibility";
                 break;
         }
@@ -1110,6 +1115,7 @@ public partial class ProductDetail : Page
                 {
                     LuuGia();
                     ThongBaoGia();
+                    LoadData();
                     if (hidTabId.Value == "2")
                         LoadTabContent02();
                     warpSuaGia.LinkedRefreshControlID = "pnlProductDetail";
