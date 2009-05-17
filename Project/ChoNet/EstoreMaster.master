@@ -171,7 +171,7 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="box1_bor" style="text-align: center">
-                                                                                <span ID="spnQuangCao57" runat="server">
+                                                                                <span id="spnQuangCao57" runat="server">
                                                                                 </span>
                                                                             </td>
                                                                         </tr>
