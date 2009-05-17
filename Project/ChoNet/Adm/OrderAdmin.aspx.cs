@@ -31,14 +31,14 @@ public partial class Adm_OrderAdmin : Page
             id = Common.NguoiDungID();
         }
 
-        NhanXetSanPham nx = new NhanXetSanPham();
-        DataSet ds = nx.SelectNhanXetSanPhamByNguoiDung(id);
+        DonHang dh = new DonHang();
+        DataSet ds = dh.SelectByNguoiDungID(id);
 
-        grdNhanXet.DataSource = ds.Tables[0];
-        grdNhanXet.DataBind();
+        grdDonHang.DataSource = ds.Tables[0];
+        grdDonHang.DataBind();
     }
 
-    protected void pnlNhanXet_ContentRefresh(object sender, EventArgs e)
+    protected void pnlDonHang_ContentRefresh(object sender, EventArgs e)
     {
         LoadData();
     }

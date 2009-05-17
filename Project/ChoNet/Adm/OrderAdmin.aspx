@@ -12,19 +12,19 @@
 
     function Edit(obj){   
             var cell=igtbl_getCellById(obj.parentElement.id);
-            var id=cell.Row.getCellFromKey('NhanXetID').getValue();                   
-            OpenDialogWindow('Sửa nhận xét',550,275,'page','EditComment.aspx?cid=' + id);// + '&rand=' + rand_no);    
+            var id=cell.Row.getCellFromKey('DonHangID').getValue();                   
+            OpenDialogWindow('Sửa đơn hàng',550,275,'page','EditComment.aspx?cid=' + id);// + '&rand=' + rand_no);    
     }
 
     function Delete(obj){                      
             var cell=igtbl_getCellById(obj.parentElement.id);
-            var id=cell.Row.getCellFromKey('NhanXetID').getValue();
-            OpenDialogWindow('Xóa nhận xét',350,170,'page','Delete.aspx?id=' + id + '&type=nhanxetsanpham');    
+            var id=cell.Row.getCellFromKey('DonHangID').getValue();
+            OpenDialogWindow('Xóa đơn hàng',350,170,'page','Delete.aspx?id=' + id + '&type=DonHangsanpham');    
     }
 
     function Refresh()
     {  	
-        var warp = ig$('<%=pnlNhanXet.ClientID%>');	   
+        var warp = ig$('<%=pnlDonHang.ClientID%>');	   
         //alert(warp);
         if(!warp)
 		    return;		
@@ -37,9 +37,9 @@
     }
 </script>
 <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
-    <igmisc:webasyncrefreshpanel id="pnlNhanXet" runat="server" Height="100%"  width="100%" OnContentRefresh="pnlNhanXet_ContentRefresh" RefreshComplete="WebAsyncRefreshPanel1_RefreshComplete"><igtbl:UltraWebGrid ID="grdNhanXet" runat="server" Width="100%" DataKeyField="NhanXetID">
+    <igmisc:webasyncrefreshpanel id="pnlDonHang" runat="server" Height="100%"  width="100%" OnContentRefresh="pnlDonHang_ContentRefresh" RefreshComplete="WebAsyncRefreshPanel1_RefreshComplete"><igtbl:UltraWebGrid ID="grdDonHang" runat="server" Width="100%" DataKeyField="DonHangID">
             <Bands>
-                <igtbl:UltraGridBand DataKeyField="NhanXetID">
+                <igtbl:UltraGridBand DataKeyField="DonHangID">
                     <Columns>
                         <igtbl:TemplatedColumn SortIndicator="Disabled" Width="8%">
                             <CellTemplate>
@@ -70,7 +70,7 @@
                                 <RowLayoutColumnInfo OriginX="2" />
                             </Footer>
                         </igtbl:UltraGridColumn>
-                        <igtbl:UltraGridColumn BaseColumnName="NguoiNhanXet" Key="NguoiNhanXet" Width="15%">
+                        <igtbl:UltraGridColumn BaseColumnName="NguoiDonHang" Key="NguoiDonHang" Width="15%">
                             <HeaderStyle HorizontalAlign="Center" />
                             <Header Caption="Người nhận x&#233;t">
                                 <RowLayoutColumnInfo OriginX="3" />
@@ -103,7 +103,7 @@
             <DisplayLayout AllowAddNewDefault="Yes" AllowColSizingDefault="Free" AllowColumnMovingDefault="OnServer"
                 AllowDeleteDefault="Yes" AllowSortingDefault="OnClient" AutoGenerateColumns="False"
                 BorderCollapseDefault="Separate" CellClickActionDefault="RowSelect" ColWidthDefault=""
-                HeaderClickActionDefault="SortMulti" Name="grdNhanXet" RowHeightDefault="20px"
+                HeaderClickActionDefault="SortMulti" Name="grdDonHang" RowHeightDefault="20px"
                 RowSelectorsDefault="No" ScrollBarView="Vertical" SelectTypeRowDefault="Extended"
                 StationaryMargins="Header" StationaryMarginsOutlookGroupBy="True" TableLayout="Fixed"
                 Version="4.00" ViewType="OutlookGroupBy" AllowUpdateDefault="RowTemplateOnly" ScrollBar="Always">
