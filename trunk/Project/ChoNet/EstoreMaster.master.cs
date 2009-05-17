@@ -21,7 +21,7 @@ public partial class EstoreMaster : MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        RedirectToCuahangbyUrlName();
+        //RedirectToCuahangbyUrlName();
         if (Session["UserFullName"] != null)
         {
             tblchaomung.Visible = true;
@@ -112,7 +112,7 @@ public partial class EstoreMaster : MasterPage
     private void LoadCuaHang()
     {
         CuaHang ch = new CuaHang();
-        DataSet ds = ch.SelectByID(CuaHangID);
+        DataSet ds = ch.SelectByCuaHangID(CuaHangID);
         if (ds.Tables[0].Rows.Count != 1)
         {
             Response.Redirect("./message.aspx?msg=Failed in loading store");
@@ -127,21 +127,21 @@ public partial class EstoreMaster : MasterPage
             ChuCuaHangID = int.Parse(dr["NguoiDungID"].ToString());
             ViewState["chucuahangid"] = ChuCuaHangID;
 
-            switch (dr["LoaiCuaHang"].ToString())
+            switch (dr["LoaiCuaHangID"].ToString())
             {
-                case "1":
-                    stsGianHang.Href = "GianHang/VIP/css/style.css";
-                    //LoadTinTuc();
-                    break;
+                //case "1":
+                //    stsGianHang.Href = "GianHang/VIP/css/style.css";
+                //    //LoadTinTuc();
+                //    break;
                 case "2":
                     stsGianHang.Href = "GianHang/CN/css/style.css";
                     //LoadTinTuc();
                     break;
                 case "3":
                     stsGianHang.Href = "GianHang/TT/css/style.css";
-                    break;
+                    break;               
                 default:
-                    stsGianHang.Href = "GianHang/TT/css/style.css";
+                    stsGianHang.Href = "GianHang/" + dr["TenLoaiCuaHang"].ToString() + "/css/style.css";
                     break;
             }
             if ((dr["LoaiCuaHang"].ToString() == "1") ||
