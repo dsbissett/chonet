@@ -13,7 +13,20 @@ namespace CHONET.DataAccessLayer.Web
 
         #region Added Code
 
-        // add user code here
+        // add user code here\
+        public DataSet SelectByCuaHangID(int CuaHangID)
+        {
+            DataAccess objDataAccess = new DataAccess();
+            DataSet dsResult = new DataSet(); dsResult.Locale = CultureInfo.CurrentCulture;
+            using (SqlCommand sqlCmd = new SqlCommand())
+            {
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.CommandText = "GetViewCuaHangById";
+                sqlCmd.Parameters.Add("@CuaHangID", SqlDbType.Int).Value = CuaHangID;
+                dsResult = objDataAccess.ExecuteQuery(sqlCmd, "CuaHang");
+                return dsResult;
+            }
+        }
         public DataSet SelectAllCuaHangAtViTriCuaHang(int ViTriCuaHang)
         {
             DataAccess objDataAccess = new DataAccess();
