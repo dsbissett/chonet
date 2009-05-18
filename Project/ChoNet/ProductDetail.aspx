@@ -7,7 +7,8 @@
 <%@ OutputCache Duration="30" Location="Client" VaryByParam="id" %> 
    
 <asp:Content ID="Content1" ContentPlaceHolderID="cphMain" runat="Server">
-
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
     <table width="985px" border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td align="center" valign="top">
@@ -99,7 +100,7 @@
                                                         </tr>
                                                     </table>
                                                 </td>
-                                                <td width="47%" align="left" valign="top">
+                                                <td width="47%" align="left" valign="top">                                                 
                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="box1_bor" style="padding-left: 5px">
                                                         <tr>
                                                             <td align="left" style="height: 20px; width: 269px;">
@@ -173,7 +174,7 @@
                                                                     <img border="0" height="29" src="images/toimuon.jpg" width="177" /></a><a href="#"
                                                                         onclick="SendToFriend();"><img border="0" height="29" src="images/guitin.jpg" width="177" /></a></td>
                                                         </tr>
-                                                    </table>
+                                                    </table>                                                                                                   
                                                 </td>
                                                 <td width="22%" align="left" valign="top" rowspan="2">
                                                     <igmisc:WebAsyncRefreshPanel ID="pnlCuaHang" runat="server" Height="100%" Width="100%"
