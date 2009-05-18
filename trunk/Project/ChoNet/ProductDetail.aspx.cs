@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using CHONET.Common;
 using CHONET.DataAccessLayer;
 using CHONET.DataAccessLayer.Web;
+using System.IO;
 using Image=System.Drawing.Image;
 
 public partial class ProductDetail : Page
@@ -609,27 +610,32 @@ public partial class ProductDetail : Page
             {
                 DataRow drSanPham = dsSanPham.Tables[0].Rows[0];
                 string filename = Server.MapPath(drSanPham["AnhSanPham"].ToString());
-                Image image = Image.FromFile(filename);
-                int srcWidth = image.Width;
-                int srcHeight = image.Height;
-                if (image.Width > 323)
+                Image image;
+                if (File.Exists(filename))
                 {
-                    Decimal sizeRatio = ((Decimal) srcHeight/srcWidth);
-                    int thumbHeight = Decimal.ToInt32(sizeRatio*323);
-                    imgSanPham.Width = 323;
-                    imgSanPham.Height = thumbHeight;
-                }
-                else if (image.Height > 323)
-                {
-                    Decimal sizeRatio = ((Decimal) srcWidth/srcHeight);
-                    int thumbWidth = Decimal.ToInt32(sizeRatio*323);
-                    imgSanPham.Height = 323;
-                    imgSanPham.Width = thumbWidth;
-                }
-                else
-                {
-                    imgSanPham.Height = srcHeight;
-                    imgSanPham.Width = srcWidth;
+                    image = Image.FromFile(filename);
+
+                    int srcWidth = image.Width;
+                    int srcHeight = image.Height;
+                    if (image.Width > 323)
+                    {
+                        Decimal sizeRatio = ((Decimal)srcHeight / srcWidth);
+                        int thumbHeight = Decimal.ToInt32(sizeRatio * 323);
+                        imgSanPham.Width = 323;
+                        imgSanPham.Height = thumbHeight;
+                    }
+                    else if (image.Height > 323)
+                    {
+                        Decimal sizeRatio = ((Decimal)srcWidth / srcHeight);
+                        int thumbWidth = Decimal.ToInt32(sizeRatio * 323);
+                        imgSanPham.Height = 323;
+                        imgSanPham.Width = thumbWidth;
+                    }
+                    else
+                    {
+                        imgSanPham.Height = srcHeight;
+                        imgSanPham.Width = srcWidth;
+                    }
                 }
                 imgSanPham.Src = drSanPham["AnhSanPham"].ToString();
                 lblTenSanPham.Text = drSanPham["TenSanPham"] + " " + drSanPham["TenSanPhamPhu"];
@@ -1118,12 +1124,16 @@ public partial class ProductDetail : Page
                     LoadData();
                     if (hidTabId.Value == "2")
                         LoadTabContent02();
-                    warpSuaGia.LinkedRefreshControlID = "pnlProductDetail";
+                    //warpSuaGia.LinkedRefreshControlID = "pnlProductDetail";
+                    warpSuaGia.LinkedRefreshControlID = "pnlDetail";                    
                 }
             }
         }
     }
-
+    protected void pnlDetail_OnLoad(object sender, EventArgs e)
+    {
+        LoadData();
+    }
     private void LuuGia()
     {
         try
