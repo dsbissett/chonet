@@ -27,9 +27,6 @@
                  Loại gian hàng</td>
              <td>
                  <asp:DropDownList ID="ddlLoaiGianHang" runat="server" Width="205px">
-                     <asp:ListItem Value="3">Th&#244;ng thường</asp:ListItem>
-                     <asp:ListItem Value="2">Chuy&#234;n nghiệp</asp:ListItem>
-                     <asp:ListItem Value="1">VIP</asp:ListItem>
                  </asp:DropDownList></td>
         </tr>
          <tr>
