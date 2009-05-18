@@ -15,6 +15,7 @@ public partial class Admin_UpgradeStore : Page
             {
                 if (Request.QueryString["sid"] != null)
                 {
+                    LoadLoaiCuaHang();
                     LoadData(Request.QueryString["sid"]);
                 }
                 //txtTenNhomSanPham.Text = Request.QueryString["ten"].ToString();
@@ -26,6 +27,19 @@ public partial class Admin_UpgradeStore : Page
         }
     }
 
+    private void LoadLoaiCuaHang()
+    {
+        LoaiCuaHang lch = new LoaiCuaHang();
+        DataSet ds = lch.SelectAll();
+
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            ddlLoaiGianHang.DataSource = ds.Tables[0];
+            ddlLoaiGianHang.DataTextField = "TenLoaiCuaHang";
+            ddlLoaiGianHang.DataValueField = "LoaiCuaHangID";
+            ddlLoaiGianHang.DataBind();
+        }
+    }
     private void LoadData(string Id)
     {
         try
@@ -38,7 +52,7 @@ public partial class Admin_UpgradeStore : Page
                 txtTenCuaHang.Text = ds.Tables[0].Rows[0]["TenCuaHang"].ToString();
                 if (ds.Tables[0].Rows[0]["LoaiCuaHang"].ToString() != "")
                 {
-                    ddlLoaiGianHang.SelectedValue = ds.Tables[0].Rows[0]["LoaiCuaHang"].ToString();
+                    ddlLoaiGianHang.SelectedValue = ds.Tables[0].Rows[0]["LoaiCuaHangID"].ToString();
                 }
                 else
                 {
@@ -61,7 +75,7 @@ public partial class Admin_UpgradeStore : Page
                             null, null, null, null, null, null,
                             null, null, null, null, null, null, null, null, null, null,
                             null, null, null, null, null, null, null,
-                            short.Parse(ddlBaoDam.SelectedValue), short.Parse(ddlLoaiGianHang.SelectedValue));
+                            short.Parse(ddlBaoDam.SelectedValue),null, short.Parse(ddlLoaiGianHang.SelectedValue));
 
             string strScript = "<script language='JavaScript'>" + "window.parent.Refresh();</script>";
             ClientScript.RegisterStartupScript(GetType(), "Refresh", strScript);
