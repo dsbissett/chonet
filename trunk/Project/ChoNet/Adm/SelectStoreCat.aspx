@@ -48,9 +48,10 @@
                                         <RowLayoutColumnInfo OriginX="1" />
                                     </Footer>
                                 </igtbl:UltraGridColumn>
-                                <igtbl:UltraGridColumn BaseColumnName="MoTaNhomSanPham" Key="MoTaNhomSanPham" Width="405px">
+                                <igtbl:UltraGridColumn BaseColumnName="TenNhomSanPhamHienThi" Key="TenNhomSanPhamHienThi"
+                                    Width="405px">
                                     <HeaderStyle HorizontalAlign="Center" />
-                                    <Header Caption="M&#244; tả">
+                                    <Header Caption="T&#234;n hiển thị ở gian h&#224;ng">
                                         <RowLayoutColumnInfo OriginX="2" />
                                     </Header>
                                     <Footer>

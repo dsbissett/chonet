@@ -40,7 +40,7 @@ public partial class Adm_SelectStoreCat : Page
                 if (bool.Parse(row.Cells.FromKey("Selected").Value.ToString()))
                 {
                     NhomSanPhamID = int.Parse(row.Cells.FromKey("NhomSanPhamID").Value.ToString());
-                    chnsp.InsertFields(CuaHangID, NhomSanPhamID);
+                    chnsp.InsertFields(CuaHangID, NhomSanPhamID, null);
                 }
             }
         }
