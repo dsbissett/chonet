@@ -9,8 +9,24 @@ public partial class eStore : Page
     public int ChuCuaHangID;
     public int CuaHangID;
     public int NhomSanPhamID;
-
+    //public string ContentPlaceHolderID = "cphEstore";
     private const int PageSize = 18;
+
+    void Page_PreInit(Object sender, EventArgs e)
+    {
+        CuaHang ch = new CuaHang();
+        DataSet ds = ch.SelectByCuaHangID(int.Parse(Request["sid"]));
+
+        if ((ds.Tables[0].Rows.Count > 0) && (ds.Tables[0].Rows[0]["LoaiCuaHangID"].ToString() == "26"))
+        {            
+            //ContentPlaceHolderID = "contentEstore";
+            this.MasterPageFile = "NewEstoreMaster.master";
+        }
+        if (Session["masterpage"] != null)
+        {
+            this.MasterPageFile = (String)Session["masterpage"];
+        }
+    } 
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -19,6 +35,8 @@ public partial class eStore : Page
         //    tblchaomung.Visible = true;
         //    tbldangnhap.Visible = false;
         //}
+ 
+
         if (Request.QueryString["sid"] != null)
         {
             try
@@ -48,22 +66,7 @@ public partial class eStore : Page
         }
         LoadTab();
         if (!Page.IsPostBack)
-        {
-            //LoadSanPhamDaXem();
-            //LoadQuangCao(51);
-            //LoadQuangCao(52);
-            //LoadQuangCao(53);
-            //LoadQuangCao(54);
-            //LoadQuangCao(55);
-            //LoadQuangCao(56);
-            //LoadDanhMuc();
-            //LoadThongTinCuaHang(ChuCuaHangID);
-            //LoadGianHang();
-            //LoadSanPhamTop();
-            //LoadSanPhamAll(NhomSanPhamID,1);
-            //LoadBinhChon();            
-            //LoadHoTroTrucTuyen();
-
+        {            
             switch (hidTabId.Value)
             {
                 case "1":
