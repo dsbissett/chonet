@@ -1,0 +1,144 @@
+* {margin: 0px;padding: 0px;}
+html, body {font-family: Arial, Helvetica, sans-serif;font-size:12px}
+body {background:#ae4a05;margin:0px; padding:0px}
+
+a {color: #333;text-decoration: none;}
+a:hover {text-decoration: none;}
+a:focus {outline: none;}
+img {border: none;outline:none}
+ul {list-style:none;}
+td, div {font-size: 100%;}
+h1 {font-size: 180%;}
+input ,select {border:1px solid #7f9db9;color:#ccc}
+hr {
+  color:#ccc;
+  background: #ccc;
+  border: 0;
+  height: 1px;
+  margin-top:5px;width:261px
+}
+*+html hr {
+  margin-top:0px;
+}
+/*----------the don------------------*/
+/* clearfix */
+.clearfix:after {clear: both;display: block;content: ".";height: 0;visibility: hidden;}
+* html > body .clearfix {width: 100%;display: block;}
+* html .clearfix {height: 1%;}
+.fl {float:left;}
+.fr {float:right;}
+
+.cl-f00{color:#f00}
+.cl-069{color:#069}
+.bgl-6c0{background:#6c0;}
+.bg-cl-f4e8{background:#fff4e8}
+.cl-c60{color:#c60;}
+.cl-765{color:#765f4b}
+.fs-14{font-size:14px}
+.fs-16{font-size:16px}
+
+
+.t-l {text-align:left}
+.t-c {text-align:center}
+.t-r {text-align:right}
+.tf-up{text-transform:uppercase}
+.mr-t1{margin-top:1px}
+.mr-t8{margin-top:8px}
+.mr-t15{margin-top:15px;}
+.mr-t50{margin-top:50px}
+.mr-t40{margin-top:40px}
+.mr-l1{margin-left:1px}
+.mr-l15{margin-left:15px}
+.mr-l5{margin-left:5px}
+.mr-l25{margin-left:25px}
+.mr-r3{margin-right:3px}
+.mr-r10{margin-right:10px}
+.mr-b5{margin-bottom:4px}
+.mr-01{margin:20px 5px 20px 6px}
+.w68{width:68px}
+.w110{width:110px}
+.w163{width:163px}
+.w177{width:177px}
+.w178{width:178px}
+.w198{width:198px}
+.w197{width:197px}
+.w598{width:598px}
+.w590{width:590px}
+.w300{width:300px}
+.w424{width:424px}
+.w264{width:264px}
+.h181{height:181px}
+
+.pad-t5{padding-top:5px}
+.pad-b10{padding-bottom:10px}
+.pad-l10{padding-left:10px}
+.pad-01{padding:5px 3px}
+.pad-02{padding:5px 13px 5px 10px}
+*html .pad-02{padding:5px 10px 5px 10px}
+.border-dot{border-right:1px dotted #ccc}
+.line{border-top:1px dotted #ccc;line-height:1px;height:1px;width:585px;float:left;margin-right:10px}
+
+
+/*----------Home------------------*/
+.shop{background:#ae4a05 url(images/bg_body.jpg) no-repeat fixed center top;margin:0px;line-height:normal}
+.wrapper{width:1001px;margin:0 auto;background:#fff}
+#header{width:1001px;}
+#left-top{background:url(images/bg_date.jpg) no-repeat top left;width:186px;float:left;color:#fff;text-align:center;padding:9px 0}
+#marque{background:url(images/bg_marquee.jpg) no-repeat top left;width:813px;color:#fff;float:right;padding:9px 0}
+
+.container{width:1001px;margin-top:5px;float:left}
+.colunm-left{width:184px;float:left;margin-left:3px;padding-bottom:20px}
+.box-navi {}
+ul.memu-left li a img{margin-top:-3px;padding:0px}
+.news{margin-top:5px;}
+.content-news{border-left:1px solid #ccc;border-right:1px solid #ccc;border-bottom:1px solid #ccc}
+.content-news li {border-bottom:1px dotted #ccc;padding:5px }
+.content-news li  a {color:#c60;padding:3px 7px;font-weight:normal;text-transform:capitalize}
+.content-news p{font-size:12px;text-transform:uppercase;}
+.icon{background:url(images/icon_number.jpg) no-repeat top left ;height:16px;padding: 2px 0 2px 20px;margin-left:5px;color:#000}
+.icon2{background:url(images/ic-truycap.jpg) no-repeat top left ;height:15px;padding: 2px 0 2px 20px;margin-left:5px;color:#000}
+/* .title{background:url(images/bt_danhmuc.jpg) no-repeat top left;width:187px;height:25px} */
+.content{width:598px;float:left;margin-left:4px}
+*+html .content{margin-left:1px}
+* html .content{margin-left:0px}
+.box-product{border:2px solid #ed6f04;width:597px;float:left;margin-top:5px}
+ul.next{width:590px;margin-bottom:10px;margin-right:10px;margin-top:15px}
+* html ul.next{margin-right:0px}
+ul.next li {display:inline;}
+ul.next li a {font-weight:bold}
+.next select{margin-left:40px;margin-right:20px}
+.colunm-right{width:202px;float:right;}
+.list-news{list-style:square;padding-left:23px;font-weight:bold;margin:0px;}
+.list-news li {border:none}
+#footer{background:url(images/bg_footer.jpg) repeat-x top left;width:1001px;float:left;height:176px;margin-top:50px;color:#fff}
+#footer ul {text-align:center;margin-top:10px;margin-bottom:25px }
+#footer ul li {display:inline}
+#footer ul li  a {color:#fff;text-transform:uppercase;font-size:12px;padding:0px 20px;font-weight:bold }
+/*--------------------------productdetai------------------------------------*/
+.path-link ul li{display:inline;margin-top:5px}
+.path-link a {color:#4f4e4e;font-size:11px ;font-weight:normal}
+.path-link a:hover{color:#c60;}
+.selectlink{color:#c60}
+.box-prdetail{width:598px;}
+.box-prdetail ul {width:300px;float:left;margin-top:15px;}
+.box-prdetail ul li {display:inline}
+.box-km{border:1px solid #c60;float:left;background:#fff7ef;color:#c60;font-weight:bold;margin:20px 0}
+.sp-same{background:url(images/bg_sanphamcungloai.jpg) no-repeat top left;font-size:12px;font-weight:bold;padding:7px;width:589px;margin-top:10px;margin-left:-1px}
+.sp-same span {padding-left:20px;}
+.bx-sp-same{border:1px solid #ccc;float:left;border-top:none;padding:8px 8px 8px 9px;width:580px}
+* html .bx-sp-same{padding:4px}
+.news-hot{float:left;width:598px}
+.news-hot h3 {margin-top:10px}
+.news-hot ul {color:#3d3d3d;text-transform:capitalize;}
+.news-hot ul  li {float:left;width:100%;}
+.news-hot ul  li a {padding:2px;font-size:12px}
+.list-link{font-size:16px;margin-bottom:15px}
+.list-link ul li{display:inline;}
+/*--------------------------shopcart------------------------------------*/
+.shop-cart table{border:1px solid #ccc;border-top:none;margin-top:10px}
+.shop-cart table th{background:#c60;border-right:1px dotted #ccc;padding:4px 0px;color:#fff}
+.shop-cart  table td {border-right:1px dotted #ccc;padding:5px;border-bottom:1px dotted #ccc }
+.info-cart fieldset {background:#f2f2f2;border:1px solid #ccc;padding-bottom:10px;margin-bottom:15px}
+.info-cart {width:598px;float:left;position:relative}
+.title-info{background:#fff;color:#000;text-transform:capitalize;font-weight:bold;padding:3px 0;position:absolute;z-index:1;top:-13px;margin-left:5px}
+.info-cart td {padding:5px}

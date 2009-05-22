@@ -1,0 +1,462 @@
+/* CSS Document */
+/* Body */
+BODY {
+	margin: 0px 0px 0px 0px;
+	background:url(../images/bg.jpg) repeat-x top;
+	}
+
+td,tr{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+	line-height:18px;
+	
+	}
+
+
+
+/* Links */
+a:link, a:visited {
+	font-size: 11px; color:#333333; text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	}
+
+a:hover {
+    font-size: 11px; 
+	color: #000000;	text-decoration: none;
+	}
+	
+table.box1 td.box1_name{
+	background:url(../images/bgbox.jpg) no-repeat;
+	height:31px;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	font-weight:bold;
+	text-align:left;
+	padding-left:10px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+table.box1 td.box1_bor{
+	border:#bc2f25 1px solid;
+	text-align:left;
+	padding-bottom:10px;
+}
+table.box1 td.box1_bor a:hover{
+	text-decoration:underline;
+}
+
+table.box2 td.box2_name{
+	background:url(../images/bgbox2.jpg) no-repeat;
+	height:31px;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	font-weight:bold;
+	text-align:left;
+	padding-left:10px;
+	font-size:10px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+table.box2 td.box2_bor{
+	border:#bc2f25 1px solid;
+	text-align:left;
+	padding-bottom:10px;
+}
+table.box2 td.box2_bor a:hover{
+	text-decoration:underline;
+}
+
+table.listcat td{
+	height:24px;
+	text-align:left;
+	padding-left:10px;
+	line-height:18px;
+	border-bottom:#179621 dotted 1px;
+}
+table.listcat td a{
+	font-weight:bold;
+	text-align:left;
+	color:#bc2f25;
+}
+table.listcat td a:visited{
+	font-weight:bold;
+	text-align:left;
+	color:#bc2f25;
+}
+
+table.listcat td a:hover{
+	font-weight:bold;
+	text-align:left;
+	color:#bc2f25;
+}
+table.box4 td.box4_name{
+	border-top:#bc2f25 1px solid;
+	border-left:#bc2f25 1px solid;
+	border-right:#bc2f25 1px solid;
+	background:#bc2f25;
+	height:26px;
+	text-align:left;
+	padding-left:20px;
+	color:#FFFFFF;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+table.box4 td.box4_bor{
+	border:#bc2f25 1px solid;
+	text-align:left;
+	padding:5px;
+}
+table.box4 td.box4_bor a:hover{
+	text-decoration:underline;
+}
+.search
+{
+	color:White;
+	background-color: transparent;
+	background-image: url(../images/bg.jpg);
+}
+
+.footer
+{
+	color: #FFFFFF;
+	background-color: #bc2f25;
+}
+.price {
+	color:#FF0000;
+}
+.textxanh{
+	color:#0099FF;
+	font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+.textcam{
+	color:#ff6600;
+	font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+table.tab td{
+	text-align:center;
+	height:27px;
+}
+table.tab td.tab_active{
+	background:url(../images/active_tab.jpg) no-repeat right top;
+	font-weight:bold;
+	border-bottom:none;
+}
+table.tab td.tab_active_right{
+	background:url(../images/active_tab_right.jpg) no-repeat right top;
+	font-weight:bold;
+	border-bottom:none;
+}
+table.tab td.tab_noactive {
+	border-bottom:#c9c3c5 1px solid;	
+}
+
+table.tab td.tab_noactive a{
+	font-weight:bold;
+}
+
+table.tab td.tab_noactive a:hover{
+	font-weight:bold;
+	color:#990000;
+}
+
+table.box6 td.box6_name{
+	border-top:#c9c3c5 1px solid;
+	border-left:#c9c3c5 1px solid;
+	border-right:#c9c3c5 1px solid;
+	background:#ececec;
+	height:27px;
+	text-align:left;
+}
+table.box6 td.box6_bor{
+	border-left:#c9c3c5 1px solid;
+	border-right:#c9c3c5 1px solid;
+	border-bottom:#c9c3c5 1px solid;
+	text-align:left;
+	padding:5px;
+}
+table.box6 td.box6_bor a:hover{
+	text-decoration:underline;
+}
+
+.style1 {
+	color: #bc2f25;
+	font-weight: bold;
+}
+.style2 {
+	color: #bc2f25;
+	font-weight: bold;
+}
+
+
+
+/*table.form td.bgbanner{
+	background:url(../images/bgbanner.jpg) repeat-x;
+	height:100px;
+}
+table.form td.bgtopmenu{
+	background:url(../images/bgtopmenu.jpg);
+	height:35px;
+}
+
+table.button_nor td.butnor{
+	height:28px;
+	background:url(../images/sperator.jpg) right no-repeat top;
+	text-align:center;
+}
+table.button_nor td.butnor a{
+	font-weight:bold;
+	color:#3a8d33;
+}
+
+table.button_nor td.butnor a:hover{
+	font-weight:bold;
+	color:#FF6600;
+}
+table.butactive td.but_act_left{
+	background:url(../images/but_active_lef.jpg) no-repeat top;
+	width:15px;
+	height:35px;
+}
+table.butactive td.but_act_right{
+	background:url(../images/but_active_right.jpg) right no-repeat top;
+	text-align:left;
+	padding-right:13px;
+}
+table.butactive td.but_act_right a{
+	font-weight:bold;
+	color:#FFFFFF;
+}
+
+table.search td.text_sear{
+	font-weight:bold;
+	color:#FFFFFF;
+}
+.field {
+	font-size:11px;
+	width:150px;
+}
+.button{
+	background-color:#EAEAEA;
+	font-weight:bold;
+	color:#000000;
+	font-size:11px;
+	height:18px;
+	border:#CCCCCC 0px solid;
+}
+
+table.menu td.linkdacbiet{
+	color:#000000;
+}
+table.menu td.linkdacbiet a{
+	text-decoration:underline;
+	color:#000000;
+	font-weight:bold;
+}
+table.menu td.linkdacbiet a:hover{
+	text-decoration:none;
+	color:#000000;
+}
+
+table.box1 td.box1_name{
+	border-top:#c9c3c5 1px solid;
+	border-left:#c9c3c5 1px solid;
+	border-right:#c9c3c5 1px solid;
+	background:url(../images/bg_box1.jpg) repeat-x ;
+	height:26px;
+	text-align:center;
+}
+table.box1 td.box1_bor{
+	border:#c9c3c5 1px solid;
+	text-align:left;
+	padding:5px;
+}
+table.box1 td.box1_bor a:hover{
+	text-decoration:underline;
+}
+
+table.box2 td.box2_name{
+	border-top:#ff6600 1px solid;
+	border-left:#ff6600 1px solid;
+	border-right:#ff6600 1px solid;
+	background:#ff6600;
+	height:26px;
+	color:#FFFFFF;
+	font-family:Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:12px;
+	text-align:center;
+}
+table.box2 td.box2_bor{
+	border:#ff6600 1px solid;
+	text-align:left;
+	padding-bottom:5px;
+}
+
+
+table.login td.text_login{
+	font-weight:bold;
+	color:#FFFFFF;
+}
+.field1 {
+	font-size:11px;
+	width:100px;
+}
+.button1{
+	background-color:#EAEAEA;
+	font-weight:bold;
+	color:#000000;
+	font-size:11px;
+	height:22px;
+	border:#CCCCCC 0px solid;
+}
+
+table.listcat td{
+	height:24px;
+	text-align:left;
+	padding-left:10px;
+	line-height:18px;
+	border-bottom:#CCCCCC dotted 1px;
+}
+table.listcat td a{
+	font-weight:bold;
+	text-align:left;
+	color:#1670c6;
+}
+table.listcat td a:visited{
+	font-weight:bold;
+	text-align:left;
+	color:#1670c6;
+}
+
+table.listcat td a:hover{
+	font-weight:bold;
+	text-align:left;
+	color:#FF6600;
+}
+.price {
+	color:#FF0000;
+}
+a.pathway{
+	color:#FF6600;
+}
+
+table.product td a:hover{
+	text-decoration:underline;	
+}
+
+table.box3 td.box3_name1{
+	border-top:#398e33 1px solid;
+	border-left:#398e33 1px solid;
+	border-right:#398e33 1px solid;
+	background:url(../images/box3_name1.jpg) repeat-x center;
+	height:25px;
+	text-align:center;
+}
+table.box3 td.box3_name2{
+	border-bottom:#398e33 1px solid;
+	border-left:#398e33 1px solid;
+	border-right:#398e33 1px solid;
+	background:url(../images/box3_name2.jpg) repeat-x center;
+	height:25px;
+	text-align:center;
+}
+table.box3 td.box3_bor{
+	border:#c9c3c5 1px solid;
+	text-align:left;
+	padding:5px;
+}
+table.box3 td.box3_bor a:hover{
+	text-decoration:underline;
+}
+
+table.box4 td.box4_name{
+	border-top:#c9c3c5 1px solid;
+	border-left:#c9c3c5 1px solid;
+	border-right:#c9c3c5 1px solid;
+	background:#f5f5f5;
+	height:26px;
+	text-align:left;
+	padding-left:20px;
+}
+table.box4 td.box4_bor{
+	border:#c9c3c5 1px solid;
+	text-align:left;
+	padding:5px;
+}
+table.box4 td.box4_bor a:hover{
+	text-decoration:underline;
+}
+
+table.box5 td.box5_name{
+	border-top:#c9c3c5 1px solid;
+	border-left:#c9c3c5 1px solid;
+	border-right:#c9c3c5 1px solid;
+	background:url(../images/bg_box1.jpg) repeat-x ;
+	height:26px;
+	text-align:center;
+}
+table.box5 td.box5_bor{
+	border:#c9c3c5 1px solid;
+	text-align:left;
+	padding-bottom:10px;
+}
+table.box5 td.box5_bor a:hover{
+	text-decoration:underline;
+}
+
+
+
+table.khuyenmai td.tit_khuyenmai{
+	color:#FF0000;
+	font-weight:bold;
+	height:25px;
+	text-align:left;
+}
+table.khuyenmai td.news_khuyenmai{
+	color:#FF0000;
+	text-align:left;
+	line-height:18px;
+	height:22px;
+	border-bottom:#FF0000 1px dotted;
+}
+table.khuyenmai td.news_khuyenmai a{
+	color:#FF0000;
+}
+table.khuyenmai td.news_khuyenmai a:hover{
+	color:#333333;
+}
+
+.footer{
+	color:#FFFFFF;
+}
+
+table.topmenu td{
+	background:url(../images/sperator1.jpg) no-repeat right;
+	height:22px;
+	text-align:center;
+	color:#333333;
+	font-weight:bold;
+}
+table.topmenu td a{
+	text-align:center;
+	color:#333333;
+	font-weight:bold;
+}
+
+table.topmenu td a:hover{
+	color:#990000;
+}
+
+.chuto{
+font-size:18px;
+color:#0066CC;
+font-weight:bold;
+text-transform:uppercase;
+}*/
