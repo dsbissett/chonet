@@ -215,15 +215,32 @@ public partial class eStoreHome : Page
                 string content = "";
                 if (j*2 + i < n)
                 {
+                    DataRow dr = ds.Tables[0].Rows[j * 2 + i];
                     content += "<table width=\"100%\" border=\"0\" cellspacing=\"4\" cellpadding=\"0\">";
-                    content += "<tr><td style=\"widht:110px\"><a href=\"estore.aspx?sid=" +
-                               ds.Tables[0].Rows[j*2 + i]["CuaHangID"]
-                               + "\"><img src=\"" + ds.Tables[0].Rows[j*2 + i]["Anh"]
+
+                    if (dr["TenLoaiCuaHang"].ToString() == "New Shop 1")
+                    {
+                        content += "<tr><td style=\"widht:110px\"><a href=\"Newestore.aspx?sid=" +
+                               dr["CuaHangID"]
+                               + "\"><img src=\"" + dr["Anh"]
                                + "\" width=\"110\" height=\"73\" style=\"border:#ece2a4 1px solid\" /></a></td>";
-                    content += "<td style=\"width:80%\"><a href=\"estore.aspx?sid=" +
-                               ds.Tables[0].Rows[j*2 + i]["CuaHangID"]
-                               + "\"><b>" + ds.Tables[0].Rows[j*2 + i]["TenCuaHang"] + "</b><br> Đánh giá: ";
-                    int sodiem = (int) decimal.Parse("0" + ds.Tables[0].Rows[j*2 + i]["diem"]);
+                        content += "<td style=\"width:80%\"><a href=\"Newestore.aspx?sid=" +
+                               dr["CuaHangID"]
+                               + "\"><b>" + dr["TenCuaHang"] + "</b><br> Đánh giá: ";
+                    }
+                    else
+                    {
+                        content += "<tr><td style=\"widht:110px\"><a href=\"estore.aspx?sid=" +
+                               dr["CuaHangID"]
+                               + "\"><img src=\"" + dr["Anh"]
+                               + "\" width=\"110\" height=\"73\" style=\"border:#ece2a4 1px solid\" /></a></td>";
+                        content += "<td style=\"width:80%\"><a href=\"estore.aspx?sid=" +
+                               dr["CuaHangID"]
+                               + "\"><b>" + dr["TenCuaHang"] + "</b><br> Đánh giá: ";
+                    }
+                    
+                    
+                    int sodiem = (int) decimal.Parse("0" + dr["diem"]);
 
                     for (int m = 0; m < sodiem; m++)
                     {
@@ -235,9 +252,9 @@ public partial class eStoreHome : Page
                         content += "<img align=\"absmiddle\" border=\"0\" src=\"./images/star0.gif\">";
                     }
 
-                    content += string.Format("{0:0.0}", decimal.Parse("0" + ds.Tables[0].Rows[j*2 + i]["diem"]));
+                    content += string.Format("{0:0.0}", decimal.Parse("0" + dr["diem"]));
 
-                    if (ds.Tables[0].Rows[j*2 + i]["LoaiCuaHang"].ToString() == "1")
+                    if (dr["LoaiCuaHang"].ToString() == "1")
                     {
                         content +=
                             "<br><img border=0 src=\"./images/store2.jpg\" /><img src=\"./images/vip.jpg\" border=0 />";
