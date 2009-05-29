@@ -6,29 +6,26 @@
 <%@ Register Assembly="Infragistics2.WebUI.Misc.v7.1, Version=7.1.20071.1048, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
     Namespace="Infragistics.WebUI.Misc" TagPrefix="igmisc" %>
 <asp:Content runat="server" ID="content1" ContentPlaceHolderID="cphEstore">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <td align="left" valign="top" style="height: 18px; padding: 10px">
-                <table width="100%" cellpadding="0" cellspacing="0" class="box1" border="0">
-                    <tr>
-                        <td>
-                            <b>
-                                <asp:Label runat="server" ID="lblTieuDe" Text=""></asp:Label>
-                            </b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span runat="server" id="spnImage"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="tintuc" runat="server" id="spnTinTuc"></span>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+   <div class="content">
+				<div class="path-link">
+						<ul>
+							<li><a href="Estore.aspx?sid=<%=CuaHangID %>">Trang chu</a>&nbsp;&raquo;</li>							
+							<li><a href="#"><b>Product-detail</b></a></li>
+						</ul>
+						<p class="fs-14 fl mr-t pad-b10 pad-t5"><b><asp:Label runat="server" ID="lblTieuDe" Text=""></asp:Label></b></p>
+						<div class="fl w598">
+							<p class="pad-01 fl"><span runat="server" id="spnImage"></span>
+								<span class="tintuc" runat="server" id="spnTinTuc"></span>
+							</p>
+						</div>
+						<div class="news-hot">
+							<h3><b class="fs-14">Tin mới</b></h3>
+							<span id="spnTinTucMoi" runat="server"></span>
+							<div style="clear:both;"></div>
+							<h3 class="fl mr-t8"><b class="fs-14">Tin cũ</b></h3>
+							<span id="spnTinTucCu" runat="server"></span>
+						</div>
+				</div>
+				
+			</div>        
 </asp:Content>
