@@ -9,20 +9,21 @@ public partial class eStoreNew : Page
     public int CuaHangID;
     public int NhomSanPhamID;
 
-    //protected void Page_PreInit(object sender, EventArgs e)
-    //{
-    //    if (Request.QueryString["sid"] != null)
-    //    {
+    void Page_PreInit(Object sender, EventArgs e)
+    {
+        CuaHang ch = new CuaHang();
+        DataSet ds = ch.SelectByCuaHangID(int.Parse(Request["sid"]));
 
-    //        this.MasterPageFile = "EstoreMaster.master";
-    //        //this.Page.FindControl("content1"). = "This is Page Content";
-    //    }
-    //    else
-    //    {
-    //        this.MasterPageFile = "Default.master";
-    //    }
-
-    //}
+        if ((ds.Tables[0].Rows.Count > 0) && (ds.Tables[0].Rows[0]["LoaiCuaHangID"].ToString() == "26"))
+        {
+            //ContentPlaceHolderID = "contentEstore";
+            this.MasterPageFile = "NewEstoreMaster.master";
+        }
+        if (Session["masterpage"] != null)
+        {
+            this.MasterPageFile = (String)Session["masterpage"];
+        }
+    } 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Request.QueryString["sid"] != null)
@@ -37,6 +38,8 @@ public partial class eStoreNew : Page
                     {
                         int tintucid = int.Parse(Request.QueryString["nid"]);
                         LoadTinTuc(tintucid);
+                        LoadTinTucMoiVaCu();
+                        //LoadTinTucCu();
                     }
                     catch (Exception ex)
                     {
@@ -151,5 +154,47 @@ public partial class eStoreNew : Page
             DataRow dr = ds.Tables[0].Rows[0];
             ChuCuaHangID = int.Parse(dr["NguoiDungID"].ToString());
         }
+    }
+
+    private void LoadTinTucMoiVaCu()
+    {
+        TinTuc tt = new TinTuc();
+        DataSet ds = tt.SelectByNguoiDungIDPaging(ChuCuaHangID, 1, 10);
+
+        string content = "<ul class=\"list-news\">";
+        string content1 = "<ul class=\"list-news\">";
+        for (int i = 0; i < ds.Tables[0].Rows.Count; i++ )
+        {
+            DataRow dr = ds.Tables[0].Rows[i];
+            if (i < 5)
+            {
+                content += "<li><a href=\"EstoreNews.aspx?sid=" + CuaHangID + "&nid=" + dr["TinTucID"].ToString() + "\">"
+                    + dr["TieuDe"].ToString() + "</a></li>";
+            }
+            else
+            {
+                content1 += "<li><a href=\"EstoreNews.aspx?sid=" + CuaHangID + "&nid=" + dr["TinTucID"].ToString() + "\">"
+                   + dr["TieuDe"].ToString() + "</a></li>";
+            }
+        }
+        content += "</ul>";
+        content1 += "</ul>";
+        spnTinTucMoi.InnerHtml = content;
+        spnTinTucCu.InnerHtml = content1;
+    }
+    private void LoadTinTucCu()
+    {
+        TinTuc tt = new TinTuc();
+        DataSet ds = tt.SelectByNguoiDungIDPaging(ChuCuaHangID, 2, 5);
+
+        string content = "<ul class=\"list-news\">";
+        foreach (DataRow dr in ds.Tables[0].Rows)
+        {
+            content += "<li><a href=\"EstoreNews.aspx?sid=" + CuaHangID + "&nid=" + dr["TinTucID"].ToString() + "\">"
+                + dr["TieuDe"].ToString() + "</a></li>";
+        }
+        content += "</ul>";
+        
+        spnTinTucCu.InnerHtml = content;
     }
 }
