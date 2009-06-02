@@ -10,14 +10,14 @@ public partial class NeweStore : Page
     public int CuaHangID;
     public int NhomSanPhamID;
     //public string ContentPlaceHolderID = "cphEstore";
-    private const int PageSize = 18;
-
+    private const int PageSize = 20;
+    const string LoaiGianHang = "26";
     ////void Page_PreInit(Object sender, EventArgs e)
     ////{
     ////    CuaHang ch = new CuaHang();
     ////    DataSet ds = ch.SelectByCuaHangID(int.Parse(Request["sid"]));
 
-    ////    if ((ds.Tables[0].Rows.Count > 0) && (ds.Tables[0].Rows[0]["LoaiCuaHangID"].ToString() == "26"))
+    ////    if ((ds.Tables[0].Rows.Count > 0) && (ds.Tables[0].Rows[0]["LoaiCuaHangID"].ToString() == LoaiGianHang))
     ////    {            
     ////        //ContentPlaceHolderID = "contentEstore";
     ////        this.MasterPageFile = "NewEstoreMaster.master";
@@ -59,30 +59,7 @@ public partial class NeweStore : Page
                     Response.Redirect("./message.aspx?msg=" + ex.Message);
                 }
             }
-
-            //loadtab();
-            //if (!page.ispostback)
-            //{            
-            //    switch (hidtabid.value)
-            //    {
-            //        case "1":
-            //            if (!page.ispostback)
-            //                loadtabcontent01(1);
-            //            break;
-            //        case "2":
-            //            if (!page.ispostback)
-            //                loadtabcontent02();
-            //            break;
-            //        case "3":
-            //            if (!page.ispostback)
-            //                loadtabcontent03(1);
-            //            break;
-            //        case "4":
-            //            if (!page.ispostback)
-            //                loadtabcontent04(1);
-            //            break;
-            //    }
-            //}
+           
         }
         else
         {
@@ -341,9 +318,7 @@ public partial class NeweStore : Page
         }
         spnSanPham.InnerHtml = content;
 
-
-        ddlPage.Visible = true;
-        lblPage.Visible = true;
+       
         int NumberOfRow = int.Parse(ds.Tables[1].Rows[0]["Total"].ToString());
         int NumberOfPage = NumberOfRow / PageSize;
         if (NumberOfPage * PageSize < NumberOfRow) NumberOfPage += 1;
@@ -367,7 +342,7 @@ public partial class NeweStore : Page
         {
             if (CurrentPage > 1)
             {
-                strPage += " <a href=\"javascript:GoToPage(" + (1) + "1,)\"> |<< </a>";
+                strPage += " <a href=\"javascript:GoToPage(" + (1) + ",1)\"> |<< </a>";
                 strPage += " <a href=\"javascript:GoToPage(" + (CurrentPage - 1) + ",1)\"> < </a>";
 
             }
@@ -396,8 +371,8 @@ public partial class NeweStore : Page
             if (i == CurrentPage) li.Selected = true;
             ddlPage.Items.Add(li);
         }
-        if (ddlPage.Items.Count > 0)
-            ddlPage.SelectedIndex = 0;
+        //if (ddlPage.Items.Count > 0)
+        //    ddlPage.SelectedIndex = 0;
     }
 
     ////private void LoadTab()
@@ -840,7 +815,7 @@ public partial class NeweStore : Page
                 LoadTabContent03(1);
                 break;
         }
-        string strScript = "<script language=javascript>alert('b'); var TabbedPanels1 = new Spry.Widget.TabbedPanels(\"TabbedPanels1\");</script>";
+        //string strScript = "<script language=javascript>alert('b'); var TabbedPanels1 = new Spry.Widget.TabbedPanels(\"TabbedPanels1\");</script>";
         //this.RegisterStartupScript("renewtab", strScript);
     }
 }

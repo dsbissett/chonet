@@ -17,6 +17,8 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
     private string name = "";
     public int NhomSanPhamID;
     private string up = "";
+    string LoaiGianHangID;
+    const string LoaiGianHang = "26";
     protected void Page_Load(object sender, EventArgs e)
     {
         //RedirectToCuahangbyUrlName();
@@ -113,7 +115,7 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
                 + " - " +  dr["DienThoaiDiDong"].ToString();
             ChuCuaHangID = int.Parse(dr["NguoiDungID"].ToString());
             ViewState["chucuahangid"] = ChuCuaHangID;
-
+            LoaiGianHangID = dr["LoaiCuaHangID"].ToString();
             //switch (dr["LoaiCuaHangID"].ToString())
             //{
             //    //case "1":
@@ -154,7 +156,14 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
             //mni.ToolTip = dr["TenNhomSanPham"].ToString();
 
             LoadUltraMenuItems(mni, int.Parse(dr["NhomSanPhamID"].ToString()));
-            mni.TargetUrl = "estore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+            if (LoaiGianHangID == LoaiGianHang)
+            {
+                mni.TargetUrl = "Newestore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+            }
+            else
+            {
+                mni.TargetUrl = "estore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+            }
             mi.Items.Add(mni);
         }
     }
@@ -186,7 +195,14 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
                 //mni.ToolTip = dr["TenNhomSanPham"].ToString();
 
                 LoadUltraMenuItems(mni, int.Parse(dr["NhomSanPhamID"].ToString()));
-                mni.TargetUrl = "estore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+                if (LoaiGianHangID == LoaiGianHang)
+                {
+                    mni.TargetUrl = "newestore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+                }
+                else
+                {
+                    mni.TargetUrl = "estore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+                }
                 uwmMenu.Items.Add(mni);                
             }
         }
@@ -519,5 +535,30 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
         }
         content += "</ul>";
         spnTinTuc.InnerHtml = content ;
+    }
+   
+    protected void btnTimKiem_Click(object sender, ImageClickEventArgs e)
+    {
+        string keysearch = " 1 = 1 ";
+        if (txtTenSanPham.Value.Trim() != "")
+        {
+            keysearch+=" AND TenSanPham LIKE '%" + txtTenSanPham.Value + "%' ";
+        }
+        double Num;
+        if (double.TryParse(txtFrom.Value, out Num))
+        {
+            keysearch += " AND GiaSanPham >= " + Num;
+        }
+        if (double.TryParse(txtTo.Value, out Num))
+        {
+            keysearch += " AND GiaSanPham <= " + Num;
+        }
+
+        Response.Redirect("StoreProductList.aspx?sid=" + CuaHangID + "&search=" + keysearch);
+    }
+
+    private void LoadGioHang()
+    {
+
     }
 }
