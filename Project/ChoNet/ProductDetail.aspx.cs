@@ -7,10 +7,11 @@ using CHONET.Common;
 using CHONET.DataAccessLayer;
 using CHONET.DataAccessLayer.Web;
 using System.IO;
-using Image=System.Drawing.Image;
+using Image = System.Drawing.Image;
 
 public partial class ProductDetail : Page
 {
+    const string LoaiGianHang = "26";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -68,7 +69,7 @@ public partial class ProductDetail : Page
     {
         if (Session["tblSanPhamDaXem"] != null)
         {
-            DataTable tblSanPhamDaXem = (DataTable) Session["tblSanPhamDaXem"];
+            DataTable tblSanPhamDaXem = (DataTable)Session["tblSanPhamDaXem"];
             Boolean blexist = false;
             foreach (DataRow dr in tblSanPhamDaXem.Rows)
             {
@@ -114,7 +115,7 @@ public partial class ProductDetail : Page
         DataSet ds = sp.SelectByNguoiDungID(Common.NguoiDungID());
         ds.Tables[0].DefaultView.RowFilter = " (SanPhamMauID <> 0 or TenSanPham='" + ViewState["TenGocSanPham"] +
                                              "') AND SanPhamMauID = " + ViewState["SanPhamMauID"];
-                                             //+ " AND SanphamID <> " + ViewState["SanPhamID"];
+        //+ " AND SanphamID <> " + ViewState["SanPhamID"];
 
         if (ds.Tables[0].DefaultView.Count > 0)
         {
@@ -135,108 +136,108 @@ public partial class ProductDetail : Page
 
     //private void LoadQuangCao41()
     //{
-        //QuangCao qcao = new QuangCao();
-        //DataSet ds = qcao.SelectQuangCaoAtViTriQuangCaoByNguoiDungID(int.Parse(ViewState["NguoiDungID"].ToString()), 41);
-        //HtmlGenericControl spnQuangCao41 = (HtmlGenericControl)this.Master.FindControl("spnQuangCao01");
-        //if (ds.Tables[0].Rows.Count >= 1)
-        //{
-        //    if (ds.Tables[0].Rows[0]["LoaiAnh"].ToString() == "FLASH")
-        //    {
-        //        spnQuangCao41.InnerHtml = "<object classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\""
-        //            + "codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\""
-        //            + "width=\"210\" height=\"75\" title=\"Quang Cao\">"
-        //            + "<param name=\"movie\" value=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" />"
-        //            + "<param name=\"quality\" value=\"high\" />"
-        //            + "<embed src=\"." + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" quality=\"high\""
-        //            + "pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\""
-        //            + "width=\"210\" height=\"75\"></embed></object>";
-        //    }
-        //    else
-        //    {
-        //        spnQuangCao41.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[0]["DuongDan"].ToString()
-        //            + "\" target=\"_blank\"><img alt=\"" + ds.Tables[0].Rows[0]["NoiDungQuangCao"].ToString()
-        //            + "\" src=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" height=\"75px\" width=\"210px\" style=\"Border:none\"/></a>";
-        //    }
+    //QuangCao qcao = new QuangCao();
+    //DataSet ds = qcao.SelectQuangCaoAtViTriQuangCaoByNguoiDungID(int.Parse(ViewState["NguoiDungID"].ToString()), 41);
+    //HtmlGenericControl spnQuangCao41 = (HtmlGenericControl)this.Master.FindControl("spnQuangCao01");
+    //if (ds.Tables[0].Rows.Count >= 1)
+    //{
+    //    if (ds.Tables[0].Rows[0]["LoaiAnh"].ToString() == "FLASH")
+    //    {
+    //        spnQuangCao41.InnerHtml = "<object classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\""
+    //            + "codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\""
+    //            + "width=\"210\" height=\"75\" title=\"Quang Cao\">"
+    //            + "<param name=\"movie\" value=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" />"
+    //            + "<param name=\"quality\" value=\"high\" />"
+    //            + "<embed src=\"." + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" quality=\"high\""
+    //            + "pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\""
+    //            + "width=\"210\" height=\"75\"></embed></object>";
+    //    }
+    //    else
+    //    {
+    //        spnQuangCao41.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[0]["DuongDan"].ToString()
+    //            + "\" target=\"_blank\"><img alt=\"" + ds.Tables[0].Rows[0]["NoiDungQuangCao"].ToString()
+    //            + "\" src=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" height=\"75px\" width=\"210px\" style=\"Border:none\"/></a>";
+    //    }
 
-        //}
-        //else
-        //{
-        //    spnQuangCao41.InnerHtml = "<img alt=\"Moi quang cao\" src=\"./images/advblank.jpg\" height=\"75px\" width=\"210px\" style=\"border:none\"/>";
-        //}
+    //}
+    //else
+    //{
+    //    spnQuangCao41.InnerHtml = "<img alt=\"Moi quang cao\" src=\"./images/advblank.jpg\" height=\"75px\" width=\"210px\" style=\"border:none\"/>";
+    //}
     //}
 
     //private void LoadQuangCao42()
     //{
-        //QuangCao qcao = new QuangCao();
-        //DataSet ds = qcao.SelectQuangCaoAtViTriQuangCaoByNguoiDungID(int.Parse(ViewState["NguoiDungID"].ToString()), 42);
-        //int n = ds.Tables[0].Rows.Count;
-        //spnQuangCao42a.InnerHtml = "<img alt=\"Moi quang cao\" src=\"./images/advblank.jpg\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/>";
-        //spnQuangCao42b.InnerHtml = "<img alt=\"Moi quang cao\" src=\"./images/advblank.jpg\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/>";
-        //spnQuangCao42c.InnerHtml = "<img alt=\"Moi quang cao\" src=\"./images/advblank.jpg\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/>";
-        //if (n >= 1)
-        //{
-        //    if (ds.Tables[0].Rows[0]["LoaiAnh"].ToString() == "FLASH")
-        //    {
-        //        spnQuangCao42a.InnerHtml = "<object style=\"border:solid 1px #C9C3C3\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\""
-        //            + "codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\""
-        //            + "width=\"312\" height=\"122\" title=\"Quang Cao\">"
-        //            + "<param name=\"movie\" value=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" />"
-        //            + "<param name=\"quality\" value=\"high\" />"
-        //            + "<embed src=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" quality=\"high\""
-        //            + "pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\""
-        //            + "width=\"312\" height=\"122\"></embed></object>";
-        //    }
-        //    else
-        //    {
-        //        spnQuangCao42a.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[0]["DuongDan"].ToString()
-        //          + "\" target=\"_blank\"><img alt=\"" + ds.Tables[0].Rows[0]["NoiDungQuangCao"].ToString()
-        //          + "\" src=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/></a>";
-        //    }
-        //    if (n >= 2)
-        //    {
-        //        if (ds.Tables[0].Rows[1]["LoaiAnh"].ToString() == "FLASH")
-        //        {
-        //            spnQuangCao42b.InnerHtml = "<object style=\"border:solid 1px #C9C3C3\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\""
-        //                + "codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\""
-        //                + "width=\"312\" height=\"122\" title=\"Quang Cao\">"
-        //                + "<param name=\"movie\" value=\"" + ds.Tables[0].Rows[1]["DuongDanAnh"].ToString() + "\" />"
-        //                + "<param name=\"quality\" value=\"high\" />"
-        //                + "<embed src=\"" + ds.Tables[0].Rows[1]["DuongDanAnh"].ToString() + "\" quality=\"high\""
-        //                + "pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\""
-        //                + "width=\"312\" height=\"122\"></embed></object>";
-        //        }
-        //        else
-        //        {
-        //            spnQuangCao42b.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[1]["DuongDan"].ToString()
-        //              + "\" target=\"_blank\"><img alt=\"" + ds.Tables[0].Rows[1]["NoiDungQuangCao"].ToString()
-        //              + "\" src=\"" + ds.Tables[0].Rows[1]["DuongDanAnh"].ToString() + "\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/></a>";
-        //        }
-        //        if (n >= 3)
-        //        {
-        //            if (ds.Tables[0].Rows[2]["LoaiAnh"].ToString() == "FLASH")
-        //            {
-        //                spnQuangCao42c.InnerHtml = "<object style=\"border:solid 1px #C9C3C3\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\""
-        //                    + "codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\""
-        //                    + "width=\"312\" height=\"122\" title=\"Quang Cao\">"
-        //                    + "<param name=\"movie\" value=\"" + ds.Tables[0].Rows[2]["DuongDanAnh"].ToString() + "\" />"
-        //                    + "<param name=\"quality\" value=\"high\" />"
-        //                    + "<embed src=\"" + ds.Tables[0].Rows[2]["DuongDanAnh"].ToString() + "\" quality=\"high\""
-        //                    + "pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\""
-        //                    + "width=\"312\" height=\"122\"></embed></object>";
-        //            }
-        //            else
-        //            {
-        //                spnQuangCao42c.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[2]["DuongDan"].ToString()
-        //                  + "\" target=\"_blank\"><img alt=\"" + ds.Tables[0].Rows[2]["NoiDungQuangCao"].ToString()
-        //                  + "\" src=\"" + ds.Tables[0].Rows[2]["DuongDanAnh"].ToString() + "\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/></a>";
-        //            }
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    tblQuangCao42.Visible = false;
-        //}
+    //QuangCao qcao = new QuangCao();
+    //DataSet ds = qcao.SelectQuangCaoAtViTriQuangCaoByNguoiDungID(int.Parse(ViewState["NguoiDungID"].ToString()), 42);
+    //int n = ds.Tables[0].Rows.Count;
+    //spnQuangCao42a.InnerHtml = "<img alt=\"Moi quang cao\" src=\"./images/advblank.jpg\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/>";
+    //spnQuangCao42b.InnerHtml = "<img alt=\"Moi quang cao\" src=\"./images/advblank.jpg\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/>";
+    //spnQuangCao42c.InnerHtml = "<img alt=\"Moi quang cao\" src=\"./images/advblank.jpg\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/>";
+    //if (n >= 1)
+    //{
+    //    if (ds.Tables[0].Rows[0]["LoaiAnh"].ToString() == "FLASH")
+    //    {
+    //        spnQuangCao42a.InnerHtml = "<object style=\"border:solid 1px #C9C3C3\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\""
+    //            + "codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\""
+    //            + "width=\"312\" height=\"122\" title=\"Quang Cao\">"
+    //            + "<param name=\"movie\" value=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" />"
+    //            + "<param name=\"quality\" value=\"high\" />"
+    //            + "<embed src=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" quality=\"high\""
+    //            + "pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\""
+    //            + "width=\"312\" height=\"122\"></embed></object>";
+    //    }
+    //    else
+    //    {
+    //        spnQuangCao42a.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[0]["DuongDan"].ToString()
+    //          + "\" target=\"_blank\"><img alt=\"" + ds.Tables[0].Rows[0]["NoiDungQuangCao"].ToString()
+    //          + "\" src=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/></a>";
+    //    }
+    //    if (n >= 2)
+    //    {
+    //        if (ds.Tables[0].Rows[1]["LoaiAnh"].ToString() == "FLASH")
+    //        {
+    //            spnQuangCao42b.InnerHtml = "<object style=\"border:solid 1px #C9C3C3\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\""
+    //                + "codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\""
+    //                + "width=\"312\" height=\"122\" title=\"Quang Cao\">"
+    //                + "<param name=\"movie\" value=\"" + ds.Tables[0].Rows[1]["DuongDanAnh"].ToString() + "\" />"
+    //                + "<param name=\"quality\" value=\"high\" />"
+    //                + "<embed src=\"" + ds.Tables[0].Rows[1]["DuongDanAnh"].ToString() + "\" quality=\"high\""
+    //                + "pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\""
+    //                + "width=\"312\" height=\"122\"></embed></object>";
+    //        }
+    //        else
+    //        {
+    //            spnQuangCao42b.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[1]["DuongDan"].ToString()
+    //              + "\" target=\"_blank\"><img alt=\"" + ds.Tables[0].Rows[1]["NoiDungQuangCao"].ToString()
+    //              + "\" src=\"" + ds.Tables[0].Rows[1]["DuongDanAnh"].ToString() + "\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/></a>";
+    //        }
+    //        if (n >= 3)
+    //        {
+    //            if (ds.Tables[0].Rows[2]["LoaiAnh"].ToString() == "FLASH")
+    //            {
+    //                spnQuangCao42c.InnerHtml = "<object style=\"border:solid 1px #C9C3C3\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\""
+    //                    + "codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\""
+    //                    + "width=\"312\" height=\"122\" title=\"Quang Cao\">"
+    //                    + "<param name=\"movie\" value=\"" + ds.Tables[0].Rows[2]["DuongDanAnh"].ToString() + "\" />"
+    //                    + "<param name=\"quality\" value=\"high\" />"
+    //                    + "<embed src=\"" + ds.Tables[0].Rows[2]["DuongDanAnh"].ToString() + "\" quality=\"high\""
+    //                    + "pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\""
+    //                    + "width=\"312\" height=\"122\"></embed></object>";
+    //            }
+    //            else
+    //            {
+    //                spnQuangCao42c.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[2]["DuongDan"].ToString()
+    //                  + "\" target=\"_blank\"><img alt=\"" + ds.Tables[0].Rows[2]["NoiDungQuangCao"].ToString()
+    //                  + "\" src=\"" + ds.Tables[0].Rows[2]["DuongDanAnh"].ToString() + "\" height=\"122px\" width=\"312px\" style=\"border:solid 1px #C9C3C3\"/></a>";
+    //            }
+    //        }
+    //    }
+    //}
+    //else
+    //{
+    //    tblQuangCao42.Visible = false;
+    //}
     //}
 
     private void ShowLink(int NhomSanPhamId)
@@ -414,6 +415,7 @@ public partial class ProductDetail : Page
                 std5.Style.Add("border-bottom", "1pt solid");
 
                 std1.InnerHtml = (index + 1).ToString();
+
                 std2.InnerHtml = "<a href=\"./estore.aspx?sid=" + dr["CuaHangID"] + "\">" + dr["TenCuaHang"] + "</a>" +
                                  "<br><a href=\"./shoppingcart.aspx?spid=" + dr["SanPhamID"] +
                                  "\"><img border=\"0\" src=\"./images/muahang.jpg\"></a>" +
@@ -441,7 +443,7 @@ public partial class ProductDetail : Page
 
                 //std4.InnerHtml = dr["diem"].ToString();
 
-                int sodiem = (int) decimal.Parse("0" + dr["diem"]);
+                int sodiem = (int)decimal.Parse("0" + dr["diem"]);
                 for (int i = 0; i < sodiem; i++)
                 {
                     std4.InnerHtml += "<img align=\"absmiddle\" border=\"0\" src=\"./images/star1.gif\">";
@@ -777,6 +779,7 @@ public partial class ProductDetail : Page
 
                 std1.InnerHtml = (index + 1).ToString();
                 std2.InnerHtml = "<img src=\"http://opi.yahoo.com/online?u=" + dr["YM"] + "&t=1\" border=\"0\">";
+
                 std3.InnerHtml = "<a href=\"./estore.aspx?sid=" + dr["CuaHangID"] + "\">" + dr["TenCuaHang"] +
                                  "(" + dr["TenKhuVuc"] + ")</a>";
 
@@ -802,107 +805,107 @@ public partial class ProductDetail : Page
         }
     }
 
-/*
-    private void SelectSanPhamData()
-    {
-        int intSanPhamID = int.Parse(ViewState["SanPhamID"].ToString());
-        SanPham sp = new SanPham();
-        DataSet ds = sp.SelectByID(intSanPhamID);
-        string strThongTinSP = ds.Tables[0].Rows[0]["ThongTinSanPham"].ToString();
-
-        NhanXetSanPham nx = new NhanXetSanPham();
-        DataTable dtNhanXet = nx.SelectBySanPhamID(intSanPhamID).Tables[0];
-
-        HoiDapSanPham hd = new HoiDapSanPham();
-        DataTable dtHoiDap = hd.SelectBySanPhamID(intSanPhamID).Tables[0];
-
-        TableRow tr = new TableRow();
-        TableCell td = new TableCell();
-
-        if (hidTabId.Value.Trim().Length > 0)
+    /*
+        private void SelectSanPhamData()
         {
-            string content = "";
-            switch (hidTabId.Value)
+            int intSanPhamID = int.Parse(ViewState["SanPhamID"].ToString());
+            SanPham sp = new SanPham();
+            DataSet ds = sp.SelectByID(intSanPhamID);
+            string strThongTinSP = ds.Tables[0].Rows[0]["ThongTinSanPham"].ToString();
+
+            NhanXetSanPham nx = new NhanXetSanPham();
+            DataTable dtNhanXet = nx.SelectBySanPhamID(intSanPhamID).Tables[0];
+
+            HoiDapSanPham hd = new HoiDapSanPham();
+            DataTable dtHoiDap = hd.SelectBySanPhamID(intSanPhamID).Tables[0];
+
+            TableRow tr = new TableRow();
+            TableCell td = new TableCell();
+
+            if (hidTabId.Value.Trim().Length > 0)
             {
-                case "1":
-                    content += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
-                    content +=
-                        "<tr><td width=\"12\"><img src=\"./images/left_tab.jpg\" width=\"12\" height=\"27\" /></td>";
-                    content += "<td style=\"background-color:#AFAFAF;\" class=\"tab_active\">Thông tin sản phẩm</td>";
-                    content +=
-                        "<td width=\"12\"><img src=\"./images/right_tab.jpg\" width=\"12\" height=\"27\" /></td></tr></table>";
-                    td.VerticalAlign = VerticalAlign.Bottom;
-                    td.Text = content;
-                    tr.Cells.Add(td);
-                    //lblTab.Text = "Thông tin sản phẩm";
+                string content = "";
+                switch (hidTabId.Value)
+                {
+                    case "1":
+                        content += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
+                        content +=
+                            "<tr><td width=\"12\"><img src=\"./images/left_tab.jpg\" width=\"12\" height=\"27\" /></td>";
+                        content += "<td style=\"background-color:#AFAFAF;\" class=\"tab_active\">Thông tin sản phẩm</td>";
+                        content +=
+                            "<td width=\"12\"><img src=\"./images/right_tab.jpg\" width=\"12\" height=\"27\" /></td></tr></table>";
+                        td.VerticalAlign = VerticalAlign.Bottom;
+                        td.Text = content;
+                        tr.Cells.Add(td);
+                        //lblTab.Text = "Thông tin sản phẩm";
 
-                    TableRow str = new TableRow();
-                    TableCell std = new TableCell();
-                    string scontent = "";
-                    scontent = "";
-                    scontent +=
-                        "<table class=\"product\" width=\"100%\" border=\"0\" cellspacing=\"4\" cellpadding=\"0\">";
-                    scontent += "<tr><td align=\"center\">" + strThongTinSP;
-                    scontent += "</td></tr></table>";
+                        TableRow str = new TableRow();
+                        TableCell std = new TableCell();
+                        string scontent = "";
+                        scontent = "";
+                        scontent +=
+                            "<table class=\"product\" width=\"100%\" border=\"0\" cellspacing=\"4\" cellpadding=\"0\">";
+                        scontent += "<tr><td align=\"center\">" + strThongTinSP;
+                        scontent += "</td></tr></table>";
 
-                    std.Text = scontent;
-                    std.Width = Unit.Percentage(16);
-                    str.Cells.Add(std);
+                        std.Text = scontent;
+                        std.Width = Unit.Percentage(16);
+                        str.Cells.Add(std);
 
-                    tblContent.Rows.Add(str);
+                        tblContent.Rows.Add(str);
 
-                    break;
-                case "2":
-                    content = "";
-                    content += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
-                    content +=
-                        "<tr><td width=\"12\"><img src=\"./images/left_tab.jpg\" width=\"12\" height=\"27\" /></td>";
-                    content += "<td style=\"background-color:#AFAFAF;\" class=\"tab_active\">Các cửa hàng bán</td>";
-                    content +=
-                        "<td width=\"12\"><img src=\"./images/right_tab.jpg\" width=\"12\" height=\"27\" /></td></tr></table>";
-                    td.VerticalAlign = VerticalAlign.Bottom;
-                    td.Text = content;
-                    tr.Cells.Add(td);
-                    //lblTab.Text = "Hỏi Đáp";
+                        break;
+                    case "2":
+                        content = "";
+                        content += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
+                        content +=
+                            "<tr><td width=\"12\"><img src=\"./images/left_tab.jpg\" width=\"12\" height=\"27\" /></td>";
+                        content += "<td style=\"background-color:#AFAFAF;\" class=\"tab_active\">Các cửa hàng bán</td>";
+                        content +=
+                            "<td width=\"12\"><img src=\"./images/right_tab.jpg\" width=\"12\" height=\"27\" /></td></tr></table>";
+                        td.VerticalAlign = VerticalAlign.Bottom;
+                        td.Text = content;
+                        tr.Cells.Add(td);
+                        //lblTab.Text = "Hỏi Đáp";
 
-                    break;
-                case "3":
-                    content = "";
-                    content += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
-                    content +=
-                        "<tr><td width=\"12\"><img src=\"./images/left_tab.jpg\" width=\"12\" height=\"27\" /></td>";
-                    content += "<td style=\"background-color:#AFAFAF;\" class=\"tab_active\">Hỏi đáp, phản hồi</td>";
-                    content +=
-                        "<td width=\"12\"><img src=\"./images/right_tab.jpg\" width=\"12\" height=\"27\" /></td></tr></table>";
-                    td.VerticalAlign = VerticalAlign.Bottom;
-                    td.Text = content;
-                    tr.Cells.Add(td);
-                    //lblTab.Text = "Nhận xét sản phẩm";                   
-                    break;
-                case "4":
-                    content = "";
-                    content += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
-                    content +=
-                        "<tr><td width=\"12\"><img src=\"./images/left_tab.jpg\" width=\"12\" height=\"27\" /></td>";
-                    content += "<td style=\"background-color:#AFAFAF;\" class=\"tab_active\">Trả giá</td>";
-                    content +=
-                        "<td width=\"12\"><img src=\"./images/right_tab.jpg\" width=\"12\" height=\"27\" /></td></tr></table>";
-                    td.VerticalAlign = VerticalAlign.Bottom;
-                    td.Text = content;
-                    tr.Cells.Add(td);
-                    //lblTab.Text = "Nhận xét sản phẩm";                   
-                    break;
+                        break;
+                    case "3":
+                        content = "";
+                        content += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
+                        content +=
+                            "<tr><td width=\"12\"><img src=\"./images/left_tab.jpg\" width=\"12\" height=\"27\" /></td>";
+                        content += "<td style=\"background-color:#AFAFAF;\" class=\"tab_active\">Hỏi đáp, phản hồi</td>";
+                        content +=
+                            "<td width=\"12\"><img src=\"./images/right_tab.jpg\" width=\"12\" height=\"27\" /></td></tr></table>";
+                        td.VerticalAlign = VerticalAlign.Bottom;
+                        td.Text = content;
+                        tr.Cells.Add(td);
+                        //lblTab.Text = "Nhận xét sản phẩm";                   
+                        break;
+                    case "4":
+                        content = "";
+                        content += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
+                        content +=
+                            "<tr><td width=\"12\"><img src=\"./images/left_tab.jpg\" width=\"12\" height=\"27\" /></td>";
+                        content += "<td style=\"background-color:#AFAFAF;\" class=\"tab_active\">Trả giá</td>";
+                        content +=
+                            "<td width=\"12\"><img src=\"./images/right_tab.jpg\" width=\"12\" height=\"27\" /></td></tr></table>";
+                        td.VerticalAlign = VerticalAlign.Bottom;
+                        td.Text = content;
+                        tr.Cells.Add(td);
+                        //lblTab.Text = "Nhận xét sản phẩm";                   
+                        break;
+                }
             }
-        }
-        else
-        {
-            td.Text = "Selected Tab parameter is misisng!";
-            tr.Cells.Add(td);
-        }
+            else
+            {
+                td.Text = "Selected Tab parameter is misisng!";
+                tr.Cells.Add(td);
+            }
 
-        tblTab.Rows.Add(tr);
-    }
-*/
+            tblTab.Rows.Add(tr);
+        }
+    */
 
     private void ShowNhaCungCap(int id)
     {
@@ -917,7 +920,7 @@ public partial class ProductDetail : Page
             {
                 DataRow dr = ds.Tables[0].Rows[0];
                 lblNguoiBan.Text = dr["HoVaTen"].ToString();
-
+                //LoaiCuaHangID = dr["LoaiCuaHangID"];
                 lblNhaCungCap.Text = dr["TenCuaHang"].ToString();
                 lblDienThoaiCoDinh.Text = dr["DienThoaiCoDinh"].ToString();
                 lblDienThoaiDiDong.Text = dr["DienThoaiDiDong"].ToString();
@@ -934,11 +937,18 @@ public partial class ProductDetail : Page
                     img.Border = 0;
                     pnlDamBao.Controls.Add(img);
                 }
-
-
                 //CuaHang cuahang = new CuaHang();
                 //DataSet dsCuaHang = cuahang.SelectByNguoiDungID(id);
                 ViewState["CuaHangID"] = dr["CuaHangID"].ToString();
+                if (dr["LoaiCuaHangID"].ToString() == LoaiGianHang)
+                {
+                    hrefLinkGianHang.HRef = "NewEstore.aspx?sid=" + ViewState["CuaHangID"].ToString();
+                }
+                else
+                {
+                    hrefLinkGianHang.HRef = "Estore.aspx?sid=" + ViewState["CuaHangID"].ToString();
+                }
+               
             }
         }
         catch (Exception ex)
@@ -1125,7 +1135,7 @@ public partial class ProductDetail : Page
                     if (hidTabId.Value == "2")
                         LoadTabContent02();
                     //warpSuaGia.LinkedRefreshControlID = "pnlProductDetail";
-                    warpSuaGia.LinkedRefreshControlID = "pnlDetail";                    
+                    warpSuaGia.LinkedRefreshControlID = "pnlDetail";
                 }
             }
         }
