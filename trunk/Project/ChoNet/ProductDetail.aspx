@@ -275,7 +275,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td style="padding: 5px;" align="center">
-                                                                    <a href="Estore.aspx?sid=<%=ViewState["CuaHangID"].ToString() %>">
+                                                                    <a runat="server" id="hrefLinkGianHang" href="#">
                                                                         <img src="images/ghetham.jpg" width="162" border="0" height="29"></a></td>
                                                             </tr>
                                                         </table>
