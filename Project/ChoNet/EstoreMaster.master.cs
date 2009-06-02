@@ -144,11 +144,11 @@ public partial class EstoreMaster : MasterPage
                     stsGianHang.Href = "GianHang/" + dr["TenLoaiCuaHang"].ToString() + "/css/style.css";
                     break;
             }
-            if ((dr["LoaiCuaHang"].ToString() == "1") ||
-                (dr["LoaiCuaHang"].ToString() == "2"))
-            {
-                //LoadTinTuc();
-            }
+            //if ((dr["LoaiCuaHang"].ToString() == "1") ||
+            //    (dr["LoaiCuaHang"].ToString() == "2"))
+            //{
+            //    //LoadTinTuc();
+            //}
         }
     }
 
@@ -679,6 +679,7 @@ public partial class EstoreMaster : MasterPage
         }
         tblchaomung.Visible = false;
         tbldangnhap.Visible = true;
+        lblErr.Text = "";
     }
 
     protected void btnDangNhap_Click(object sender, EventArgs e)
@@ -699,7 +700,7 @@ public partial class EstoreMaster : MasterPage
                     Session.Add("UserFullName", ds.Tables[0].Rows[0]["HoVaTen"]);
                     Session.Add("NguoiDungEmail", ds.Tables[0].Rows[0]["Email"]);
 
-                    //FormsAuthentication.RedirectFromLoginPage(txtTaiKhoan.Text.Trim(), false);
+                    FormsAuthentication.Authenticate(txtTaiKhoan.Text.Trim(), txtMatKhau.Text);
                     tblchaomung.Visible = true;
                     tbldangnhap.Visible = false;
                 }
