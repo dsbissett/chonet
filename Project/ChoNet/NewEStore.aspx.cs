@@ -3,6 +3,7 @@ using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CHONET.DataAccessLayer.Web;
+using CHONET.Common;
 
 public partial class NeweStore : Page
 {
@@ -41,6 +42,7 @@ public partial class NeweStore : Page
                     LoadQuangCao(54);
                     LoadTabContent02(1);
                     LoadTabContent03(1);
+                    LoadSanPham(23);
                     if (Request.QueryString["cid"] != null)
                     {
                         try
@@ -375,6 +377,29 @@ public partial class NeweStore : Page
         //    ddlPage.SelectedIndex = 0;
     }
 
+    private void LoadSanPham(int ViTriID)
+    {
+        SanPham sp = new SanPham();
+        DataSet ds = sp.SelectAllSanPhamAtViTriSanPhamByNguoiDungID(23, Common.NguoiDungID());
+        int n = ds.Tables[0].Rows.Count > 4 ? 4 : ds.Tables[0].Rows.Count;
+        string content = "";
+        for (int i = 0; i < n; i++)
+        {                       
+            string tensanpham = ds.Tables[0].Rows[i]["TenSanPham"] +
+                                " " + ds.Tables[0].Rows[i]["TenSanPhamPhu"];
+            //if (tensanpham.Length > 20) tensanpham = tensanpham.Substring(0, 20) + "...";
+            content += "<div class=\"w110 fl mr-01 pad-02 border-dot\">"
+                            + "<a href=\"productdetail.aspx?id=" + ds.Tables[0].Rows[i]["SanPhamID"] 
+                            + "\"><img src=\"images/demo01.jpg\" width=\"113\" height=\"110\" alt=\""
+                            + tensanpham + "\" /></a>"
+							+ "<span class=\"cl-c60 t-c fl pad-b10\"><b>"
+                            + tensanpham +"</b></span><br/>"
+                            + "<span class=\"cl-f00 t-c tf-up fs-14 fl\"><b>" 
+                            + String.Format("{0:0,0}", ds.Tables[0].Rows[i]["GiaSanPham"]).Replace(",", ".") 
+                            + "VNĐ</b> </span></div>";                                  
+        }
+        spnSanPhamHot.InnerHtml = content;
+    }
     ////private void LoadTab()
     ////{
     ////    tblTab.Rows.Clear();
