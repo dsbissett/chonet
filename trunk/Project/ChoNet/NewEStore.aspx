@@ -15,6 +15,11 @@
         <div>
             <span id="spnQuangCao54" runat="server"></span>
         </div>
+        <div class="list-link">
+        <ul>
+					<li><a href="#">Trang chủ</a>&nbsp;&raquo;</li>					
+					<li><a href="#"><b style="color:#c60">Product-detail</b></a></li>
+				</ul></div>
         <div class="box-product">
             <div class="w110 fl mr-01 pad-02 border-dot">
                 <a href="#">
@@ -56,7 +61,7 @@
                                     <ul class="next">
                                         <asp:Label ID="lblPage" runat="server"></asp:Label>
                                         <li>
-                                            <asp:DropDownList runat="server" ID="ddlPage" OnSelectedIndexChanged="ddlPage_SelectedIndexChanged">
+                                            <asp:DropDownList runat="server" ID="ddlPage" OnSelectedIndexChanged="ddlPage_SelectedIndexChanged" AutoPostBack="True">
                                             </asp:DropDownList></li>
                                     </ul>
                                 </div>
@@ -64,6 +69,7 @@
                                 </div>
                             </ContentTemplate>
                         </asp:UpdatePanel>
+                        </div>
                 </ContentTemplate>
             </cc1:TabPanel>
             <cc1:TabPanel ID="TabPanel2" runat="server" HeaderText="TabPanel2">
@@ -87,10 +93,9 @@
                 </ContentTemplate>
             </cc1:TabPanel>            
         </cc1:TabContainer>
-                <input id="hidPage" runat="server" type="hidden" />
+        <input id="hidPage" runat="server" type="hidden" />
         <input id="hidTab" runat="server" type="hidden" />
-    </div>
-    
+        
         <script type="text/javascript">
         <!--
         var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
@@ -104,5 +109,6 @@
             }
         //-->
         </script>
+    </div>    
 
 </asp:Content>

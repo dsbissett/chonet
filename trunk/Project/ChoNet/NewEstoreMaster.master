@@ -7,15 +7,17 @@
 <head runat="server">
     <title>Gian Hàng</title>
     <link rel="stylesheet" type="text/css" href="./GianHang/NewStore/common.css" media="screen, projection" />
+
     <script src="./GianHang/NewStore/SpryTabbedPanels.js" type="text/javascript"></script>
+
     <script src="Scripts/dialog.js" type="text/javascript"></script>
+
     <link href="./GianHang/NewStore/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    
     <form id="form1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
         <div class="wrapper clearfix">
             <div id="header">
                 <div>
@@ -27,8 +29,7 @@
                         <%=System.DateTime.Now %>
                     </div>
                     <div id="marque">
-                        <marquee behavior="scroll" direction="left"><B>Chào mừng quý 
-khách</B></marquee>
+                        <marquee behavior="scroll" direction="left"><B>Chào mừng quý khách</B></marquee>
                     </div>
                 </div>
                 <div class="t-c">
@@ -55,7 +56,7 @@ khách</B></marquee>
                             <img src="./GianHang/NewStore/images/bt_newselement.jpg" width="179" height="24"
                                 alt="" /></h3>
                         <ul class="content-news w177 cl-c60">
-                            <span id="spnDanhMucTinTuc" runat="server" ></span>
+                            <span id="spnDanhMucTinTuc" runat="server"></span>
                         </ul>
                     </div>
                     <div class="news">
@@ -99,16 +100,16 @@ khách</B></marquee>
                 </div>
                 <!--Content------------------------------------------------------------------------------------------------------->
                 <div class="content">
-                    <div>
+                    
                         <asp:ContentPlaceHolder ID="cphEstore" runat="server">
                         </asp:ContentPlaceHolder>
-                    </div>
+                   
 
-                    <script type="text/javascript">
-<!--
-var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
-//-->
-                    </script>
+                <script type="text/javascript">
+                    <!--
+                    var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+                    //-->
+                </script>
 
                 </div>
                 <!--endCOntent-->
@@ -120,7 +121,7 @@ var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
                         <h3>
                             <img src="./GianHang/NewStore/images/bt_news.jpg" width="200" height="24" alt="" /></h3>
                         <div class="content-news w198 cl-c60 pad-b10">
-                            <span id="spnTinTuc" runat="server" ></span>
+                            <span id="spnTinTuc" runat="server"></span>
                         </div>
                     </div>
                     <div class="news">
@@ -128,13 +129,14 @@ var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
                             <img src="./GianHang/NewStore/images/bt_searchpr.jpg" width="200" height="24" alt="" /></h3>
                         <div class="content-news w198 cl-c60 pad-b10 clearfix">
                             <p>
-                                <input type="text" value="" class="w163 mr-l15 mr-t8" /></p>
+                                <input type="text" value="" class="w163 mr-l15 mr-t8" id="txtTenSanPham" runat="server" /></p>
                             <span class="mr-l15 fl mr-t8"><font color="#000000">Chon gia: VND</font></span>
                             <p class="fl mr-t8">
-                                <input type="text" value="" class="w68 mr-l15" />&nbsp;<input type="text" value=""
-                                    class="w68 mr-l15" /></p>
-                            <p class="fl mr-t8 mr-l15">
-                                <img src="./GianHang/NewStore/images/bt_timkiem.jpg" width="69" height="22" alt="" /><img
+                                <input type="text" value="" class="w68 mr-l15" id="txtFrom" runat="server" />&nbsp;<input type="text" value=""
+                                    class="w68 mr-l15" id="txtTo" runat="server" /></p>
+                            <p class="fl mr-t8 mr-l15"><asp:ImageButton ID="btnTimKiem" runat="server" ImageUrl="./GianHang/NewStore/images/bt_timkiem.jpg"
+                                                    OnClick="btnTimKiem_Click" />
+                                <img
                                     src="./GianHang/NewStore/images/bt_huybo.jpg" width="60" height="22" alt="" class="mr-l5" /></p>
                         </div>
                     </div>
@@ -144,44 +146,46 @@ var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
                         <div class="content-news w198 cl-c60 pad-b10 clearfix">
                             <asp:UpdatePanel ID="pnlDangNhap" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
-                                <div id="divDangNhap" runat="server" style="width:100%">
-                                    <p>
-                                        <input type="text" class="w163 mr-l15 mr-t8" id="txtTaiKhoan" runat="server" style="width: 139px" /><asp:RequiredFieldValidator ID="rfvTaiKhoan" runat="server" ControlToValidate="txtTaiKhoan"
-                                            ErrorMessage="*" SetFocusOnError="True" ValidationGroup="Login"></asp:RequiredFieldValidator>&nbsp;</p>
-                                    <p>
-                                        <input type="text" class="w163 mr-l15 mr-t8" id="txtMatKhau" runat="server" style="width: 139px" /><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtMatKhau"
-                                            ErrorMessage="*" SetFocusOnError="True" ValidationGroup="Login"></asp:RequiredFieldValidator>&nbsp;</p>
-                                    <p class="fl mr-t8 mr-l15">
-                                        <a href="#"><asp:ImageButton ID="btnDangNhap" runat="server" ImageUrl="./GianHang/NewStore/images/bt_dangnhapsmall.jpg"
-                                            OnClick="btnDangNhap_Click"  /></a><label style="font-size: 12px; text-transform: none;
-                                                color: #f00; text-decoration: underline;cursor:hand" onclick="LostPassword();">Quen mat khau</label>
-                                                <br /><asp:Label ID="lblErr" runat="server" ForeColor="Red" Visible="False"></asp:Label></p>
-                                                <span
-                                                                                                        style="color: #0000ff">
-                                                                                                        </span>
-                                </div>
-                                <table id="tblchaomung" runat="server" border="0" cellpadding="2" cellspacing="0"
-                                visible="false" width="100%">
-                                <tr>
-                                    <td class="linkdacbiet" style="width: 70%; text-align: center">
-                                        <span style="color: #0000ff; text-align: center; text-decoration: underline">Chào mừng
-                                            <%=Session["UserFullName"].ToString() %>
+                                    <div id="divDangNhap" runat="server" style="width: 100%">
+                                        <p>
+                                            <input type="text" class="w163 mr-l15 mr-t8" id="txtTaiKhoan" runat="server" style="width: 139px" /><asp:RequiredFieldValidator
+                                                ID="rfvTaiKhoan" runat="server" ControlToValidate="txtTaiKhoan" ErrorMessage="*"
+                                                SetFocusOnError="True" ValidationGroup="Login"></asp:RequiredFieldValidator>&nbsp;</p>
+                                        <p>
+                                            <input type="text" class="w163 mr-l15 mr-t8" id="txtMatKhau" runat="server" style="width: 139px" /><asp:RequiredFieldValidator
+                                                ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtMatKhau" ErrorMessage="*"
+                                                SetFocusOnError="True" ValidationGroup="Login"></asp:RequiredFieldValidator>&nbsp;</p>
+                                        <p class="fl mr-t8 mr-l15">
+                                            <a href="#">
+                                                <asp:ImageButton ID="btnDangNhap" runat="server" ImageUrl="./GianHang/NewStore/images/bt_dangnhapsmall.jpg"
+                                                    OnClick="btnDangNhap_Click" /></a><label style="font-size: 12px; text-transform: none;
+                                                        color: #f00; text-decoration: underline; cursor: hand" onclick="LostPassword();">Quen
+                                                        mat khau</label>
                                             <br />
-                                        </span>
-                                        <asp:LinkButton ID="lnkSignOut" runat="server" OnClick="lnkSignOut_Click">Thoát</asp:LinkButton>&nbsp;
-                                        <a href="profile.aspx"><span style="color: #0000ff; text-decoration: underline">Thông
-                                            tin cá nhân</span></a>&nbsp; <a id="lnkAdm" runat="server" href="./adm/default.aspx"
-                                                visible="false">Bảng điều khiển</a>
-                                    </td>
-                                </tr>
-                            </table>
+                                            <asp:Label ID="lblErr" runat="server" ForeColor="Red" Visible="False"></asp:Label></p>
+                                        <span style="color: #0000ff"></span>
+                                    </div>
+                                    <table id="tblchaomung" runat="server" border="0" cellpadding="2" cellspacing="0"
+                                        visible="false" width="100%">
+                                        <tr>
+                                            <td class="linkdacbiet" style="width: 70%; text-align: center">
+                                                <span style="color: #0000ff; text-align: center; text-decoration: underline">Chào mừng
+                                                    <%=Session["UserFullName"].ToString() %>
+                                                    <br />
+                                                </span>
+                                                <asp:LinkButton ID="lnkSignOut" runat="server" OnClick="lnkSignOut_Click">Thoát</asp:LinkButton>&nbsp;
+                                                <a href="profile.aspx"><span style="color: #0000ff; text-decoration: underline">Thông
+                                                    tin cá nhân</span></a>&nbsp; <a id="lnkAdm" runat="server" href="./adm/default.aspx"
+                                                        visible="false">Bảng điều khiển</a>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </ContentTemplate>
                                 <Triggers>
                                     <asp:AsyncPostBackTrigger ControlID="btnDangNhap" EventName="Click" />
                                     <asp:AsyncPostBackTrigger ControlID="lnkSignOut" EventName="Click" />
                                 </Triggers>
                             </asp:UpdatePanel>
-                            
                         </div>
                     </div>
                     <div class="news">
@@ -189,20 +193,9 @@ var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
                             <img src="./GianHang/NewStore/images/bt_giohangcuaban.jpg" width="200" height="24"
                                 alt="" /></h3>
                         <div class="content-news w198 pad-b10 clearfix">
-                            <p class="mr-l15 fl mr-t8">
-                                <span class="cl-c60">Ten san pham</span><br />
-                                <span>Gia :14567 vnd</span><br />
-                                <span>Soluong :1</span></p>
-                            <p style="border-top: 1px dotted #ccc; float: left; width: 198px; margin-top: 5px">
-                            </p>
-                            <p class="mr-l15 fl mr-t8">
-                                <span class="cl-c60">Ten san pham</span><br />
-                                <span>Gia :14567 vnd</span><br />
-                                <span>Soluong :1</span></p>
-                            <p style="border-top: 1px solid #ccc; float: left; width: 198px; margin-top: 5px">
-                            </p>
+                            <span runat="server" id="spnCart"></span>
                             <p class="fl mr-t8 mr-l15 pad-b10">
-                                Tong :<font color="#cc6600"><b>1.234.567.000</b></font></p>
+                                Tong :<font color="#cc6600"><b><asp:Label runat="server" ID="lblTong"></asp:Label></b></font></p>
                             <p align="center">
                                 <img src="./GianHang/NewStore/images/bt_suagiohang.jpg" width="126" height="25" alt="" /></p>
                             <p align="center">
@@ -249,6 +242,7 @@ var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
             </div>
         </div>
     </form>
+
     <script type="text/javascript">
     
     function LostPassword()
@@ -257,5 +251,6 @@ var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
         ShowModalDialog('LostPassword.aspx','Quên mật khẩu', 320, 150);        
     }
     </script>
+
 </body>
 </html>
