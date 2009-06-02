@@ -21,31 +21,7 @@
 					<li><a href="#"><b style="color:#c60">Product-detail</b></a></li>
 				</ul></div>
         <div class="box-product">
-            <div class="w110 fl mr-01 pad-02 border-dot">
-                <a href="#">
-                    <img src="images/demo01.jpg" width="113" height="110" alt="" /></a> <span class="cl-c60 t-c fl pad-b10">
-                        <b>Ten san pham khong gioi han do dai hien thi</b></span><br />
-                <span class="cl-f00 t-c tf-up fs-14 fl"><b>1.888.888 vnd</b> </span>
-            </div>
-            <div class="w110 fl mr-01 pad-02 border-dot">
-                <a href="#">
-                    <img src="images/demo01.jpg" width="113" height="110" alt="" /></a> <span class="cl-c60 t-c fl pad-b10">
-                        <b>Ten san pham khong gioi han do dai hien thi </b></span>
-                <br />
-                <span class="cl-f00 t-c tf-up fs-14 fl"><b>1.888.888 vnd</b></span>
-            </div>
-            <div class="w110 fl mr-01 pad-02 border-dot">
-                <a href="#">
-                    <img src="images/demo01.jpg" width="113" height="110" alt="" /></a> <span class="cl-c60 t-c fl pad-b10">
-                        <b>Ten san pham khong gioi han do dai hien thi</b></span><br />
-                <span class="cl-f00 t-c tf-up fs-14 fl"><b>1.888.888 vnd</b></span>
-            </div>
-            <div class="w110 fl mr-01 pad-02">
-                <a href="#">
-                    <img src="images/demo01.jpg" width="113" height="110" alt="" /></a> <span class="cl-c60 t-c fl pad-b10">
-                        <b>Ten san pham khong gioi han do dai hien thi</b></span><br />
-                <span class="cl-f00 t-c tf-up fs-14 fl"><b>1.888.888 vnd</b></span>
-            </div>
+            <span runat="server" id="spnSanPhamHot"></span>
         </div>
         <cc1:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0">
             <cc1:TabPanel ID="TabPanel1" runat="server" HeaderText="TabPanel1">
