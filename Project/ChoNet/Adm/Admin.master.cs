@@ -11,6 +11,10 @@ public partial class Admin_Admin : MasterPage
     {
         if (!Page.IsPostBack)
         {
+            if (Common.LoaiNguoiDungID() == 2)
+            {
+                LoadCuaHang();
+            }
             lbluser.Text = Page.User.Identity.Name;
             if (Common.LoaiNguoiDungID() == 3)
             {
@@ -76,5 +80,22 @@ public partial class Admin_Admin : MasterPage
         FormsAuthentication.SignOut();
         Session.Clear();
         Response.Redirect("default.aspx");
+    }
+    private void LoadCuaHang()
+    {
+        try
+        {
+            CuaHang ch = new CuaHang();
+            DataSet ds = ch.SelectByNguoiDungID(Common.NguoiDungID());
+            if (ds.Tables[0].Rows.Count == 1)
+            {
+                DataRow dr = ds.Tables[0].Rows[0];
+                Session["CuaHangID"] = dr["CuaHangID"].ToString();
+            }
+       }
+        catch (Exception ex)
+        {
+            Response.Write(ex.ToString());
+        }
     }
 }
