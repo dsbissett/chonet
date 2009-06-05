@@ -45,6 +45,11 @@ body {
 	height:75%;		
 	vertical-align:top;
 }
+.Grid
+{
+  table-layout: fixed;
+  width: 70em;
+}
 .adm_footer
 {
 	height:34px;
@@ -116,7 +121,7 @@ body {
 	border:solid 1px #6593CF;
 }
 .smdd
-{	
+{		
 	height:19px;
 	font-size: 11px;
 	border:solid 1px #6593CF;
@@ -139,7 +144,7 @@ body {
 	border:solid 1px #6593CF;
 }
 .dropdown
-{	
+{		
 	height:20px;
 	width:120px;
 	font-size: 11px;
