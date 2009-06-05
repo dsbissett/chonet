@@ -19,6 +19,7 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
     private string up = "";
     string LoaiGianHangID;
     const string LoaiGianHang = "26";
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         //RedirectToCuahangbyUrlName();
@@ -34,6 +35,7 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
             {
                 CuaHangID = int.Parse(Request.QueryString["sid"]);
                 LoadCuaHang();
+                LoadGioHang();
                 if (Request.QueryString["cid"] != null)
                 {
                     try
@@ -93,6 +95,7 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
         //}
         lblOnline.Text = Application["songuoionline"].ToString();
     }
+    
     private void LoadCuaHang()
     {
         if (Session["UserFullName"] != null)
@@ -149,9 +152,9 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
         foreach (DataRow dr in ds.Tables[0].Rows)
         {
             Item mni = new Item();
-            mni.Text = dr["TenNhomSanPham"].ToString().Length > 30
-                           ? dr["TenNhomSanPham"].ToString().Substring(0, 30) + "..."
-                           : dr["TenNhomSanPham"].ToString();
+            mni.Text = dr["TenNhomSanPhamHienThi"].ToString().Length > 30
+                           ? dr["TenNhomSanPhamHienThi"].ToString().Substring(0, 30) + "..."
+                           : dr["TenNhomSanPhamHienThi"].ToString();
             mni.Tag = dr["NhomSanPhamID"].ToString();
             //mni.ToolTip = dr["TenNhomSanPham"].ToString();
 
@@ -188,9 +191,9 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 Item mni = new Item();
-                mni.Text = dr["TenNhomSanPham"].ToString().Length > 30
-                               ? dr["TenNhomSanPham"].ToString().Substring(0, 30) + "..."
-                               : dr["TenNhomSanPham"].ToString();
+                mni.Text = dr["TenNhomSanPhamHienThi"].ToString().Length > 30
+                               ? dr["TenNhomSanPhamHienThi"].ToString().Substring(0, 30) + "..."
+                               : dr["TenNhomSanPhamHienThi"].ToString();
                 mni.Tag = dr["NhomSanPhamID"].ToString();
                 //mni.ToolTip = dr["TenNhomSanPham"].ToString();
 
@@ -559,6 +562,27 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
 
     private void LoadGioHang()
     {
+        DataTable dtCart=null;
+        decimal dcmSoTien=0;
+        string content="";
+        if (Session["dtShoppingCart"] != null)
+        {
+            dtCart = (DataTable)Session["dtShoppingCart"];
 
+            if (dtCart.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dtCart.Rows)
+                {
+                    content += "<p class=\"mr-l15 fl mr-t8\"><span class=\"cl-c60\">" + dr["TenSanPham"] + "</span><br /><span>Giá :"
+                            + string.Format("{0:0,0}", decimal.Parse(dr["GiaSanPham"].ToString())).Replace(",", ".")
+                    + "VNĐ</span><br /><span>Số lượng :" + dr["SoSanPham"] + "</span></p>" +
+                    "<p style=\"border-top: 1px dotted #ccc; float: left; width: 198px; margin-top: 5px\"></p>";
+
+                    dcmSoTien += decimal.Parse(dr["tongtien"].ToString());
+                }
+                lblTong.Text = string.Format("{0:0,0}", dcmSoTien).Replace(",", ".") + " VNĐ   ";
+                spnCart.InnerHtml = content;
+            }
+        }        
     }
 }
