@@ -601,7 +601,7 @@ public partial class Admin_AddProduct : Page
 
         if (dschnsp.Tables[0].Rows.Count <= 0)
         {
-            chnsp.Insert(CuaHangID, NhomSanPhamID);
+            chnsp.Insert(CuaHangID, NhomSanPhamID, "");
 
             NhomSanPham nsp = new NhomSanPham();
             DataSet ds = nsp.SelectByID(NhomSanPhamID);
