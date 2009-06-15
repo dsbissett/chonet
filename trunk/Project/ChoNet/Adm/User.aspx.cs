@@ -53,7 +53,7 @@ public partial class Admin_User : Page
             {
                 cuahang.InsertFields(null, null, int.Parse(hidID.Value), null, null, null, null,
                                      null, null, null, null, null, null, null, null, null,
-                                     null, null, null, null, null, null, null, null, 2);
+                                     null, null, null, null, null, null, null, null, null, 3);
             }
             LoadGridData();
         }

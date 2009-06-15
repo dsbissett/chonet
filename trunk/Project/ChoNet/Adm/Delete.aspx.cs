@@ -36,6 +36,9 @@ public partial class Admin_Delete : Page
                         case "cuahangnhomsanpham":
                             lblMessage.Text = "Bạn có muốn xóa danh mục này?";
                             break;
+                        case "nhomsanphamcuahang":
+                            lblMessage.Text = "Bạn có muốn xóa danh mục này?";
+                            break;
                         case "nguoidung":
                             lblMessage.Text = "Bạn có muốn xóa người dùng này?";
                             break;
@@ -125,6 +128,17 @@ public partial class Admin_Delete : Page
                         Response.Redirect("../message.aspx?msg=Access denied");
                     }
                     break;
+                case "nhomsanphamcuahang":
+                    if (Common.LoaiNguoiDungID() == 2)
+                    {
+                        deleteNhomSanPhamCuaHang(id);
+                    }
+                    else
+                    {
+                        Response.Redirect("../message.aspx?msg=Access denied");
+                    }
+                    break;
+
                 case "nhanxetsanpham":
                     if (Common.LoaiNguoiDungID() != 1)
                     {
@@ -311,6 +325,12 @@ public partial class Admin_Delete : Page
         {
             Response.Write(ex.ToString());
         }
+    }
+
+    private void deleteNhomSanPhamCuaHang(int id)
+    {
+        NhomSanPhamCuaHang nsp = new NhomSanPhamCuaHang();
+        nsp.Delete(id);
     }
 
     private void deleteCuaHangNhomSanPham(int id)

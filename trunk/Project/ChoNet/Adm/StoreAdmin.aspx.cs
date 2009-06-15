@@ -29,7 +29,7 @@ public partial class Adm_StoreAdmin : Page
     {
         DataAccess da = new DataAccess();
 
-        DataSet ds = da.SelectByQuery("Select * from viewcuahang order by loaicuahang DESC");
+        DataSet ds = da.SelectByQuery("Select * from viewcuahang order by loaicuahangID");
         //ds.Tables[0].Select("LoaiCuaHang <> " + type);
         grdGianHang.DataSource = ds.Tables[0];
         grdGianHang.DataBind();
