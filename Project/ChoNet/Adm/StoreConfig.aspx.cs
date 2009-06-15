@@ -15,9 +15,10 @@ public partial class Adm_StoreConfig : Page
         if (Common.LoaiNguoiDungID() == 2)
         {
             //For e-Store only
+            LoadCuaHang();
             if (!Page.IsPostBack)
             {
-                LoadCuaHang();
+                
                 //LoadHoTro();
                 LoadQuangCao(51);
                 LoadQuangCao(52);
@@ -37,17 +38,17 @@ public partial class Adm_StoreConfig : Page
     {
         try
         {
-            CuaHang ch = new CuaHang();
-            DataSet dsCH = ch.SelectByNguoiDungID(Common.NguoiDungID());
-            int id = 0;
-            if (dsCH.Tables[0].Rows.Count == 1)
-            {
-                DataRow dr = dsCH.Tables[0].Rows[0];
-                id = int.Parse(dr["CuaHangID"].ToString());
-            }
+            //CuaHang ch = new CuaHang();
+            //DataSet dsCH = ch.SelectByNguoiDungID(Common.NguoiDungID());
+            //int id = 0;
+            //if (dsCH.Tables[0].Rows.Count == 1)
+            //{
+            //    DataRow dr = dsCH.Tables[0].Rows[0];
+            //    id = int.Parse(dr["CuaHangID"].ToString());
+            //}
 
 
-            LoadDanhMucCon(0, id, loaddm);
+            LoadDanhMucCon(0, CuaHangID, loaddm);
         }
         catch (Exception ex)
         {
@@ -60,8 +61,8 @@ public partial class Adm_StoreConfig : Page
         loaddm++;
         try
         {
-            NhomSanPham nhomsanpham = new NhomSanPham();
-            DataSet ds = nhomsanpham.SelectNhomSanPhamByNhomChaAndCuaHangID(CuaHangID, NhomChaID);
+            NhomSanPhamCuaHang nhomsanpham = new NhomSanPhamCuaHang();
+            DataSet ds = nhomsanpham.SelectByCuaHangIDAndNhomChaID(CuaHangID, NhomChaID);
             ds.Tables[0].DefaultView.Sort = "SapXep ASC";
 
             if (ds.Tables[0].Rows.Count > 0)
@@ -107,8 +108,8 @@ public partial class Adm_StoreConfig : Page
                     img2.Alt = "Xóa danh mục cha";
                     img3.Alt = "Thêm danh mục con";
                     //img1.Attributes.Add("onclick", "Edit(" + dr["NhomSanPhamID"].ToString() + ");");
-                    img2.Attributes.Add("onclick", "Delete(" + dr["CuaHangNhomSanPhamID"] + ");");
-                    img3.Attributes.Add("onclick", "AddSub(" + dr["NhomSanPhamID"] + ",'" +
+                    img2.Attributes.Add("onclick", "Delete(" + dr["NhomSanPhamCuaHangID"] + ");");
+                    img3.Attributes.Add("onclick", "AddSub(" + dr["NhomSanPhamCuaHangID"] + "," + CuaHangID + ",'" +
                                                    dr["TenNhomSanPham"] + "');");
 
 
@@ -122,8 +123,8 @@ public partial class Adm_StoreConfig : Page
                     tbr.Cells.Add(tbc4);
                     tbr.Cells.Add(tbc5);
                     tblDanhMuc.Rows.Add(tbr);
-
-                    LoadDanhMucCon(int.Parse(dr["NhomSanPhamID"].ToString()), CuaHangID, loaddm);
+                    //if (dr["NhomSanPhamID"].ToString()!="0")
+                    LoadDanhMucCon(int.Parse(dr["NhomSanPhamCuaHangID"].ToString()), CuaHangID, loaddm);
                     // }
                 }
             }
