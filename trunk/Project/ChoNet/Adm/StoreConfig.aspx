@@ -131,7 +131,7 @@
                                                                             <td class="box2_name" style="height: 26px">
                                                                                 Danh mục sản phẩm
                                                                             </td>
-                                                                            <td class="box2_name" style="cursor: hand" onclick="Add();">
+                                                                            <td class="box2_name" style="cursor: hand" onclick="Add(<%=CuaHangID %>);">
                                                                                 <img src="../Images/Add.gif" alt="Thêm danh mục cha" /></td>
                                                                         </tr>
                                                                         <tr>
@@ -753,6 +753,27 @@ function AddSub(id){
 
 function Delete(id){                      
         OpenDialogWindow('Xóa danh mục',350,170,'page','Delete.aspx?id=' + id + '&sid=<%=CuaHangID.ToString() %>&type=cuahangnhomsanpham');    
+}
+function Add(id){                              
+        OpenDialogWindow('Thêm danh mục cha',350,150,'page','AddCat.aspx?sid='+id);    
+}
+function AddSub(id,sid, ten){                              
+        OpenDialogWindow('Thêm danh mục con',350,200,'page','AddStoreSubCat.aspx?id=' + id + '&ten=' + ten + '&sid=' + sid);    
+}
+function Edit(id,sid){                      
+        OpenDialogWindow('Sửa danh mục cha',350,150,'page','AddCat.aspx?id=' + id+'&sid='+sid);// + '&rand=' + rand_no);    
+}
+function EditSub(id, ten, subid,sid){                      
+        OpenDialogWindow('Sửa danh mục con',350,160,'page','AddStoreSubCat.aspx?id=' + id + '&ten=' + ten + '&subid=' + subid+'&sid'+sid);    
+}
+function Delete(id){                      
+        OpenDialogWindow('Xóa danh mục',340,120,'page','Delete.aspx?id=' + id + '&type=nhomsanphamcuahang');    
+}
+function RefreshCat()
+{  	var warp = ig$('<%=pnlDanhMuc.ClientID%>');	
+	if(!warp)
+		return;
+	warp.refresh();		
 }
 function Refresh()
 {  	var warp = ig$('<%=pnlDanhMuc.ClientID%>');
