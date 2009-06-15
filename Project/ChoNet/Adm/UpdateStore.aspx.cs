@@ -105,7 +105,7 @@ public partial class Adm_UpdateStore : Page
                             txtCoDinh.Text,
                             txtLienHe.Text, txtDiaChi.Text, txtWebSite.Text, txtFax.Text, txtYahoo.Text, null, null,
                             null, null, null, null,
-                            null, null, null, null, null, null, null);
+                            null, null, null, null, null, null, null, null);
         }
         else
         {
@@ -113,7 +113,7 @@ public partial class Adm_UpdateStore : Page
                             txtCoDinh.Text,
                             txtLienHe.Text, txtDiaChi.Text, txtWebSite.Text, txtFax.Text, txtYahoo.Text, null, null,
                             null, null, null,
-                            null, null, null, null, null, null, null, null);
+                            null, null, null, null, null, null, null, null, null);
         }
         string strScript = "<script language='JavaScript'>" + "window.parent.RefreshStoreInfo();</script>";
         ClientScript.RegisterStartupScript(GetType(), "Refresh", strScript);
