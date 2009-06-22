@@ -19,7 +19,7 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
     private string up = "";
     string LoaiGianHangID;
     const string LoaiGianHang = "26";
-    
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //RedirectToCuahangbyUrlName();
@@ -70,32 +70,32 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
         //    LoadQuangCao(54);
         //    LoadQuangCao(55);
         //    LoadQuangCao(56);
-            LoadQuangCao(57);
+        LoadQuangCao(57);
         //    //LoadDanhMuc();
-            LoadUltraMenu(0);
+        LoadUltraMenu(0);
         //    LoadThongTinCuaHang(ChuCuaHangID);
         //    //LoadGianHang();
-            LoadSanPhamTop();
+        LoadSanPhamTop();
         //    //LoadSanPhamAll(NhomSanPhamID,1);
         //    //LoadBinhChon();            
-            LoadHoTroTrucTuyen();
+        LoadHoTroTrucTuyen();
 
-            LichSuTruyCap lstc = new LichSuTruyCap();
-            DataSet ds = lstc.SelectByCuaHangID(CuaHangID);
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                lstc.UpdateFields(int.Parse(ds.Tables[0].Rows[0]["LichSuTruyCapID"].ToString()),
-                                  int.Parse(ds.Tables[0].Rows[0]["LuotTruyCap"].ToString()) + 1, CuaHangID);
-                lblTruyCap.Text = ds.Tables[0].Rows[0]["LuotTruyCap"].ToString();
-            }
-            else
-            {
-                lstc.InsertFields(1, CuaHangID);
-            }
+        LichSuTruyCap lstc = new LichSuTruyCap();
+        DataSet ds = lstc.SelectByCuaHangID(CuaHangID);
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            lstc.UpdateFields(int.Parse(ds.Tables[0].Rows[0]["LichSuTruyCapID"].ToString()),
+                              int.Parse(ds.Tables[0].Rows[0]["LuotTruyCap"].ToString()) + 1, CuaHangID);
+            lblTruyCap.Text = ds.Tables[0].Rows[0]["LuotTruyCap"].ToString();
+        }
+        else
+        {
+            lstc.InsertFields(1, CuaHangID);
+        }
         //}
         lblOnline.Text = Application["songuoionline"].ToString();
     }
-    
+
     private void LoadCuaHang()
     {
         if (Session["UserFullName"] != null)
@@ -113,9 +113,9 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
         else
         {
             DataRow dr = ds.Tables[0].Rows[0];
-            lblLienHe.Text = dr["TenCuaHang"].ToString() + " " 
-                +  dr["DiaChi"].ToString() + " - " + dr["DienThoaiCoDinh"].ToString()
-                + " - " +  dr["DienThoaiDiDong"].ToString();
+            lblLienHe.Text = dr["TenCuaHang"].ToString() + " "
+                + dr["DiaChi"].ToString() + " - " + dr["DienThoaiCoDinh"].ToString()
+                + " - " + dr["DienThoaiDiDong"].ToString();
             ChuCuaHangID = int.Parse(dr["NguoiDungID"].ToString());
             ViewState["chucuahangid"] = ChuCuaHangID;
             LoaiGianHangID = dr["LoaiCuaHangID"].ToString();
@@ -144,28 +144,43 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
         }
     }
 
-    private void LoadUltraMenuItems(Item mi, int NhomSanPhamID)
+    private void LoadUltraMenuItems(Item mi, int NhomSanPhamID,Boolean bl)
     {
-        NhomSanPham nsp = new NhomSanPham();
-        DataSet ds = nsp.SelectNhomSanPhamByNhomChaAndCuaHangID(CuaHangID, NhomSanPhamID);
+        NhomSanPhamCuaHang nsp = new NhomSanPhamCuaHang();
+        DataSet ds = nsp.SelectByCuaHangIDAndNhomChaID(CuaHangID, NhomSanPhamID);
 
         foreach (DataRow dr in ds.Tables[0].Rows)
         {
             Item mni = new Item();
-            mni.Text = dr["TenNhomSanPhamHienThi"].ToString().Length > 30
-                           ? dr["TenNhomSanPhamHienThi"].ToString().Substring(0, 30) + "..."
-                           : dr["TenNhomSanPhamHienThi"].ToString();
-            mni.Tag = dr["NhomSanPhamID"].ToString();
+            mni.Text = dr["TenNhomSanPham"].ToString().Length > 30
+                           ? dr["TenNhomSanPham"].ToString().Substring(0, 30) + "..."
+                           : dr["TenNhomSanPham"].ToString();
+            mni.Tag = dr["NhomSanPhamCuaHangID"].ToString();
             //mni.ToolTip = dr["TenNhomSanPham"].ToString();
 
-            LoadUltraMenuItems(mni, int.Parse(dr["NhomSanPhamID"].ToString()));
-            if (LoaiGianHangID == LoaiGianHang)
+            LoadUltraMenuItems(mni, int.Parse(dr["NhomSanPhamCuaHangID"].ToString()),true);
+            if (bl)
             {
-                mni.TargetUrl = "Newestore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+                if (LoaiGianHangID == LoaiGianHang)
+                {
+                    mni.TargetUrl = "Newestore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+                }
+                else
+                {
+                    mni.TargetUrl = "estore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+                }
             }
             else
             {
-                mni.TargetUrl = "estore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+                if (LoaiGianHangID == LoaiGianHang)
+                {
+                    mni.TargetUrl = "Newestore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamCuahangID"];
+                }
+                else
+                {
+                    mni.TargetUrl = "estore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamCuahangID"];
+                } 
+
             }
             mi.Items.Add(mni);
         }
@@ -175,12 +190,12 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
     {
         try
         {
-            NhomSanPham nsp = new NhomSanPham();
+            NhomSanPhamCuaHang nsp = new NhomSanPhamCuaHang();
             DataSet ds;
             string cachemenu = "nsp" + CuaHangID + "_" + NhomChaID;
             if (Cache[cachemenu] == null)
             {
-                ds = nsp.SelectNhomSanPhamByNhomChaAndCuaHangID(CuaHangID, NhomChaID);
+                ds = nsp.SelectByCuaHangIDAndNhomChaID(CuaHangID, NhomChaID);
                 Cache[cachemenu] = ds;
             }
             else
@@ -191,22 +206,22 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 Item mni = new Item();
-                mni.Text = dr["TenNhomSanPhamHienThi"].ToString().Length > 30
-                               ? dr["TenNhomSanPhamHienThi"].ToString().Substring(0, 30) + "..."
-                               : dr["TenNhomSanPhamHienThi"].ToString();
-                mni.Tag = dr["NhomSanPhamID"].ToString();
+                mni.Text = dr["TenNhomSanPham"].ToString().Length > 30
+                               ? dr["TenNhomSanPham"].ToString().Substring(0, 30) + "..."
+                               : dr["TenNhomSanPham"].ToString();
+                mni.Tag = dr["NhomSanPhamCuaHangID"].ToString();
                 //mni.ToolTip = dr["TenNhomSanPham"].ToString();
 
-                LoadUltraMenuItems(mni, int.Parse(dr["NhomSanPhamID"].ToString()));
+                LoadUltraMenuItems(mni, int.Parse(dr["NhomSanPhamCuaHangID"].ToString()),false);
                 if (LoaiGianHangID == LoaiGianHang)
                 {
-                    mni.TargetUrl = "newestore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+                    mni.TargetUrl = "newestore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamCuaHangID"];
                 }
                 else
                 {
-                    mni.TargetUrl = "estore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamID"];
+                    mni.TargetUrl = "estore.aspx?sid=" + CuaHangID + "&cid=" + dr["NhomSanPhamCuaHangID"];
                 }
-                uwmMenu.Items.Add(mni);                
+                uwmMenu.Items.Add(mni);
             }
         }
         catch (Exception ex)
@@ -244,7 +259,7 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
             string content = "";
             for (int i = 0; i < n; i++)
             {
-                DataRow dr = tableSanPhamDaXem.Rows[i]; 
+                DataRow dr = tableSanPhamDaXem.Rows[i];
                 string tensanpham = dr["TenSanPham"] +
                                     " " + dr["TenSanPhamPhu"];
                 if (tensanpham.Length > 50) tensanpham = tensanpham.Substring(0, 50) + "...";
@@ -255,9 +270,9 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
                            + "\"><img src=\"" + dr["AnhSanPham"]
                            + "\" alt=\"" + tensanpham
                            + "\" width=\"71\" height=\"62\" border=\"0\" class=\"fl mr-r3\" />";
-                content +=  tensanpham + "<br />";
+                content += tensanpham + "<br />";
                 content += "<font color=\"#f00\">" + String.Format("{0:0,0}", dr["GiaSanPham"]).Replace(",", ".")
-                           + "</font> " + dr["DonViTienTe"] + "</a></p>";                
+                           + "</font> " + dr["DonViTienTe"] + "</a></p>";
             }
             spnSanPhamDaXem.InnerHtml = content;
         }
@@ -298,7 +313,7 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
                     }
                 }
                 break;
-        
+
             //case 54:
             //    if (ds.Tables[0].Rows.Count >= 1)
             //    {
@@ -462,7 +477,7 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
                     Session.Add("UserFullName", ds.Tables[0].Rows[0]["HoVaTen"]);
                     Session.Add("NguoiDungEmail", ds.Tables[0].Rows[0]["Email"]);
 
-                    FormsAuthentication.SetAuthCookie(txtTaiKhoan.Value.Trim(),false);
+                    FormsAuthentication.SetAuthCookie(txtTaiKhoan.Value.Trim(), false);
                     tblchaomung.Visible = true;
                     divDangNhap.Visible = false;
                 }
@@ -502,11 +517,11 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
                        + "\"><p class=\"mr-l25 fl mr-t8 pad-b10\">"
                        + "<img src=\"" + ds.Tables[0].Rows[i]["AnhSanPham"]
                        + "\" alt=\"" + tensanpham
-                       + "\" width=\"130\" height=\"110\" border=\"0\" style=\"cursor:hand\"/>"            
+                       + "\" width=\"130\" height=\"110\" border=\"0\" style=\"cursor:hand\"/>"
                        + "</p><br><p align=\"center\"><strong>" +
                        String.Format("{0:0,0}", ds.Tables[0].Rows[i]["GiaSanPham"]).Replace(",", ".")
                        + " " + ds.Tables[0].Rows[i]["DonViTienTe"] + " </strong></p></a>";
-                        
+
         }
         spnSanPhamXemNhieu.InnerHtml = content;
     }
@@ -519,8 +534,8 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
         string content = "";
         //foreach (DataRow dr in ds.Tables[0].Rows)
         //{
-            content += "<li><a href=\"#\">Tin cong ty</a></li>"
-                            + "<li><a href=\"#\">Tin tuc lien quan</a></li>";
+        content += "<li><a href=\"#\">Tin cong ty</a></li>"
+                        + "<li><a href=\"#\">Tin tuc lien quan</a></li>";
         //}
         spnDanhMucTinTuc.InnerHtml = content;
     }
@@ -533,19 +548,19 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
         string content = "<ul class=\"list-news\">";
         foreach (DataRow dr in ds.Tables[0].Rows)
         {
-            content += "<li><a href=\"EstoreNews.aspx?sid="+ CuaHangID + "&nid=" + dr["TinTucID"].ToString() +"\">" 
-                + dr["TieuDe"].ToString() + "</a></li>";                            
+            content += "<li><a href=\"EstoreNews.aspx?sid=" + CuaHangID + "&nid=" + dr["TinTucID"].ToString() + "\">"
+                + dr["TieuDe"].ToString() + "</a></li>";
         }
         content += "</ul>";
-        spnTinTuc.InnerHtml = content ;
+        spnTinTuc.InnerHtml = content;
     }
-   
+
     protected void btnTimKiem_Click(object sender, ImageClickEventArgs e)
     {
         string keysearch = " 1 = 1 ";
         if (txtTenSanPham.Value.Trim() != "")
         {
-            keysearch+=" AND TenSanPham LIKE '%" + txtTenSanPham.Value + "%' ";
+            keysearch += " AND TenSanPham LIKE '%" + txtTenSanPham.Value + "%' ";
         }
         double Num;
         if (double.TryParse(txtFrom.Value, out Num))
@@ -562,9 +577,9 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
 
     private void LoadGioHang()
     {
-        DataTable dtCart=null;
-        decimal dcmSoTien=0;
-        string content="";
+        DataTable dtCart = null;
+        decimal dcmSoTien = 0;
+        string content = "";
         if (Session["dtShoppingCart"] != null)
         {
             dtCart = (DataTable)Session["dtShoppingCart"];
@@ -583,6 +598,6 @@ public partial class NewEstoreMaster : System.Web.UI.MasterPage
                 lblTong.Text = string.Format("{0:0,0}", dcmSoTien).Replace(",", ".") + " VNĐ   ";
                 spnCart.InnerHtml = content;
             }
-        }        
+        }
     }
 }

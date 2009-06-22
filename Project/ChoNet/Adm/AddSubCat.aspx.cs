@@ -103,16 +103,16 @@ public partial class Admin_AddSubCat : Page
             else if (Common.LoaiNguoiDungID()==2)
             {
                 NhomSanPhamCuaHang nhomsanpham = new NhomSanPhamCuaHang();
-                if (Request.QueryString["subid"] == null)
+                if (Request.QueryString["id"] == null)
                 {
-                    nhomsanpham.InsertFields(Convert.ToInt32(Request.QueryString["id"]), 0
-                        , Convert.ToInt32(txtThuTu.Text), int.Parse(CuaHangID), txtTenNhomCon.Text);
+                    nhomsanpham.InsertFields(Convert.ToInt32(Request.QueryString["pid"]), 0
+                        , Convert.ToInt32(txtThuTu.Text), int.Parse(CuaHangID), txtTenNhomCon.Text,0);
                 }
                 else
                 {
-                    nhomsanpham.UpdateFields(Convert.ToInt32(Request.QueryString["subid"]),
-                                             Convert.ToInt32(Request.QueryString["id"]), 0,
-                                             Convert.ToInt32(txtThuTu.Text), null, txtTenNhomCon.Text);
+                    nhomsanpham.UpdateFields(Convert.ToInt32(Request.QueryString["id"]),
+                                             Convert.ToInt32(Request.QueryString["pid"]), 0,
+                                             Convert.ToInt32(txtThuTu.Text), null, txtTenNhomCon.Text,0);
                 }
             }
             string strScript = "<script language='JavaScript'>" + "window.parent.RefreshCat();</script>";

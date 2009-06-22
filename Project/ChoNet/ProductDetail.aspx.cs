@@ -1078,6 +1078,8 @@ public partial class ProductDetail : Page
                 if ((Common.LoaiNguoiDungID() == 1) &&
                     (Common.NguoiDungID() != int.Parse("0" + ViewState["NguoiDungID"])))
                     strReturn = "visibility";
+                else if (Common.NguoiDungID() == 0)
+                    strReturn= "visibility";
                 break;
             case "store":
                 if ((Common.LoaiNguoiDungID() == 2))

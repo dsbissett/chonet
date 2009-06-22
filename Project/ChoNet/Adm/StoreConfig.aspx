@@ -757,14 +757,14 @@ function Delete(id){
 function Add(id){                              
         OpenDialogWindow('Thêm danh mục cha',350,150,'page','AddCat.aspx?sid='+id);    
 }
-function AddSub(id,sid, ten){                              
-        OpenDialogWindow('Thêm danh mục con',350,200,'page','AddStoreSubCat.aspx?id=' + id + '&ten=' + ten + '&sid=' + sid);    
+function AddSub(pid,sid, ten){                              
+        OpenDialogWindow('Thêm danh mục con',350,200,'page','AddStoreSubCat.aspx?pid=' + pid + '&ten=' + ten + '&sid=' + sid);    
 }
 function Edit(id,sid){                      
         OpenDialogWindow('Sửa danh mục cha',350,150,'page','AddCat.aspx?id=' + id+'&sid='+sid);// + '&rand=' + rand_no);    
 }
-function EditSub(id, ten, subid,sid){                      
-        OpenDialogWindow('Sửa danh mục con',350,160,'page','AddStoreSubCat.aspx?id=' + id + '&ten=' + ten + '&subid=' + subid+'&sid'+sid);    
+function EditSub(id, ten, sid){                      
+        OpenDialogWindow('Sửa danh mục con',350,200,'page','AddStoreSubCat.aspx?id=' + id + '&ten=' + ten + '&sid'+sid);    
 }
 function Delete(id){                      
         OpenDialogWindow('Xóa danh mục',340,120,'page','Delete.aspx?id=' + id + '&type=nhomsanphamcuahang');    

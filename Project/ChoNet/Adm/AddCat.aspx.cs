@@ -26,8 +26,7 @@ public partial class Admin_AddCat : Page
                 cuahangid = Request.QueryString["sid"];
             }
             if (!Page.IsPostBack)
-            {
-                
+            {                
                 if (Request.QueryString["id"] != null)
                 {                    
                     LoadDataForGianHang(Request.QueryString["id"]);
@@ -105,12 +104,12 @@ public partial class Admin_AddCat : Page
                     NhomSanPhamCuaHang nhomsanpham = new NhomSanPhamCuaHang();
                     if (Request.QueryString["id"] == null)
                     {
-                        nhomsanpham.InsertFields( 0, 0, int.Parse("0" + txtThuTu.Text),int.Parse(cuahangid),txtTenNhomSanPham.Text);
+                        nhomsanpham.InsertFields( 0, 0, int.Parse("0" + txtThuTu.Text),int.Parse(cuahangid),txtTenNhomSanPham.Text,null);
                     }
                     else
                     {
                         nhomsanpham.UpdateFields(Convert.ToInt32(Request.QueryString["id"]),
-                                                  0, 0, int.Parse("0" + txtThuTu.Text), null, txtTenNhomSanPham.Text);
+                                                  null, null, int.Parse("0" + txtThuTu.Text), null, txtTenNhomSanPham.Text,null);
                     }                    
                 }
                 string strScript = "<script language='JavaScript'>" + "window.parent.RefreshCat();</script>";
