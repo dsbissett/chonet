@@ -30,12 +30,12 @@ public partial class Admin_AddStoreSubCat : Page
                 CuaHangID = Request.QueryString["sid"];
             }
             if (!Page.IsPostBack)
-            {               
+            {
+                LoadDanhMucCon(0, 0);
                 if (Request.QueryString["id"] != null)
                 {
                     LoadDataForCuaHang(Request.QueryString["id"]);
-                }
-                LoadDanhMucCon(0,0);
+                }                
                 txtTenNhomSanPham.Text = Request.QueryString["ten"];
             } 
         }
@@ -55,6 +55,7 @@ public partial class Admin_AddStoreSubCat : Page
             if (ds.Tables[0].Rows.Count > 0)
             {
                 txtTenNhomCon.Text = ds.Tables[0].Rows[0]["TenNhomSanPham"].ToString();
+                ddlNhomSanPham.SelectedValue = ds.Tables[0].Rows[0]["NhomSanPhamID"].ToString();
                 txtThuTu.Text = ds.Tables[0].Rows[0]["SapXep"].ToString();
             }
         }
@@ -105,16 +106,24 @@ public partial class Admin_AddStoreSubCat : Page
             else if (Common.LoaiNguoiDungID()==2)
             {
                 NhomSanPhamCuaHang nhomsanpham = new NhomSanPhamCuaHang();
-                if (Request.QueryString["subid"] == null)
+                CuaHangNhomSanPham chnsp = new CuaHangNhomSanPham();
+                if (Request.QueryString["id"] == null)
                 {
-                    nhomsanpham.InsertFields(Convert.ToInt32(Request.QueryString["id"]), 0
-                        , Convert.ToInt32(txtThuTu.Text), int.Parse(CuaHangID), txtTenNhomCon.Text);
+                    int chnspid = chnsp.InsertFields(int.Parse(CuaHangID), int.Parse(ddlNhomSanPham.SelectedValue), null);
+                    nhomsanpham.InsertFields(Convert.ToInt32(Request.QueryString["pid"]), int.Parse(ddlNhomSanPham.SelectedValue)
+                        , Convert.ToInt32(txtThuTu.Text), int.Parse(CuaHangID), txtTenNhomCon.Text, chnspid);
+                    
                 }
                 else
                 {
-                    nhomsanpham.UpdateFields(Convert.ToInt32(Request.QueryString["subid"]),
-                                             Convert.ToInt32(Request.QueryString["id"]), 0,
-                                             Convert.ToInt32(txtThuTu.Text), null, txtTenNhomCon.Text);
+                    NhomSanPhamCuaHang nsp = new NhomSanPhamCuaHang();
+                    DataSet ds = nsp.SelectByID(int.Parse(Request["id"]));
+                    int chnspid = int.Parse("0" + ds.Tables[0].Rows[0]["CuaHangNhomSanPhamID"].ToString());
+                    //chnsp.UpdateFields();
+                    nhomsanpham.UpdateFields(Convert.ToInt32(Request.QueryString["id"]),
+                                             null, int.Parse(ddlNhomSanPham.SelectedValue),
+                                             Convert.ToInt32(txtThuTu.Text), null, txtTenNhomCon.Text,null); 
+                    chnsp.UpdateFields(chnspid,int.Parse(CuaHangID),int.Parse(ddlNhomSanPham.SelectedValue),null);
                 }
             }
             string strScript = "<script language='JavaScript'>" + "window.parent.RefreshCat();</script>";
