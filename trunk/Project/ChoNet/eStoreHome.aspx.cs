@@ -218,7 +218,7 @@ public partial class eStoreHome : Page
                     DataRow dr = ds.Tables[0].Rows[j * 2 + i];
                     content += "<table width=\"100%\" border=\"0\" cellspacing=\"4\" cellpadding=\"0\">";
 
-                    if (dr["TenLoaiCuaHang"].ToString() == "New Shop 1")
+                    if (dr["LoaiCuaHangID"].ToString() == "26")
                     {
                         content += "<tr><td style=\"widht:110px\"><a href=\"Newestore.aspx?sid=" +
                                dr["CuaHangID"]

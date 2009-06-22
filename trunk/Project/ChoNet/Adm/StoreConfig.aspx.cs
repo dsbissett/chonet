@@ -75,8 +75,8 @@ public partial class Adm_StoreConfig : Page
                     tbr.Style.Add("padding-left", (loaddm*10) + "px");
                     HtmlTableCell tbc1 = new HtmlTableCell();
                     HtmlTableCell tbc2 = new HtmlTableCell();
-                    //image cells
-                    //HtmlTableCell tbc3 = new HtmlTableCell();
+                    //image cells 
+                    HtmlTableCell tbc3 = new HtmlTableCell();
                     HtmlTableCell tbc4 = new HtmlTableCell();
                     HtmlTableCell tbc5 = new HtmlTableCell();
 
@@ -84,42 +84,53 @@ public partial class Adm_StoreConfig : Page
                     //tbc1.Style.Add("width", "3%");                        
                     tbc2.InnerText = dr["SapXep"] + "." + dr["TenNhomSanPham"];
                     tbc2.ColSpan = 2;
-                    //tbc3.Style.Add("width", "16px");
+                    
                     tbc4.Style.Add("width", "16px");
                     tbc5.Style.Add("width", "16px");
-                    //tbc3.Style.Add("padding", "0");
-                    //tbc3.Style.Add("margin", "0");
-                    //tbc3.Style.Add("cursor", "hand");
+                    
                     tbc4.Style.Add("padding", "0");
                     tbc4.Style.Add("margin", "0");
                     tbc4.Style.Add("cursor", "hand");
                     tbc5.Style.Add("padding", "0");
                     tbc5.Style.Add("margin", "0");
                     tbc5.Style.Add("cursor", "hand");
-
-                    //HtmlImage img1 = new HtmlImage();
+                    
                     HtmlImage img2 = new HtmlImage();
                     HtmlImage img3 = new HtmlImage();
-
-                    //img1.Src = "../images/edit.gif";
+                    
                     img2.Src = "../images/delete.gif";
-                    img3.Src = "../images/add.gif";
-                    //img1.Alt = "Sửa danh mục cha";
+                    img3.Src = "../images/add.gif";                    
                     img2.Alt = "Xóa danh mục cha";
                     img3.Alt = "Thêm danh mục con";
-                    //img1.Attributes.Add("onclick", "Edit(" + dr["NhomSanPhamID"].ToString() + ");");
-                    img2.Attributes.Add("onclick", "Delete(" + dr["NhomSanPhamCuaHangID"] + ");");
-                    img3.Attributes.Add("onclick", "AddSub(" + dr["NhomSanPhamCuaHangID"] + "," + CuaHangID + ",'" +
+                    tbc3.Style.Add("width", "16px");
+                    tbc3.Style.Add("padding", "0");
+                    tbc3.Style.Add("margin", "0");
+                    tbc3.Style.Add("cursor", "hand");
+                    HtmlImage img1 = new HtmlImage();
+                    img1.Src = "../images/edit.gif";
+                    img1.Alt = "Sửa danh mục";
+
+                    if (loaddm < 3)
+                    {
+                        img1.Attributes.Add("onclick", "Edit(" + dr["NhomSanPhamCuaHangID"] + "," + CuaHangID + ");");                        
+                        img3.Attributes.Add("onclick", "AddSub(" + dr["NhomSanPhamCuaHangID"] + "," + CuaHangID + ",'" +
                                                    dr["TenNhomSanPham"] + "');");
-
-
-                    //tbc3.Controls.Add(img1);
+                    }
+                    else if (loaddm==3)
+                    {
+                        img1.Attributes.Add("onclick", "EditSub(" + dr["NhomSanPhamCuaHangID"] + ",'" +
+                            dr["TenNhomSanPham"] + "'," + CuaHangID + ");");                          
+                    }
+                    tbc3.Controls.Add(img1);
+                    img2.Attributes.Add("onclick", "Delete(" + dr["NhomSanPhamCuaHangID"] + ");");                    
+                    
                     tbc4.Controls.Add(img2);
+                    if (loaddm<3)
                     tbc5.Controls.Add(img3);
 
                     tbr.Cells.Add(tbc1);
                     tbr.Cells.Add(tbc2);
-                    //tbr.Cells.Add(tbc3);
+                    tbr.Cells.Add(tbc3);
                     tbr.Cells.Add(tbc4);
                     tbr.Cells.Add(tbc5);
                     tblDanhMuc.Rows.Add(tbr);

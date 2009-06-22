@@ -29,7 +29,7 @@ public partial class NeweStore : Page
     ////    }
     ////} 
 
-    protected void page_load(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
     {
         if (Request.QueryString["sid"] != null)
         {
@@ -134,8 +134,8 @@ public partial class NeweStore : Page
                     }
                     else
                     {
-                        spnQuangCao54.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[0]["DuongDan"].ToString()
-                          + "\" target=\"_blank\"><img alt=\"" + ds.Tables[0].Rows[0]["NoiDungQuangCao"].ToString()
+                        spnQuangCao54.InnerHtml = "<a href=\"" + ds.Tables[0].Rows[0]["DuongDan"]
+                          + "\" target=\"_blank\"><img alt=\"" + ds.Tables[0].Rows[0]["NoiDungQuangCao"]
                           + "\" src=\"" + ds.Tables[0].Rows[0]["DuongDanAnh"].ToString() + "\" height=\"213\" width=\"598\" style=\"border:none\"/></a>";
                     }
                 }
