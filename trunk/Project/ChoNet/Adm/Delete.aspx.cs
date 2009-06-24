@@ -330,6 +330,12 @@ public partial class Admin_Delete : Page
     private void deleteNhomSanPhamCuaHang(int id)
     {
         NhomSanPhamCuaHang nsp = new NhomSanPhamCuaHang();
+        DataSet ds = nsp.SelectByID(id);
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            CuaHangNhomSanPham chnsp = new CuaHangNhomSanPham();
+            chnsp.Delete(int.Parse(ds.Tables[0].Rows[0]["CuaHangNhomSanPhamID"].ToString()));
+        }
         nsp.Delete(id);
     }
 
